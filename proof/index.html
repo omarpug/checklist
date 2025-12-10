@@ -14,7 +14,6 @@
       --muted: #9ca3af;
       --accent: #facc15;
       --accent-dark: #eab308;
-      --pill: #1f2937;
       --border: rgba(148,163,184,0.35);
     }
 
@@ -127,7 +126,7 @@
 
     .kpi-card {
       border-radius: 18px;
-      background: linear-gradient(135deg, #020617, #020617);
+      background: #020617;
       border: 1px solid var(--border);
       padding: 16px 16px 14px;
     }
@@ -148,12 +147,6 @@
       font-size: 0.8rem;
       color: var(--muted);
       margin-top: 6px;
-    }
-
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
     }
 
     .case-card {
@@ -199,7 +192,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 12px;
     }
 
     .case-images img {
@@ -262,9 +255,6 @@
     }
 
     @media (max-width: 720px) {
-      .hero {
-        text-align: left;
-      }
       .hero-top {
         flex-direction: column;
         align-items: flex-start;
@@ -296,7 +286,7 @@
 
         <div class="hero-right">
           <div class="hero-kpi">+37%</div>
-          <div class="hero-kpi-label">Guadagni medi dopo 6–12 mesi* </div>
+          <div class="hero-kpi-label">Guadagni medi dopo 6–12 mesi*</div>
           <p class="cta-note" style="margin-top:8px; max-width:240px;">
             *Valore indicativo su un gruppo di case vacanze seguite in modo continuativo.
             I risultati possono variare in base alla zona e alla partenza.
@@ -380,13 +370,13 @@
         <span class="case-pill">Minimo soggiorno</span>
         <span class="case-pill">Messaggi automatici</span>
 
-        <div class="case-images" style="margin-top:12px;">
+        <div class="case-images">
           <figure>
-            <img src="assets/proof/case1-before.jpg" alt="Cruscotto prima dell’ottimizzazione">
+            <img src="assets/proof/screen1.jpg" alt="Cruscotto prima dell’ottimizzazione">
             <figcaption>Prima – 123 notti, durata media 2,7 notti.</figcaption>
           </figure>
           <figure>
-            <img src="assets/proof/case1-after.jpg" alt="Cruscotto dopo l’ottimizzazione">
+            <img src="assets/proof/screen2.jpg" alt="Cruscotto dopo l’ottimizzazione">
             <figcaption>Dopo – 253 notti, durata media 4,3 notti.</figcaption>
           </figure>
         </div>
@@ -405,28 +395,33 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="assets/proof/case2-month.jpg" alt="Guadagni mensili ottobre">
+          <img src="assets/proof/screen3.jpg" alt="Guadagni mensili ottobre">
           <span>3.610,47 € nel mese di ottobre su una singola struttura.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/case3-annual.jpg" alt="Riepilogo annuale 2025">
+          <img src="assets/proof/screen4.jpg" alt="Guadagni mensili struttura 2">
+          <span>Andamento dei ricavi su più mesi consecutivi (luglio–ottobre).</span>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/proof/screen5.jpg" alt="Riepilogo annuale 2025">
           <span>2025 in crescita: oltre 11.900 € già corrisposti, con ancora prenotazioni future.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/case4-month.jpg" alt="Guadagni mensili struttura 2">
-          <span>3.206,21 € in un mese, con oltre 400 € ancora in arrivo.</span>
+          <img src="assets/proof/screen6.jpg" alt="Guadagni mensili struttura 3">
+          <span>Una struttura supera i 3.200 € in un mese con altre entrate in arrivo.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/case5-month.jpg" alt="Guadagni mensili Anna Maria">
-          <span>Anna Maria: 2.099,56 € nel mese monitorato, più 535,03 € in arrivo.</span>
+          <img src="assets/proof/screen7.jpg" alt="Guadagni mensili Anna Maria">
+          <span>Anna Maria: 2.099,56 € nel mese, più 535,03 € in arrivo dal portale.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/case6-month.jpg" alt="Guadagni mensili struttura 3">
-          <span>Altra struttura: 1.987,38 € in un mese, con prenotazioni già confermate per i mesi successivi.</span>
+          <img src="assets/proof/screen8.jpg" alt="Guadagni mensili altra struttura">
+          <span>Altra struttura: 1.987,38 € in un mese, con prenotazioni già confermate.</span>
         </div>
       </div>
     </section>
@@ -452,7 +447,7 @@
         </article>
 
         <article class="kpi-card">
-          <div class="kpi-label" style="font-weight:600;margin-bottom:4px;">2 • Strategia prezzi & annunci</div>
+          <div class="kpi-label" style="font-weight:600;margin-bottom:4px;">2 • Strategia prezzi & annuncio</div>
           <p>
             Revisione di titolo, cover, descrizione e foto; impostazione di una
             strategia prezzi legata a stagionalità, eventi e domanda reale.
