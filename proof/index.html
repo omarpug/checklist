@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <title>Risultati Reali – Federica Property Manager</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Se vuoi indicizzarla togli pure questa riga -->
   <meta name="robots" content="noindex,nofollow" />
   <style>
     :root {
       --bg: #020617;
-      --bg-soft: #0b1220;
+      --bg-soft: #030712;
+      --bg-soft-2: #020617;
       --text: #f9fafb;
       --muted: #9ca3af;
       --accent: #facc15;
+      --accent-dark: #eab308;
+      --pill: #111827;
       --border: rgba(148,163,184,0.35);
     }
 
@@ -20,7 +22,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617, #000);
+      background: radial-gradient(circle at top, #020617, #000000 60%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -42,14 +44,13 @@
 
     p { color: #d1d5db; margin-bottom: 8px; }
 
-    /* HERO */
-
     .hero {
       border-radius: 24px;
-      background: radial-gradient(circle at top left, #111827, #020617);
+      background: radial-gradient(circle at top left, #020617, #020617);
       padding: 28px 20px 22px;
       border: 1px solid var(--border);
       margin-bottom: 32px;
+      text-align: left;
     }
 
     .hero-top {
@@ -72,7 +73,9 @@
       margin-bottom: 10px;
     }
 
-    .hero p { max-width: 620px; }
+    .hero p {
+      max-width: 560px;
+    }
 
     .hero-right {
       text-align: right;
@@ -92,13 +95,21 @@
     }
 
     .hero-note {
-      margin-top: 8px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted);
+      margin-top: 6px;
       max-width: 260px;
     }
 
-    /* SEZIONI */
+    .hero-pill {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
 
     .section {
       margin-bottom: 36px;
@@ -112,8 +123,6 @@
       max-width: 640px;
     }
 
-    /* KPI */
-
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -122,7 +131,7 @@
 
     .kpi-card {
       border-radius: 18px;
-      background: linear-gradient(135deg, #020617, #020617);
+      background: #020617;
       border: 1px solid var(--border);
       padding: 16px 16px 14px;
     }
@@ -145,14 +154,12 @@
       margin-top: 6px;
     }
 
-    /* CASE STUDY */
-
     .case-card {
       border-radius: 20px;
       background: #020617;
       border: 1px solid var(--border);
-      padding: 16px 16px 18px;
-      margin-top: 10px;
+      padding: 18px 18px 14px;
+      margin-bottom: 20px;
     }
 
     .case-meta {
@@ -160,7 +167,20 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .case-col p { margin-bottom: 4px; }
+
+    .case-pill-row {
+      margin-top: 10px;
     }
 
     .case-pill {
@@ -171,56 +191,39 @@
       padding: 2px 8px;
       font-size: 0.75rem;
       color: var(--muted);
-      margin-top: 4px;
       margin-right: 6px;
+      margin-top: 4px;
     }
 
-    .case-stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4px 12px;
-      font-size: 0.85rem;
-      margin: 6px 0 10px;
+    .case-image {
+      margin-top: 6px;
     }
 
-    .case-stats span strong {
-      color: #e5e7eb;
-    }
-
-    .case-images {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .case-images img {
+    .case-image img {
       width: 100%;
       border-radius: 12px;
       border: 1px solid rgba(148,163,184,0.4);
       display: block;
     }
 
-    .case-images figcaption {
+    .case-image figcaption {
       font-size: 0.75rem;
       color: var(--muted);
       margin-top: 4px;
-      text-align: center;
+      text-align: left;
     }
-
-    /* GALLERY */
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
     }
 
     .gallery-item {
       background: #020617;
       border-radius: 18px;
       border: 1px solid var(--border);
-      padding: 10px 10px 9px;
+      padding: 10px 10px 8px;
     }
 
     .gallery-item img {
@@ -236,26 +239,16 @@
       color: var(--muted);
     }
 
-    /* METODO */
-
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+    .small-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 6px;
     }
 
-    .method-card {
-      border-radius: 18px;
-      background: #020617;
-      border: 1px solid var(--border);
-      padding: 14px 16px 12px;
-      font-size: 0.9rem;
-    }
-
-    .method-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #e5e7eb;
+    @media (max-width: 900px) {
+      .case-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     @media (max-width: 720px) {
@@ -277,115 +270,122 @@
       <div class="hero-top">
         <div>
           <div class="hero-badge">Risultati reali • Case vacanze</div>
-          <h1>Cruscotti reali dei proprietari seguiti da Federica</h1>
+          <h1>Cruscotto risultati proprietari seguiti da Federica</h1>
           <p>
-            In questa pagina ci sono solo numeri e schermate: guadagni annuali,
-            notti prenotate, durata media dei soggiorni. Tutto proviene dai
-            cruscotti dei portali che usano i proprietari.
+            Questa pagina raccoglie solo screenshot reali dai portali di prenotazione:
+            ricavi annuali, notti vendute e durata media dei soggiorni. È una pagina
+            interna, usata solo come prova numerica durante le call.
           </p>
         </div>
 
         <div class="hero-right">
           <div class="hero-kpi">+37%</div>
-          <div class="hero-kpi-label">Incremento medio dei ricavi annui*</div>
+          <div class="hero-kpi-label">Incremento medio dei ricavi dopo 6–12 mesi*</div>
           <p class="hero-note">
-            *Stima indicativa su un gruppo di case vacanze seguite per almeno 6–12 mesi.
-            I risultati variano in base alla zona e alla situazione di partenza.
+            *Valore indicativo calcolato su un gruppo di case vacanze seguite in modo
+            continuativo. I risultati variano in base alla zona, alla partenza e al tipo di gestione.
           </p>
         </div>
+      </div>
+
+      <div class="hero-pill">
+        Pagina privata di riepilogo risultati – nessun link esterno o form.
       </div>
     </section>
 
     <!-- KPI SINTESI -->
     <section class="section">
       <div class="section-header">
-        <h2>In sintesi: cosa mostrano questi cruscotti</h2>
+        <h2>In sintesi: cosa cambia per i proprietari</h2>
         <p>
-          Gli screenshot raccontano sempre la stessa cosa: più notti vendute,
-          soggiorni più lunghi e ricavi più stabili per il proprietario, senza
-          che debba passare le giornate su messaggi e calendario.
+          Qui sotto trovi alcuni numeri sintetici che riassumono l’effetto del lavoro
+          su annunci, prezzi e processi di gestione.
         </p>
       </div>
 
       <div class="kpi-grid">
         <article class="kpi-card">
           <div class="kpi-value">+130 notti</div>
-          <div class="kpi-label">Crescita sulla stessa struttura</div>
+          <div class="kpi-label">Incremento su una singola struttura (da 123 a 253 notti)</div>
           <p class="kpi-note">
-            Dal cruscotto si vede il salto di occupazione: da circa 123 notti vendute
-            a oltre 250 notti in un anno, con soggiorni più lunghi.
+            Da calendario “riempito a metà” a un anno con molte più notti vendute
+            e soggiorni più lunghi.
           </p>
         </article>
 
         <article class="kpi-card">
-          <div class="kpi-value">oltre 20.000 €</div>
-          <div class="kpi-label">Ricavi annuali su singole strutture</div>
+          <div class="kpi-value">+7.800 €</div>
+          <div class="kpi-label">Delta stimato di ricavi su 12 mesi*</div>
           <p class="kpi-note">
-            Alcune case vacanze superano i 20.000 € già corrisposti, con altre
-            transazioni future ancora da incassare.
+            Differenza tra il ritmo di incassi 2024 e quello 2025 nella stessa struttura,
+            a parità di appartamento e zona.
           </p>
         </article>
 
         <article class="kpi-card">
-          <div class="kpi-value">3.000–3.600 €</div>
-          <div class="kpi-label">Picchi mensili</div>
+          <div class="kpi-value">3.600 €</div>
+          <div class="kpi-label">Picchi mensili su singole case vacanze</div>
           <p class="kpi-note">
-            In alta stagione una sola struttura può superare i 3.000 € al mese,
-            con prenotazioni future già confermate.
+            In alta stagione una sola casa può superare i 3.000 €/mese, con gestione
+            operativa affidata a Federica.
           </p>
         </article>
       </div>
     </section>
 
-    <!-- CASE STUDY PRINCIPALE -->
+    <!-- CASE STUDY PRINCIPALE: 2024 vs 2025 nello stesso screen -->
     <section class="section">
       <div class="section-header">
-        <h2>Case study 1 – La stessa casa fra 2024 e 2025</h2>
+        <h2>Case study 1 – Evoluzione anno su anno della stessa struttura</h2>
         <p>
-          Si tratta di un appartamento turistico sempre nella stessa zona e sullo stesso portale.
-          Il cruscotto mostra l’evoluzione dei numeri da un anno all’altro: notti vendute,
-          durata media dei soggiorni e somme già corrisposte al proprietario.
+          Di seguito un cruscotto annuale reale: si vede come cambiano i numeri tra 2024 e 2025
+          per la stessa casa vacanze, nello stesso portale.
         </p>
       </div>
 
       <article class="case-card">
         <div class="case-meta">Roma • Appartamento turistico • Airbnb</div>
-        <h3>Calendario più pieno e soggiorni più lunghi</h3>
+        <h3>Calendario più pieno, soggiorni più lunghi</h3>
 
-        <div class="case-stats">
-          <span>Ricavi anno 2024: <strong>17.228,09 €*</strong></span>
-          <span>Ricavi anno 2025: <strong>21.949,05 €*</strong></span>
-          <span>Notti prenotate 2024: <strong>123</strong></span>
-          <span>Notti prenotate 2025: <strong>253</strong></span>
-          <span>Durata media 2024: <strong>2,7 notti</strong></span>
-          <span>Durata media 2025: <strong>4,3 notti</strong></span>
-        </div>
+        <div class="case-layout">
+          <div class="case-col">
+            <p><strong>Ricavi anno 2024:</strong> 17.228,09 €*</p>
+            <p><strong>Notti prenotate 2024:</strong> 123</p>
+            <p><strong>Durata media soggiorno 2024:</strong> 2,7 notti</p>
 
-        <p class="kpi-note">
-          *Le cifre sono quelle mostrate nel cruscotto del portale. Il grafico annuale
-          evidenzia come nel 2025 la barra delle entrate e delle notti vendute sia
-          nettamente più alta rispetto al 2024.
-        </p>
+            <div style="height: 10px;"></div>
 
-        <p>
-          L’idea non è solo “riempire il calendario”, ma farlo con
-          prenotazioni più lunghe, meno vuoti e un flusso di cassa più prevedibile
-          per il proprietario.
-        </p>
+            <p><strong>Ricavi anno 2025:</strong> 21.949,05 €*</p>
+            <p><strong>Notti prenotate 2025:</strong> 253</p>
+            <p><strong>Durata media soggiorno 2025:</strong> 4,3 notti</p>
 
-        <span class="case-pill">Strategia prezzi</span>
-        <span class="case-pill">Minimo soggiorno</span>
-        <span class="case-pill">Messaggi automatici</span>
+            <p class="small-note" style="margin-top:10px;">
+              *Valori presi direttamente dal riepilogo annuale del portale (somma già corrisposta
+              al proprietario, senza considerare altre transazioni future).
+            </p>
 
-        <div class="case-images">
-          <figure>
-            <img src="assets/proof/screen1.jpg" alt="Cruscotto annuale struttura – stato iniziale">
-            <figcaption>Cruscotto annuale: situazione di partenza.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/proof/screen2.jpg" alt="Cruscotto annuale struttura – anno successivo">
-            <figcaption>Cruscotto annuale: anno successivo con più notti e più ricavi.</figcaption>
-          </figure>
+            <p class="small-note">
+              Il grafico annuale nello screenshot mostra chiaramente l’aumento della barra 2025
+              rispetto al 2024: più notti vendute, soggiorni più lunghi e flusso di cassa più stabile.
+            </p>
+
+            <div class="case-pill-row">
+              <span class="case-pill">Strategia prezzi</span>
+              <span class="case-pill">Minimo soggiorno</span>
+              <span class="case-pill">Messaggi automatici</span>
+            </div>
+          </div>
+
+          <div class="case-col">
+            <figure class="case-image">
+              <!-- SCREEN PRINCIPALE 2024 vs 2025 -->
+              <img src="assets/proof/screen1.jpg" alt="Cruscotto annuale con confronto 2024–2025">
+              <figcaption>
+                Cruscotto annuale della stessa struttura: la barra 2025 mostra più notti, più ricavi
+                e una durata media del soggiorno più alta rispetto al 2024.
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </article>
     </section>
@@ -395,81 +395,53 @@
       <div class="section-header">
         <h2>Altri esempi dal cruscotto</h2>
         <p>
-          Qui sotto ci sono alcune schermate mensili e annuali di diverse strutture.
-          Sono gli stessi grafici che i proprietari vedono nelle loro app, solo raccolti
-          in un’unica pagina.
+          Altre schermate mensili e annuali di strutture diverse. Sono gli stessi grafici
+          che i proprietari vedono nelle loro app: qui sono solo raccolti in un’unica pagina.
         </p>
       </div>
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="assets/proof/screen3.jpg" alt="Guadagni mensili ottobre">
-          <span>Ottobre: oltre 3.600 € in un solo mese, con calendario ancora aperto.</span>
+          <img src="assets/proof/screen2.jpg" alt="Guadagni mensili ottobre">
+          <span>3.610,47 € nel mese di ottobre, con 29 notti prenotate e durata media 2,9 notti.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/screen4.jpg" alt="Andamento mensile luglio–ottobre">
-          <span>Andamento dei ricavi su più mesi consecutivi (luglio–ottobre).</span>
+          <img src="assets/proof/screen3.jpg" alt="Guadagni ottobre dettaglio testo">
+          <span>Dettaglio del riepilogo: il portale indica chiaramente l’importo incassato nel mese.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/screen5.jpg" alt="Riepilogo annuale 2025 di una struttura">
-          <span>Riepilogo annuale: oltre 11.900 € già corrisposti, più transazioni future.</span>
+          <img src="assets/proof/screen4.jpg" alt="Riepilogo annuale 2025 altra struttura">
+          <span>Riepilogo annuale 2025 di un’altra struttura: oltre 11.900 € già corrisposti,
+          più prenotazioni future.</span>
         </div>
 
         <div class="gallery-item">
-          <img src="assets/proof/screen6.jpg" alt="Guadagni mensili struttura 2">
-          <span>Una struttura supera i 3.200 € in un mese, con ulteriori entrate in arrivo.</span>
+          <img src="assets/proof/screen5.jpg" alt="Guadagni mensili struttura 2">
+          <span>Una struttura supera i 3.200 € in un mese, con altre entrate già in arrivo.</span>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/proof/screen6.jpg" alt="Guadagni mensili proprietario 1">
+          <span>Guadagni mensili con importo in arrivo evidenziato dal portale.</span>
         </div>
 
         <div class="gallery-item">
           <img src="assets/proof/screen7.jpg" alt="Guadagni mensili Anna Maria">
-          <span>Anna Maria: 2.099,56 € nel mese monitorato, più 535,03 € in arrivo.</span>
+          <span>Anna Maria: 2.099,56 € nel mese monitorato, più 535,03 € già in arrivo.</span>
         </div>
 
         <div class="gallery-item">
           <img src="assets/proof/screen8.jpg" alt="Guadagni mensili altra struttura">
-          <span>Altra struttura: 1.987,38 € in un mese, con prenotazioni già confermate.</span>
+          <span>Altra struttura: 1.987,38 € in un mese, con 738,65 € già confermati in arrivo.</span>
         </div>
       </div>
-    </section>
 
-    <!-- METODO BREVE (solo descrizione, nessuna CTA) -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Come vengono generati questi numeri</h2>
-        <p>
-          Tutti i risultati che vedi arrivano da un lavoro costante su annuncio, prezzi
-          e processi di gestione. Non ci sono “trucchi di algoritmo”, solo numeri letti e
-          corretti ogni mese.
-        </p>
-      </div>
-
-      <div class="method-grid">
-        <article class="method-card">
-          <div class="method-title">1 • Analisi iniziale</div>
-          <p>
-            Si parte dai dati reali: estratti conto, calendario, storico recensioni,
-            posizionamento dell’annuncio e benchmark della zona.
-          </p>
-        </article>
-
-        <article class="method-card">
-          <div class="method-title">2 • Annuncio & strategia prezzi</div>
-          <p>
-            Revisione di titolo, cover, descrizione e foto, più una strategia prezzi
-            legata a stagionalità, eventi e domanda reale.
-          </p>
-        </article>
-
-        <article class="method-card">
-          <div class="method-title">3 • Gestione & controllo</div>
-          <p>
-            Messaggi automatici, regole di calendario e monitoraggio mensile
-            per mantenere i numeri in linea con gli obiettivi del proprietario.
-          </p>
-        </article>
-      </div>
+      <p class="small-note">
+        Alcuni importi sono stati arrotondati a scopo di lettura, ma gli screenshot mostrano i valori
+        esatti così come riportati dai portali.
+      </p>
     </section>
   </main>
 </body>
