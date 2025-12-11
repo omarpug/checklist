@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checklist “7 errori” inviata</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Font Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --navy:#0A2540;
+      --gold:#D4AF37;
+      --muted:#64748b;
+      --bg:#020617;
+      --card:#020617;
+      --border:rgba(148,163,184,.4);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;
+      background:radial-gradient(circle at top,#0b1f3a 0,#020617 55%);
+      color:#e2e8f0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 16px;
+    }
+
+    .card{
+      width:100%;
+      max-width:640px;
+      background:linear-gradient(135deg,rgba(15,23,42,.96),#020617 70%);
+      border-radius:var(--radius);
+      padding:28px 26px 26px;
+      border:1px solid var(--border);
+      box-shadow:
+        0 18px 40px rgba(15,23,42,.65),
+        0 0 0 1px rgba(15,23,42,.7);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      background:rgba(15,23,42,.9);
+      color:#cbd5f5;
+      border:1px solid rgba(148,163,184,.5);
+      margin-bottom:14px;
+    }
+
+    .eyebrow span.dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--gold);
+      box-shadow:0 0 0 4px rgba(212,175,55,.25);
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:26px;
+      line-height:1.15;
+      font-weight:800;
+      color:#f9fafb;
+    }
+
+    .accent{
+      color:var(--gold);
+    }
+
+    p.lead{
+      margin:0 0 18px;
+      font-size:15px;
+      color:#cbd5f5;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      background:rgba(15,118,110,.08);
+      color:#6ee7b7;
+      border:1px solid rgba(45,212,191,.45);
+      margin-bottom:14px;
+    }
+
+    .pill-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:#34d399;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.25fr 1fr;
+      gap:18px;
+      align-items:flex-start;
+      margin-top:4px;
+    }
+
+    .left p{
+      margin:0 0 10px;
+      font-size:14px;
+      color:#e2e8f0;
+    }
+
+    ul.points{
+      list-style:none;
+      padding:0;
+      margin:8px 0 4px;
+      font-size:13px;
+      color:#cbd5f5;
+    }
+
+    ul.points li{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      margin-bottom:6px;
+    }
+
+    ul.points li::before{
+      content:"•";
+      color:var(--gold);
+      margin-top:-1px;
+    }
+
+    .hint{
+      margin-top:10px;
+      font-size:12px;
+      color:#94a3b8;
+    }
+
+    .hint code{
+      font-family:inherit;
+      background:rgba(15,23,42,.8);
+      padding:2px 6px;
+      border-radius:6px;
+      border:1px solid rgba(148,163,184,.35);
+    }
+
+    .box{
+      border-radius:16px;
+      padding:14px 14px 12px;
+      background:radial-gradient(circle at top left,rgba(15,23,42,1),#020617);
+      border:1px solid rgba(148,163,184,.65);
+      box-shadow:0 0 0 1px rgba(15,23,42,.9);
+      font-size:13px;
+    }
+
+    .box-title{
+      font-size:13px;
+      font-weight:600;
+      color:#e5e7eb;
+      margin-bottom:4px;
+    }
+
+    .box strong{
+      color:var(--gold);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:3px 8px;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.6);
+      font-size:11px;
+      color:#cbd5f5;
+      margin-bottom:6px;
+    }
+
+    .badge-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:#22c55e;
+    }
+
+    .footer{
+      margin-top:18px;
+      font-size:11px;
+      color:#64748b;
+    }
+
+    .footer a{
+      color:#a5b4fc;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width:640px){
+      .card{
+        padding:22px 18px 20px;
+      }
+      h1{font-size:22px;}
+      .grid{
+        grid-template-columns:1fr;
+        gap:14px;
+        margin-top:10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      <span>Checklist errori · Affitti brevi</span>
+    </div>
+
+    <h1>
+      Checklist inviata
+      <span class="accent">alla tua email</span>
+    </h1>
+
+    <p class="lead">
+      Tra pochi secondi riceverai la guida “7 errori che fanno perdere soldi con la casa vacanze”.
+      Se non la vedi, controlla anche in <strong>Promozioni</strong> o <strong>Spam</strong>.
+    </p>
+
+    <div class="grid">
+      <section class="left">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Cosa trovi nella guida</span>
+        </div>
+
+        <p>
+          All’interno della checklist trovi gli errori più frequenti che vedo nei profili dei proprietari
+          che seguo ogni mese, con indicazioni pratiche per evitarli subito.
+        </p>
+
+        <ul class="points">
+          <li>Come impostare l’annuncio per non “svendere” le notti.</li>
+          <li>Gli errori di messaggistica che abbassano le recensioni.</li>
+          <li>Le impostazioni che bloccano il calendario senza accorgersene.</li>
+        </ul>
+
+        <p class="hint">
+          Se fra qualche minuto non hai ricevuto nulla, scrivi a
+          <code>info@federicapropertymanager.com</code>
+          indicando l’email con cui hai richiesto la guida.
+        </p>
+      </section>
+
+      <aside class="right">
+        <div class="box">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Consiglio per non perdere la guida</span>
+          </div>
+          <div class="box-title">Aggiungi l’email ai preferiti</div>
+          <p style="margin:4px 0 0;">
+            Quando ricevi la checklist, aggiungi
+            <strong>info@federicapropertymanager.com</strong>
+            ai mittenti sicuri: in questo modo riceverai anche eventuali aggiornamenti
+            e materiali extra senza finire nello spam.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer">
+      Pagina interna di riepilogo risultati — nessun link esterno a form o prenotazioni.
+    </div>
+  </main>
+</body>
+</html>
