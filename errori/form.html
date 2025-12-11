@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scarica la checklist — Errori</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Font Inter da Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --navy:#0A2540;
+      --gold:#D4AF37;
+      --muted:#6b7280;
+      --bg:#FAFAFA;
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial,sans-serif;
+      background:var(--bg);
+      color:#101828;
+    }
+
+    .container{
+      max-width:560px;
+      margin:64px auto;
+      padding:28px 20px 30px;
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:0 6px 24px rgba(10,37,64,.08);
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:26px;
+      font-weight:800;
+      color:var(--navy);
+      text-align:center;
+    }
+
+    p.lead{
+      margin:0 0 22px;
+      color:var(--muted);
+      font-size:15px;
+      text-align:center;
+    }
+
+    label{
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      margin:14px 0 6px;
+    }
+
+    input,select{
+      width:100%;
+      padding:12px 14px;
+      border:1px solid #e6e6e6;
+      border-radius:12px;
+      font-size:15px;
+      background:#fff;
+      outline:none;
+    }
+
+    input:focus,select:focus{
+      border-color:#cbd5e1;
+      box-shadow:0 0 0 3px rgba(58,124,165,.12);
+    }
+
+    button{
+      width:100%;
+      margin-top:16px;
+      padding:14px;
+      border:0;
+      border-radius:12px;
+      cursor:pointer;
+      background:var(--gold);
+      color:#0A2540;
+      font-weight:800;
+      font-size:16px;
+    }
+
+    button:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
+    .success{
+      display:none;
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      text-align:center;
+      background:#e8f7ef;
+      color:#0a6b2b;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .err{
+      display:none;
+      color:#b00020;
+      font-size:13px;
+      margin-top:8px;
+    }
+
+    /* Consenso privacy */
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .consent input[type="checkbox"]{
+      margin-top:3px;
+      min-width:18px;
+      width:18px;
+      height:18px;
+      cursor:pointer;
+    }
+
+    .consent label{
+      margin:0;
+      font-weight:500;
+      color:#334155;
+      line-height:1.45;
+    }
+
+    .consent a{
+      color:#0A2540;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    /* footer mini */
+    .meta{
+      margin-top:10px;
+      color:#94a3b8;
+      font-size:12px;
+      text-align:left;
+    }
+
+    .meta a{
+      color:inherit;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width:600px){
+      .container{
+        margin:32px 16px;
+        padding:22px 18px 26px;
+      }
+      h1{font-size:22px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Scarica la checklist</h1>
+    <p class="lead">Compila i campi e vieni reindirizzato alla guida “7 errori”.</p>
+
+    <form id="leadForm" novalidate>
+      <label for="name">Nome</label>
+      <input id="name" type="text" autocomplete="name" required>
+
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" required>
+
+      <label for="phone">Telefono</label>
+      <input id="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+
+      <label for="situazione">Situazione</label>
+      <select id="situazione" required>
+        <option value="">Seleziona…</option>
+        <option>Ho già una casa vacanza</option>
+        <option>Sto per iniziare</option>
+        <option>Gestisco per altri</option>
+      </select>
+
+      <!-- unico consenso privacy -->
+      <div class="consent">
+        <input id="consent" type="checkbox" required>
+        <label for="consent">
+          Dichiaro di aver letto l’<a href="https://federicapm.github.io/checklist/privacy.html" target="_blank" rel="noopener noreferrer">Informativa Privacy</a> e acconsento al trattamento dei dati per essere ricontattat*.
+        </label>
+      </div>
+
+      <button id="submitBtn" type="submit">Invia e scarica la checklist “7 errori”</button>
+      <div id="successMsg" class="success">Dati inviati! Reindirizzamento…</div>
+      <div id="errMsg" class="err"></div>
+
+      <div class="meta">
+        Titolare: Federica Cellini —
+        <a href="https://federicapm.github.io/checklist/privacy.html" target="_blank" rel="noopener noreferrer">
+          Privacy
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Endpoint Apps Script (identico a prima)
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec";
+
+    const TIPOLOGIA = "errori";
+
+    // Nuovo URL su questo repo
+    const REDIRECT = "https://federicapm.github.io/checklist/errori/";
+
+    const q = new URLSearchParams(location.search);
+    const utm_source   = q.get("utm_source")   || "";
+    const utm_medium   = q.get("utm_medium")   || "";
+    const utm_campaign = q.get("utm_campaign") || TIPOLOGIA;
+    const PROVENIENZA  = utm_source || "instagram";
+
+    const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    function getLeadId(){
+      let id = localStorage.getItem("lid");
+      if (!id){
+        id = "ld_" + (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(16).slice(2));
+        localStorage.setItem("lid", id);
+      }
+      return id;
+    }
+
+    document.getElementById("leadForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const btn = document.getElementById("submitBtn");
+      const ok  = document.getElementById("successMsg");
+      const err = document.getElementById("errMsg");
+
+      err.style.display = "none";
+
+      const Nome     = document.getElementById("name").value.trim();
+      const Email    = document.getElementById("email").value.trim();
+      const Tel      = document.getElementById("phone").value.trim();
+      const Sit      = document.getElementById("situazione").value;
+      const Consenso = document.getElementById("consent").checked;
+
+      if (!Nome || !isEmail(Email) || !Tel || !Sit || !Consenso){
+        err.textContent = "Compila correttamente tutti i campi e accetta l’informativa privacy.";
+        err.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Invio…";
+
+      const lead_id = getLeadId();
+      const payload = {
+        Nome,
+        Email,
+        Telefono: Tel,
+        Situazione: Sit,
+        Tipologia: TIPOLOGIA,
+        Prenotato: "No",
+        Provenienza: PROVENIENZA,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        lead_id,
+        ts: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        ConsensoPrivacy: "SI"
+      };
+
+      const qs = new URLSearchParams(payload).toString();
+
+      const redirect =
+        REDIRECT +
+        (location.search ? location.search + "&" : "?") +
+        "lid=" + encodeURIComponent(lead_id);
+
+      try{
+        if (navigator.sendBeacon){
+          navigator.sendBeacon(ENDPOINT + "?" + qs, new Blob([], { type: "text/plain" }));
+          location.href = redirect;
+          return;
+        }
+
+        fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          keepalive: true,
+          headers: {"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+          body: qs
+        }).finally(() => {
+          ok.style.display = "block";
+          setTimeout(() => location.href = redirect, 200);
+        });
+      } catch {
+        err.textContent = "Errore di rete. Riprova.";
+        err.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Invia e scarica la checklist “7 errori”";
+      }
+    });
+  </script>
+</body>
+</html>
