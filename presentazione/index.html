@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Federica Property Manager — Presentazione Vendita (Consulenza 3 ore)</title>
+  <title>Federica Property Manager — Presentazione Vendita (Pacchetto PRO)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +64,7 @@
     }
     .brand b{color:var(--navy)}
     .brand small{color:var(--muted); font-weight:600}
+
     .hud{
       pointer-events:auto;
       display:flex; align-items:center; gap:10px;
@@ -181,7 +182,7 @@
       line-height:1.5;
       color:var(--muted);
       font-weight:600;
-      max-width:58ch;
+      max-width:60ch;
     }
 
     .grid{
@@ -402,37 +403,36 @@
 
   <div class="stage" id="stage">
 
-    <!-- SLIDE 1: Cover + proof hero -->
+    <!-- SLIDE 1: Cover + posizionamento pacchetto -->
     <section class="slide active" data-title="cover">
       <div class="content">
         <div>
           <div class="kicker">
-            <span class="pill">Consulenza Strategica • 3 ore</span>
-            <span class="pill">Ottimizzazione annuncio</span>
-            <span class="pill">+ qualità</span>
+            <span class="pill">Pacchetto PRO</span>
+            <span class="pill">Operativo + Formazione</span>
+            <span class="pill">+ Affiancamento 30 giorni</span>
           </div>
 
-          <h1 class="title">Cosa compri davvero</h1>
+          <h1 class="title">Il pacchetto che trasforma i numeri</h1>
           <p class="subtitle">
-            Questa presentazione è un supporto per il venditore: slide brevi, concrete, e collegate ai risultati.
-            Ogni blocco spiega <b>cosa fa Federica</b> e <b>che impatto ha</b> su conversione, punteggio qualità e ricavi.
+            Questa presentazione è uno strumento per il venditore in call: spiega <b>cosa viene fatto</b>, <b>come</b> e
+            <b>quali risultati</b> genera (annuncio, pricing, comunicazione, qualità, ricavi).
           </p>
 
           <div class="grid">
-            <div class="mini"><b>1) Annuncio</b><span>titolo, descrizione, foto, servizi, policy</span></div>
-            <div class="mini"><b>2) Comunicazione</b><span>template, risposte, tempi, review</span></div>
-            <div class="mini"><b>3) Visibilità</b><span>offerte, promo, strumenti Airbnb</span></div>
+            <div class="mini"><b>Annuncio</b><span>refresh + competitor → più conversione</span></div>
+            <div class="mini"><b>Pricing</b><span>formazione + metodo → margine più alto</span></div>
+            <div class="mini"><b>30 giorni</b><span>affiancamento → esecuzione guidata</span></div>
           </div>
 
           <div class="impact">
             <div class="tag">Obiettivo</div>
-            <span>Rendere l’annuncio più vendibile e la gestione più solida: meno frizioni, più prenotazioni “buone”.</span>
+            <span>Passare da “gestione a sensazione” a un sistema replicabile: più prenotazioni buone e più controllo.</span>
           </div>
         </div>
 
         <div class="shotWrap">
-          <div class="label">Proof • guadagni / performance</div>
-          <!-- HERO: prova a caricare screen1; se non va, fallback -->
+          <div class="label">Proof • performance / ricavi</div>
           <img class="shot"
                data-src="./assets/img/screen1.jpg"
                data-alt="./assets/img/screen1.jpg"
@@ -441,14 +441,14 @@
       </div>
     </section>
 
-    <!-- SLIDE 2: Proof wall (tutti gli screenshot, subito) -->
+    <!-- SLIDE 2: Proof wall (tutti gli screenshot) -->
     <section class="slide full" data-title="proof">
       <div class="content">
         <div>
           <div class="kicker"><span class="pill">Proof</span> <span>Screenshot reali (esempi)</span></div>
-          <h2 class="title" style="font-size:44px">Risultati che il cliente vede</h2>
+          <h2 class="title" style="font-size:44px">Risultati che il cliente può ottenere</h2>
           <p class="subtitle" style="max-width:none">
-            Questi screenshot servono a far capire che qui si lavora su <b>numeri</b> e <b>qualità</b>, non a “sensazione”.
+            Qui si lavora su leve misurabili: <b>valore prenotazioni</b>, <b>notti</b>, <b>qualità</b> e <b>ricavi</b>.
           </p>
 
           <div class="proofGrid">
@@ -462,34 +462,32 @@
             </div>
             <div class="proofItem">
               <img data-src="./assets/img/screen11.jpg" data-alt="./assets/img/screen11.jpg" alt="screen11" />
-              <div class="cap">Ottobre • riepilogo entrate</div>
+              <div class="cap">Qualità • valutazioni / trend</div>
             </div>
             <div class="proofItem">
               <img data-src="./assets/img/screen12.jpg" data-alt="./assets/img/screen12.jpg" alt="screen12" />
-              <div class="cap">Calendario • occupazione e prezzi</div>
+              <div class="cap">Calendario • occupazione e andamento</div>
             </div>
 
             <div class="proofItem">
-              <!-- ATTENZIONE: in repo hai "screen2.jpg" (con spazio) -->
-              <img data-src="./assets/img/screen%202.jpg" data-alt="./assets/img/screen2.jpg" alt="screen2" />
-              <div class="cap">Qualità • notti / valore prenotazioni</div>
+              <img data-src="./assets/img/screen%202.jpg" data-alt="./assets/img/screen2.jpg" alt="screen 2" />
+              <div class="cap">Notti / valore prenotazioni (365 giorni)</div>
             </div>
             <div class="proofItem">
-              <!-- se esiste con spazio o senza -->
               <img data-src="./assets/img/screen5.jpg" data-alt="./assets/img/screen%205.jpg" alt="screen5" />
               <div class="cap">Riepilogo anno • totale (EUR)</div>
             </div>
             <div class="proofItem">
               <img data-src="./assets/img/screen1.jpg" data-alt="./assets/img/screen1.jpg" alt="screen1" />
-              <div class="cap">Guadagni • mese corrente</div>
+              <div class="cap">Risultato mese corrente</div>
             </div>
             <div class="proofItem">
               <div style="padding:18px">
                 <h3 style="margin:0;color:var(--navy);font-weight:900;font-size:18px">Come usarla in call</h3>
                 <p style="margin:10px 0 0;color:var(--muted);font-weight:650;line-height:1.55">
                   1) Mostra proof (credibilità)<br>
-                  2) Spiega i servizi (cosa cambia nell’annuncio)<br>
-                  3) Collega ogni servizio a un effetto pratico (conversione/qualità/ricavi)
+                  2) Spiega i 5 servizi (cosa include)<br>
+                  3) Collega ogni servizio a un effetto: conversione / margine / qualità
                 </p>
               </div>
               <div class="cap">Script venditore • semplice</div>
@@ -500,105 +498,70 @@
     </section>
 
     <!-- SLIDE 3: Servizio 1 -->
-    <section class="slide" data-title="titolo-descrizione">
+    <section class="slide" data-title="annuncio-competitor">
       <div class="content">
         <div>
-          <div class="kicker"><span class="pill">Servizio 1</span> <span>Annuncio: Titolo, descrizione, storytelling</span></div>
-          <h2 class="title" style="font-size:46px">Titolo & descrizione che convertono</h2>
+          <div class="kicker"><span class="pill">Servizio 1</span> <span>Creazione/refresh annuncio + analisi competitor</span></div>
+          <h2 class="title" style="font-size:46px">Annuncio rifatto per vendere</h2>
           <p class="subtitle">
-            Non è “scrivere bene”: è <b>posizionamento</b>. Un annuncio chiaro fa capire subito <b>perché scegliere te</b>.
+            Non è solo “sistemare l’annuncio”: è capire <b>perché i competitor vendono</b> e riposizionare il tuo in modo più forte.
           </p>
 
           <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
+            <h3>Cosa fa Federica (operativo)</h3>
             <ul class="bullets">
-              <li><b>Titolo</b> costruito su leva + differenziante (no frasi generiche)</li>
-              <li><b>Descrizione</b> con struttura: promessa → prova → dettagli → regole</li>
-              <li><b>Storytelling</b> orientato alla prenotazione: elimina dubbi, aumenta fiducia</li>
-              <li>Allinea annuncio a target: coppie / business / famiglie / long weekend</li>
+              <li><b>Analisi competitor</b>: prezzi, punti forti, recensioni, foto, leve di scelta</li>
+              <li><b>Refresh totale annuncio</b>: titolo, descrizione, servizi, regole, contenuti mancanti</li>
+              <li><b>Ordine foto</b> orientato conversione (prime 5 immagini decisive)</li>
+              <li>Impostazioni annuncio coerenti con target (coppie/business/famiglie)</li>
             </ul>
           </div>
 
           <div class="impact">
             <div class="tag">Effetto</div>
-            <span>Più click “giusti” → più richieste → migliore conversione (meno messaggi inutili).</span>
+            <span>Più click “giusti” + più fiducia → più richieste e più conversione.</span>
           </div>
         </div>
 
         <div class="shotWrap">
-          <div class="label">Proof • valore prenotazioni / qualità</div>
+          <div class="label">Proof • notti / valore prenotazioni</div>
           <img class="shot"
                data-src="./assets/img/screen%202.jpg"
                data-alt="./assets/img/screen2.jpg"
-               alt="Qualità - screenshot" />
+               alt="Notti e valore - screenshot" />
         </div>
       </div>
     </section>
 
     <!-- SLIDE 4: Servizio 2 -->
-    <section class="slide" data-title="foto-ordine">
+    <section class="slide" data-title="formazione-5h">
       <div class="content">
         <div>
-          <div class="kicker"><span class="pill">Servizio 2</span> <span>Foto + ordine immagini</span></div>
-          <h2 class="title" style="font-size:46px">Foto e ordine: prima impressione</h2>
+          <div class="kicker"><span class="pill">Servizio 2</span> <span>5 ore di formazione (pricing + impostazioni annuncio)</span></div>
+          <h2 class="title" style="font-size:46px">Formazione: pricing e settaggi corretti</h2>
           <p class="subtitle">
-            Spesso il problema non è “mancano foto”, ma <b>l’ordine sbagliato</b> (e la prenotazione si perde prima di leggere).
+            Qui il cliente impara un metodo: come impostare prezzi e regole senza “sparare numeri”.
+            Obiettivo: <b>margine</b>, non solo calendario pieno.
           </p>
 
           <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
+            <h3>Cosa include (in pratica)</h3>
             <ul class="bullets">
-              <li>Seleziona le foto che <b>vendono</b> nei primi 5 swipe (hook visivo)</li>
-              <li>Riordina per: impatto → spazi chiave → comfort → dettagli → regole</li>
-              <li>Evidenzia punti forti: luce, metratura, balcone, vista, bagno, letto</li>
-              <li>Riduce “foto inutili” che abbassano percezione (corridoi, doppioni, buio)</li>
+              <li><b>Metodo pricing</b>: stagionalità, domanda, eventi, giorni deboli/forti</li>
+              <li><b>Minimi notti & gap</b>: riempire bene senza rovinare la marginalità</li>
+              <li><b>Impostazioni annuncio</b>: regole, policy, offerte, visibilità, filtri</li>
+              <li>Checklist operativa per aggiornare i prezzi con cadenza corretta</li>
             </ul>
           </div>
 
           <div class="impact">
             <div class="tag">Effetto</div>
-            <span>Più tempo sull’annuncio → più fiducia → più conversione.</span>
+            <span>Stesse notti (o anche meno) ma più margine: il cliente smette di “lavorare gratis”.</span>
           </div>
         </div>
 
         <div class="shotWrap">
-          <div class="label">Proof • guadagni mensili</div>
-          <img class="shot"
-               data-src="./assets/img/screen10.jpg"
-               data-alt="./assets/img/screen10.jpg"
-               alt="Guadagni - screenshot" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 5: Servizio 3 -->
-    <section class="slide" data-title="policy">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Servizio 3</span> <span>Policy cancellazione</span></div>
-          <h2 class="title" style="font-size:46px">Policy cancellazione ottimizzata</h2>
-          <p class="subtitle">
-            Una policy sbagliata crea frizione: o spaventa il cliente, o ti espone a cancellazioni “tossiche”.
-          </p>
-
-          <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
-            <ul class="bullets">
-              <li>Seleziona la policy coerente con <b>stagionalità</b> e tipologia ospite</li>
-              <li>Riduce cancellazioni last-minute non profittevoli</li>
-              <li>Allinea regole/descrizione per evitare contestazioni</li>
-              <li>Protegge calendario e marginalità (meno “buchi” difficili da riempire)</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Meno buchi + prenotazioni più stabili → ricavi più prevedibili.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Proof • riepilogo anno</div>
+          <div class="label">Proof • riepilogo anno (EUR)</div>
           <img class="shot"
                data-src="./assets/img/screen5.jpg"
                data-alt="./assets/img/screen%205.jpg"
@@ -607,142 +570,34 @@
       </div>
     </section>
 
-    <!-- SLIDE 6: Servizio 4 -->
-    <section class="slide" data-title="servizi-dotazioni">
+    <!-- SLIDE 5: Servizio 3 -->
+    <section class="slide" data-title="template-messaggi">
       <div class="content">
         <div>
-          <div class="kicker"><span class="pill">Servizio 4</span> <span>Servizi, dotazioni, contenuti mancanti</span></div>
-          <h2 class="title" style="font-size:46px">Servizi: il “checklist gap”</h2>
+          <div class="kicker"><span class="pill">Servizio 3</span> <span>Template messaggi automatici</span></div>
+          <h2 class="title" style="font-size:46px">Messaggi automatici (senza perdere qualità)</h2>
           <p class="subtitle">
-            Tante case perdono prenotazioni perché mancano informazioni chiave (o sono inserite male).
+            Template = meno caos, tempi di risposta più rapidi e aspettative gestite: questo alza la qualità e riduce i problemi.
           </p>
 
           <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
+            <h3>Cosa riceve il cliente</h3>
             <ul class="bullets">
-              <li>Verifica <b>tutti i campi</b> Airbnb (amenities, sicurezza, house rules)</li>
-              <li>Recupera contenuti mancanti che impattano la ricerca/filtri (es. Wi-Fi, AC)</li>
-              <li>Riduce domande ripetitive: info chiare = meno chat, più conversione</li>
-              <li>Allinea annuncio a standard qualità (evita penalizzazioni)</li>
+              <li><b>Pre-checkin</b> (dati ospiti, documenti, arrivo)</li>
+              <li><b>Check-in / self check-in</b> (istruzioni chiare, zero frizioni)</li>
+              <li><b>Durante soggiorno</b> (FAQ + gestione imprevisti)</li>
+              <li><b>Check-out + recensione</b> (chiusura e richiesta review)</li>
             </ul>
           </div>
 
           <div class="impact">
             <div class="tag">Effetto</div>
-            <span>Più visibilità nei filtri + meno frizioni → più prenotazioni “giuste”.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Proof • guadagni mensili</div>
-          <img class="shot"
-               data-src="./assets/img/screen9,jpg"
-               data-alt="./assets/img/screen9.jpg"
-               alt="Guadagni - screenshot" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 7: Servizio 5 -->
-    <section class="slide" data-title="smart-messaging">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Servizio 5</span> <span>Smart messaging + template</span></div>
-          <h2 class="title" style="font-size:46px">Messaggi automatici che alzano la qualità</h2>
-          <p class="subtitle">
-            Non è solo comodità: tempi rapidi + comunicazione chiara = <b>punteggio qualità più alto</b> e meno problemi.
-          </p>
-
-          <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
-            <ul class="bullets">
-              <li>Template pre-checkin, check-in, durante soggiorno, check-out</li>
-              <li>Risposte rapide alle FAQ (parcheggio, self check-in, regole casa)</li>
-              <li>Messaggi “anti-recensione negativa” (gestione aspettative)</li>
-              <li>Standard comunicazione: tono, timing, contenuti essenziali</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Meno stress operativo + più 5 stelle → migliore ranking e conversione.</span>
+            <span>Più 5 stelle e meno stress: l’esperienza ospite diventa “guidata”.</span>
           </div>
         </div>
 
         <div class="shotWrap">
           <div class="label">Proof • qualità / valutazioni</div>
-          <img class="shot"
-               data-src="./assets/img/screen%202.jpg"
-               data-alt="./assets/img/screen2.jpg"
-               alt="Qualità - screenshot" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 8: Servizio 6 -->
-    <section class="slide" data-title="promo-visibilita">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Servizio 6</span> <span>Offerte, promozioni, strumenti visibilità</span></div>
-          <h2 class="title" style="font-size:46px">Promo impostate bene (non a caso)</h2>
-          <p class="subtitle">
-            Scontare “a caso” rovina la marginalità. Qui si lavora su leve che aumentano la visibilità senza distruggere il prezzo.
-          </p>
-
-          <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
-            <ul class="bullets">
-              <li>Promo su periodi giusti (non su date già forti)</li>
-              <li>Offerte mirate per riempire gap e migliorare occupazione</li>
-              <li>Uso corretto strumenti Airbnb (visibilità / offerte / regole minimi)</li>
-              <li>Obiettivo: <b>riempire bene</b> (prezzo giusto + calendario sano)</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Occupazione più intelligente → meno buchi → ricavi più alti e stabili.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Proof • calendario / occupazione</div>
-          <img class="shot"
-               data-src="./assets/img/screen12.jpg"
-               data-alt="./assets/img/screen12.jpg"
-               alt="Calendario - screenshot" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9: Servizio 7 -->
-    <section class="slide" data-title="operativita">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Servizio 7</span> <span>Operatività: tempi risposta + qualità</span></div>
-          <h2 class="title" style="font-size:46px">Ridurre tempi risposta, aumentare punteggio</h2>
-          <p class="subtitle">
-            L’algoritmo e gli ospiti premiano velocità e chiarezza. Se rispondi tardi o in modo confuso, perdi conversione.
-          </p>
-
-          <div class="box">
-            <h3>Cosa fa Federica (in pratica)</h3>
-            <ul class="bullets">
-              <li>Imposta flussi e template per rispondere in pochi minuti</li>
-              <li>Riduce errori e “buchi comunicativi” (check-in, regole, extra)</li>
-              <li>Previene problemi che generano recensioni basse</li>
-              <li>Rende la gestione replicabile (non dipende dall’umore del giorno)</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Più qualità percepita → più 5 stelle → più ranking → più prenotazioni.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Proof • qualità & performance</div>
           <img class="shot"
                data-src="./assets/img/screen11.jpg"
                data-alt="./assets/img/screen11.jpg"
@@ -751,31 +606,102 @@
       </div>
     </section>
 
-    <!-- SLIDE 10: Recap (per chiudere in call) -->
-    <section class="slide full" data-title="recap">
+    <!-- SLIDE 6: Servizio 4 -->
+    <section class="slide" data-title="home-staging">
       <div class="content">
         <div>
-          <div class="kicker"><span class="pill">Recap</span> <span>cosa include (3 ore)</span></div>
-          <h2 class="title" style="font-size:44px">In 3 ore: interventi ad alto impatto</h2>
-          <p class="subtitle" style="max-width:none">
-            Questa è la lista “da vendita”: ogni punto è un intervento operativo che migliora conversione, qualità e visibilità.
+          <div class="kicker"><span class="pill">Servizio 4</span> <span>Home staging (da remoto + foto/video del cliente)</span></div>
+          <h2 class="title" style="font-size:46px">Home staging da remoto</h2>
+          <p class="subtitle">
+            Anche senza ristrutturare, spesso bastano interventi mirati per aumentare percezione, foto e “desiderabilità”.
           </p>
 
           <div class="box">
+            <h3>Come funziona (step by step)</h3>
             <ul class="bullets">
-              <li><b>Titolo, descrizione, storytelling</b> (posizionamento + fiducia)</li>
-              <li><b>Foto + ordine immagini</b> (prima impressione + tempo sull’annuncio)</li>
-              <li><b>Policy cancellazione</b> (meno frizione / meno buchi)</li>
-              <li><b>Servizi e dotazioni</b> (filtri + contenuti mancanti)</li>
-              <li><b>Smart messaging</b> (template + gestione aspettative)</li>
-              <li><b>Offerte / promo / visibilità</b> (occupazione intelligente)</li>
-              <li><b>Operatività</b> (tempi risposta + punteggio qualità)</li>
+              <li>Il cliente invia <b>foto/video</b> (stanze, punti critici, dettagli)</li>
+              <li>Federica prepara una <b>lista interventi</b>: ordine, luci, tessili, decor, set fotografico</li>
+              <li>Priorità: cambiamenti <b>a costo basso</b> ma impatto alto</li>
+              <li>Indicazioni per foto migliori (angoli, luce, composizione)</li>
             </ul>
           </div>
 
           <div class="impact">
-            <div class="tag">Chiusura</div>
-            <span>Non è “teoria”: è un lavoro guidato su leve che cambiano il risultato.</span>
+            <div class="tag">Effetto</div>
+            <span>Foto più forti → più click → più conversione. L’annuncio “sembra più caro” (e può esserlo).</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Proof • performance / ricavi</div>
+          <img class="shot"
+               data-src="./assets/img/screen10.jpg"
+               data-alt="./assets/img/screen10.jpg"
+               alt="Ricavi - screenshot" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Servizio 5 -->
+    <section class="slide" data-title="affiancamento-30gg">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Servizio 5</span> <span>Affiancamento di 30 giorni (mini avviamento seguito)</span></div>
+          <h2 class="title" style="font-size:46px">30 giorni di affiancamento (esecuzione guidata)</h2>
+          <p class="subtitle">
+            Il punto è far implementare tutto davvero: non lasciamo il cliente “con un PDF”.
+            Per 30 giorni si lavora per consolidare risultati e routine.
+          </p>
+
+          <div class="box">
+            <h3>Cosa succede nei 30 giorni</h3>
+            <ul class="bullets">
+              <li>Checklist settimanale: prezzi, calendario, promo, messaggi, correzioni annuncio</li>
+              <li>Controllo errori tipici: gap, notti minime, policy, contenuti mancanti</li>
+              <li>Micro-ottimizzazioni su ciò che impatta il risultato (conversione/qualità)</li>
+              <li>Il cliente esce con un sistema replicabile e sostenibile</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Risultato più stabile: non “migliora 1 settimana”, ma costruisce routine che regge.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Proof • calendario / andamento</div>
+          <img class="shot"
+               data-src="./assets/img/screen12.jpg"
+               data-alt="./assets/img/screen12.jpg"
+               alt="Calendario - screenshot" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Recap -->
+    <section class="slide full" data-title="recap">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Recap</span> <span>cosa include (Pacchetto PRO)</span></div>
+          <h2 class="title" style="font-size:44px">In sintesi: cosa compra il cliente</h2>
+          <p class="subtitle" style="max-width:none">
+            Questa è la lista “da vendita”: 5 deliverable chiari, con effetto diretto sui numeri.
+          </p>
+
+          <div class="box">
+            <ul class="bullets">
+              <li><b>Creazione/refresh annuncio + analisi competitor</b> → annuncio più vendibile e differenziato</li>
+              <li><b>5 ore di formazione (pricing + impostazioni)</b> → metodo per aumentare marginalità</li>
+              <li><b>Template messaggi automatici</b> → qualità più alta e meno problemi operativi</li>
+              <li><b>Home staging da remoto</b> → foto/percezione migliori (più click e conversione)</li>
+              <li><b>Affiancamento 30 giorni</b> → implementazione guidata, risultati più stabili</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Nota</div>
+            <span>Questa presentazione non contiene CTA: è un supporto visivo per il venditore in call.</span>
           </div>
         </div>
       </div>
@@ -798,14 +724,9 @@
       imgs.forEach(img=>{
         const primary = img.getAttribute('data-src');
         const alt = img.getAttribute('data-alt');
-        // carica primary
         img.src = primary;
-
-        // se fallisce, prova alt
         img.onerror = () => {
-          if (alt && img.src !== alt) {
-            img.src = alt;
-          }
+          if (alt && img.src !== alt) img.src = alt;
         };
       });
     }
@@ -822,8 +743,6 @@
       const pct = ((idx+1)/slides.length)*100;
       bar.style.width = pct + '%';
       count.textContent = (idx+1) + '/' + slides.length;
-
-      // ricarica immagini solo nella slide attiva (per sicurezza)
       hydrateImages(slides[idx]);
     }
 
@@ -840,12 +759,11 @@
       next();
     });
 
-    // Tastiera: spazio/→ avanti, ← indietro, 1-9 jump, F fullscreen
+    // Tastiera: spazio/→ avanti, ← indietro, numeri jump, F fullscreen
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); next(); }
       if(e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
 
-      // jump numeric
       const n = parseInt(e.key, 10);
       if(!isNaN(n) && n >= 1 && n <= slides.length){
         show(n-1);
