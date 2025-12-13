@@ -2,30 +2,30 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Federica Property Manager – Presentazione</title>
 
-  <!-- Font (pulito, leggibile su schermo) -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ===========================================================
-      PALETTE (Federica: navy + oro)
-      Nota: colori scelti per leggibilità in condivisione schermo.
+    /* ============================================================
+      PALETTE (navy + oro) + base layout (desktop-first)
     ============================================================ */
     :root{
       --navy:#0A2540;
-      --navy2:#0b2e52;
+      --navy-2:#0b2e52;
       --gold:#D4AF37;
-      --gold2:#b99222;
+      --gold-2:#b99222;
 
-      --bg:#F4F6F8;
-      --card:#FFFFFF;
+      --bg:#F3F5F8;
+      --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
 
+      --border:1px solid rgba(15,23,42,.10);
       --shadow:0 18px 45px rgba(2, 8, 23, .10);
       --shadow2:0 10px 26px rgba(2, 8, 23, .12);
 
@@ -34,50 +34,32 @@
       --radius-md:14px;
       --radius-sm:12px;
 
-      --border:1px solid rgba(15, 23, 42, .10);
-
-      --safe-top:26px;
-      --safe-bottom:26px;
-
       --maxw:1280px;
+      --frameH: min(780px, 84vh);
+
+      --slidePad: 54px;
 
       --t-fast: 140ms;
       --t-med: 220ms;
       --t-slow: 340ms;
-
-      --slide-padding: 52px;
     }
 
-    /* ===========================================================
-      RESET
-    ============================================================ */
     *{ box-sizing:border-box; }
     html, body{ height:100%; }
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 420px at 20% 12%, rgba(212,175,55,.12) 0%, transparent 60%),
-        radial-gradient(800px 380px at 90% 18%, rgba(10,37,64,.10) 0%, transparent 60%),
-        var(--bg);
       color:var(--text);
+      background:
+        radial-gradient(900px 420px at 18% 12%, rgba(212,175,55,.14) 0%, transparent 60%),
+        radial-gradient(820px 420px at 92% 18%, rgba(10,37,64,.12) 0%, transparent 60%),
+        var(--bg);
       overflow:hidden;
     }
-
-    a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; }
     button{ font-family:inherit; }
-    img{ max-width:100%; display:block; }
 
-    /* ===========================================================
-      WRAPPER
-    ============================================================ */
-    .app{
-      height:100%;
-      display:flex;
-      flex-direction:column;
-    }
-
-    /* ===========================================================
+    /* ============================================================
       TOP BAR
     ============================================================ */
     .topbar{
@@ -93,117 +75,52 @@
       display:flex;
       align-items:center;
       gap:12px;
-      min-width:260px;
+      min-width: 320px;
     }
 
-    .brand-dot{
-      width:12px;
-      height:12px;
+    .dot{
+      width:12px; height:12px;
       border-radius:999px;
       background: var(--gold);
-      box-shadow: 0 0 0 6px rgba(212,175,55,.15);
+      box-shadow: 0 0 0 6px rgba(212,175,55,.14);
     }
 
-    .brand-title{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
-    }
-    .brand-title strong{
-      font-weight:800;
+    .brandText{ line-height:1.1; }
+    .brandText strong{
+      display:block;
+      font-weight:900;
       color:var(--navy);
       font-size:14px;
       letter-spacing:.2px;
     }
-    .brand-title span{
+    .brandText span{
+      display:block;
+      margin-top:2px;
+      font-weight:700;
       font-size:12px;
       color:var(--muted);
-      font-weight:600;
     }
 
-    .top-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .pill{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(15,23,42,.08);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 22px rgba(2,8,23,.08);
-      color: var(--muted);
-      font-size:12px;
-      font-weight:700;
-    }
-
-    .pill kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:11px;
-      font-weight:800;
-      padding:4px 8px;
-      border-radius:10px;
-      background:#fff;
-      border:1px solid rgba(15,23,42,.12);
-      color:#0f172a;
-    }
-
-    .btn{
-      border:none;
-      cursor:pointer;
-      border-radius:12px;
-      padding:10px 12px;
-      font-weight:800;
-      font-size:12px;
-      transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease;
-      user-select:none;
-    }
-
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-ghost{
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(15,23,42,.10);
-      color: var(--navy);
-      box-shadow: 0 10px 22px rgba(2,8,23,.08);
-    }
-    .btn-ghost:hover{ background:#fff; }
-
-    .btn-gold{
-      background: linear-gradient(180deg, var(--gold) 0%, #caa12a 100%);
-      color: #0a2540;
-      box-shadow: 0 16px 34px rgba(212,175,55,.20);
-    }
-    .btn-gold:hover{ box-shadow: 0 18px 38px rgba(212,175,55,.26); }
-
-    /* ===========================================================
-      PROGRESS
-    ============================================================ */
-    .progress-wrap{
-      width: min(520px, 42vw);
+    .right{
       display:flex;
       align-items:center;
       gap:12px;
+      width:min(640px, 52vw);
       justify-content:flex-end;
     }
 
     .progress{
-      width: 100%;
+      width: min(420px, 34vw);
       height: 10px;
-      border-radius: 999px;
+      border-radius:999px;
       background: rgba(15,23,42,.10);
-      overflow:hidden;
       border: 1px solid rgba(15,23,42,.08);
+      overflow:hidden;
     }
     .progress > div{
-      width: 0%;
-      height: 100%;
-      border-radius: 999px;
+      height:100%;
+      width:0%;
+      border-radius:999px;
       background: linear-gradient(90deg, var(--gold) 0%, rgba(212,175,55,.65) 100%);
       transition: width var(--t-med) ease;
     }
@@ -213,23 +130,77 @@
       text-align:right;
       font-size:12px;
       font-weight:900;
-      color: var(--muted);
+      color:var(--muted);
     }
 
-    /* ===========================================================
-      STAGE (area slide)
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size:12px;
+      font-weight:900;
+      transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btnGhost{
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(15,23,42,.10);
+      color: var(--navy);
+      box-shadow: 0 10px 22px rgba(2,8,23,.08);
+    }
+    .btnGhost:hover{ background:#fff; }
+
+    .btnGold{
+      background: linear-gradient(180deg, var(--gold) 0%, #caa12a 100%);
+      color: #0a2540;
+      box-shadow: 0 16px 34px rgba(212,175,55,.20);
+    }
+    .btnGold:hover{ box-shadow: 0 18px 38px rgba(212,175,55,.26); }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:11px;
+      font-weight:900;
+      padding: 4px 8px;
+      border-radius:10px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,.12);
+      color:#0f172a;
+    }
+
+    .pill{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(15,23,42,.08);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 22px rgba(2,8,23,.08);
+      color: var(--muted);
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    /* ============================================================
+      STAGE + FRAME
     ============================================================ */
     .stage{
-      flex:1;
+      height: calc(100% - 64px);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 0 22px var(--safe-bottom);
+      padding: 0 22px 22px;
     }
 
     .frame{
       width: min(var(--maxw), 94vw);
-      height: min(740px, 82vh);
+      height: var(--frameH);
       background: rgba(255,255,255,.65);
       border: 1px solid rgba(15,23,42,.08);
       border-radius: var(--radius-xl);
@@ -237,20 +208,21 @@
       backdrop-filter: blur(10px);
       overflow:hidden;
       position:relative;
+      cursor: pointer; /* click avanti */
     }
 
     .slide{
       position:absolute;
       inset:0;
-      padding: var(--slide-padding);
+      padding: var(--slidePad);
       display:none;
     }
     .slide.active{ display:block; }
 
-    /* ===========================================================
+    /* ============================================================
       SLIDE HEADER
     ============================================================ */
-    .s-tag{
+    .tag{
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -258,15 +230,14 @@
       border-radius:999px;
       background: rgba(212,175,55,.16);
       border: 1px solid rgba(212,175,55,.30);
-      color: #7a5c00;
+      color:#7a5c00;
       font-weight:900;
       font-size:12px;
       letter-spacing:.3px;
       text-transform:uppercase;
     }
-    .s-tag .dot{
-      width:10px;
-      height:10px;
+    .tag .tDot{
+      width:10px; height:10px;
       border-radius:999px;
       background: var(--gold);
       box-shadow: 0 0 0 6px rgba(212,175,55,.14);
@@ -280,48 +251,46 @@
       color: var(--navy);
       letter-spacing: -0.8px;
     }
+
     .subtitle{
-      margin: 0;
+      margin:0;
       font-size: 18px;
-      font-weight: 600;
-      color: #334155;
+      font-weight:700;
+      color:#334155;
+      line-height:1.55;
       max-width: 980px;
-      line-height: 1.55;
     }
 
-    /* ===========================================================
-      TWO COLUMN LAYOUT
+    /* ============================================================
+      LAYOUT: LEFT TEXT + RIGHT IMAGE
     ============================================================ */
-    .cols{
+    .grid{
       margin-top: 34px;
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 34px;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 32px;
       height: calc(100% - 160px);
       align-items: stretch;
     }
 
-    .panel{
+    .card{
       background: var(--card);
       border: var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow2);
       overflow:hidden;
+      min-height:0;
       display:flex;
       flex-direction:column;
-      min-height: 0;
     }
 
-    .panel.pad{ padding: 26px; }
+    .pad{ padding: 26px; }
 
-    /* ===========================================================
-      TEXT BLOCKS
-    ============================================================ */
     .h3{
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--navy);
-      margin: 0 0 12px;
+      margin:0 0 12px;
+      font-weight:900;
+      color:var(--navy);
+      font-size:18px;
     }
 
     .list{
@@ -331,9 +300,9 @@
     .list li{
       margin: 10px 0;
       font-size: 16px;
-      color: #0f172a;
-      line-height: 1.5;
-      font-weight: 600;
+      font-weight:700;
+      color:#0f172a;
+      line-height:1.5;
     }
 
     .note{
@@ -342,62 +311,54 @@
       border-radius: 16px;
       border: 1px solid rgba(212,175,55,.35);
       background: rgba(212,175,55,.14);
-      color: #0f172a;
-      font-weight: 700;
-      line-height: 1.45;
+      color:#0f172a;
+      font-weight:800;
+      line-height:1.45;
     }
 
-    .mini-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    /* ===========================================================
-      IMAGE PANEL
-    ============================================================ */
-    .imgwrap{
+    .imgbox{
       position:relative;
-      background: #fff;
+      background:#fff;
       border: var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow2);
       overflow:hidden;
-      min-height: 0;
+      min-height:0;
+      padding: 14px;
       display:flex;
-      flex-direction:column;
-      justify-content:center;
       align-items:center;
-      padding: 16px;
+      justify-content:center;
     }
 
-    .imgwrap img{
-      width: 100%;
-      height: 100%;
-      max-height: 100%;
-      object-fit: contain;       /* IMPORTANT: niente tagli */
-      border-radius: var(--radius-lg);
-      box-shadow: 0 10px 30px rgba(2,8,23,.18);
-    }
-
-    .imgcaption{
+    .imglabel{
       position:absolute;
       left:18px;
       top:18px;
-      background: rgba(10,37,64,.90);
-      color: #fff;
-      font-weight: 900;
-      font-size: 12px;
+      background: rgba(10,37,64,.92);
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
       padding: 8px 10px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.16);
       letter-spacing:.2px;
+      z-index:2;
     }
 
-    /* ===========================================================
-      RESULTS SLIDE GRID (4 immagini)
+    .imgbox img{
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: contain; /* niente tagli */
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 30px rgba(2,8,23,.18);
+      background:#fff;
+    }
+
+    /* ============================================================
+      RISULTATI (grid 2x2 con immagini grandi, no “cose nostre”)
     ============================================================ */
-    .results{
+    .shots{
       margin-top: 28px;
       height: calc(100% - 140px);
       display:grid;
@@ -405,7 +366,6 @@
       gap: 18px;
       align-items: stretch;
     }
-
     .shot{
       background:#fff;
       border: var(--border);
@@ -418,17 +378,17 @@
       justify-content:center;
       min-height:0;
     }
-
     .shot img{
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* IMPORTANT */
+      width:100%;
+      height:100%;
+      object-fit: contain;
       border-radius: var(--radius-lg);
       box-shadow: 0 10px 28px rgba(2,8,23,.18);
+      background:#fff;
     }
 
-    /* ===========================================================
-      BOTTOM NAV
+    /* ============================================================
+      BOTTOM NAV + HINT
     ============================================================ */
     .nav{
       position:absolute;
@@ -437,13 +397,8 @@
       display:flex;
       gap: 10px;
       align-items:center;
-      z-index: 10;
-    }
-
-    .nav .btn{
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-size: 12px;
+      z-index:10;
+      cursor: default;
     }
 
     .hint{
@@ -452,12 +407,13 @@
       bottom: 20px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       user-select:none;
+      cursor: default;
     }
 
-    /* ===========================================================
-      FULLSCREEN TIP (solo UI, niente “note” nel contenuto)
+    /* ============================================================
+      TOAST (solo comandi)
     ============================================================ */
     .toast{
       position: fixed;
@@ -467,7 +423,7 @@
       color:#fff;
       padding: 10px 12px;
       border-radius: 14px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
       border: 1px solid rgba(255,255,255,.16);
       box-shadow: 0 16px 34px rgba(2,8,23,.22);
@@ -475,442 +431,388 @@
       pointer-events:none;
       transform: translateY(-6px);
       transition: opacity var(--t-med) ease, transform var(--t-med) ease;
-      z-index: 999;
+      z-index:999;
     }
     .toast.show{
       opacity:1;
       transform: translateY(0px);
     }
 
-    /* ===========================================================
-      RESPONSIVE (desktop-first, ma regge anche ridimensioni)
+    /* ============================================================
+      RESPONSIVE (se ridimensioni)
     ============================================================ */
     @media (max-width: 1100px){
-      .title{ font-size: 40px; }
-      .frame{ height: min(760px, 86vh); }
-      .slide{ padding: 40px; }
-      .cols{ grid-template-columns: 1fr; height:auto; }
-      .results{ grid-template-columns: 1fr; }
       body{ overflow:auto; }
-      .stage{ padding-bottom: 40px; }
+      .stage{ height:auto; padding-bottom: 40px; }
+      .frame{ height:auto; min-height: 860px; cursor: default; }
+      .slide{ position:relative; display:block; padding: 34px; }
+      .slide.active{ display:block; }
+      .grid{ grid-template-columns: 1fr; height:auto; }
+      .shots{ grid-template-columns: 1fr; height:auto; }
+      .nav{ position:relative; right:auto; bottom:auto; margin-top: 18px; justify-content:flex-end; }
+      .hint{ position:relative; left:auto; bottom:auto; margin-top: 14px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="app">
-
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="brand">
-        <div class="brand-dot"></div>
-        <div class="brand-title">
-          <strong>Federica Property Manager</strong>
-          <span>Ottimizzazione annuncio · metodo pratico · risultati misurabili</span>
-        </div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress" aria-label="Avanzamento">
-          <div id="progressBar"></div>
-        </div>
-        <div class="counter" id="counter">1 / 8</div>
-
-        <button class="btn btn-ghost" id="btnHelp" type="button" title="Comandi">
-          Comandi
-        </button>
-        <button class="btn btn-gold" id="btnFull" type="button" title="Schermo intero">
-          Schermo intero
-        </button>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="brandText">
+        <strong>Federica Property Manager</strong>
+        <span>presentazione in chiamata · chiara · concreta</span>
       </div>
     </div>
 
-    <!-- STAGE -->
-    <div class="stage">
-      <div class="frame" id="frame">
+    <div class="right">
+      <div class="pill">Avanza: <span class="kbd">Click</span> <span class="kbd">→</span> <span class="kbd">Spazio</span></div>
+      <div class="progress" aria-label="Avanzamento"><div id="progressBar"></div></div>
+      <div class="counter" id="counter">1 / 7</div>
 
-        <!-- SLIDE 1 -->
-        <section class="slide active" data-title="Introduzione">
-          <span class="s-tag"><span class="dot"></span> Presentazione</span>
-          <h1 class="title">Cosa comprerai<br>e cosa ottieni</h1>
-          <p class="subtitle">
-            In questa consulenza si lavora su ciò che fa davvero la differenza:
-            <strong>annuncio</strong>, <strong>prezzi</strong>, <strong>visibilità</strong> e <strong>gestione</strong>.
-            L’obiettivo è semplice: rendere la tua casa vacanze più chiara, più scelta e più stabile nei risultati.
-          </p>
-
-          <div class="cols" style="grid-template-columns: 1fr 1fr;">
-            <div class="panel pad">
-              <div class="h3">In sintesi</div>
-              <ul class="list">
-                <li>Rifacciamo o miglioriamo l’annuncio con una logica di conversione.</li>
-                <li>Confronto con i competitor per capire dove stai perdendo prenotazioni.</li>
-                <li>Formazione pratica su prezzi e impostazioni importanti.</li>
-                <li>Modelli di messaggi per ridurre caos e aumentare qualità.</li>
-                <li>Valorizzazione dell’immobile (da remoto) per migliorare foto e resa.</li>
-                <li>Affiancamento 30 giorni: ti accompagno mentre metti tutto in pratica.</li>
-              </ul>
-
-              <div class="note">
-                Lavoro pratico: a fine percorso hai un annuncio più forte e una gestione più ordinata.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Esempio reale</div>
-              <img src="assets/img/screen1.jpg" alt="Risultati - esempio reale">
-            </div>
-          </div>
-
-          <div class="hint">Spazio / Freccia destra = avanti · Freccia sinistra = indietro · 1–8 = vai alla pagina</div>
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev1">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next1">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 2 -->
-        <section class="slide" data-title="Risultati di Federica">
-          <span class="s-tag"><span class="dot"></span> Risultati</span>
-          <h2 class="title" style="font-size:44px;">Risultati di Federica</h2>
-          <p class="subtitle">
-            Esempi di numeri reali. Qui vedi l’effetto di un lavoro fatto bene su
-            <strong>prenotazioni</strong>, <strong>valore</strong> e <strong>qualità</strong>.
-          </p>
-
-          <div class="results">
-            <div class="shot">
-              <img src="assets/img/screen9.jpg" alt="Risultati - screen9">
-            </div>
-            <div class="shot">
-              <img src="assets/img/screen10.jpg" alt="Risultati - screen10">
-            </div>
-            <div class="shot">
-              <img src="assets/img/screen11.jpg" alt="Risultati - screen11">
-            </div>
-            <div class="shot">
-              <img src="assets/img/screen12.jpg" alt="Risultati - screen12">
-            </div>
-          </div>
-
-          <div class="hint">Suggerimento: se condividi lo schermo, vai in “Schermo intero” per farle vedere grandi.</div>
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev2">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next2">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 3 -->
-        <section class="slide" data-title="Creazione / refresh annuncio + competitor">
-          <span class="s-tag"><span class="dot"></span> Servizio 1</span>
-          <h2 class="title" style="font-size:44px;">Creazione / refresh annuncio<br>+ analisi competitor</h2>
-          <p class="subtitle">
-            L’annuncio non deve “piacere”: deve farsi scegliere. Qui lavoriamo su testi, foto e posizionamento
-            per aumentare la probabilità che chi guarda… prenoti.
-          </p>
-
-          <div class="cols">
-            <div class="panel pad">
-              <div class="h3">Cosa facciamo (chiaro e pratico)</div>
-              <ul class="list">
-                <li>Controllo completo dell’annuncio: punti deboli, cose mancanti, incoerenze.</li>
-                <li>Analisi dei competitor nella tua zona: cosa mostrano, a che prezzo, come si vendono.</li>
-                <li>Riscrittura o miglioramento di titolo e descrizione: più chiari, più “vendibili”.</li>
-                <li>Ordine foto e scelta foto: prima ciò che convince, poi il resto.</li>
-              </ul>
-
-              <div class="note">
-                Obiettivo: aumentare conversione e qualità percepita senza “promesse”, solo con un annuncio costruito bene.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Esempio</div>
-              <img src="assets/img/screen5.jpg" alt="Esempio annuncio e dati">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev3">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next3">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 4 -->
-        <section class="slide" data-title="Formazione 5 ore: prezzi + impostazioni">
-          <span class="s-tag"><span class="dot"></span> Servizio 2</span>
-          <h2 class="title" style="font-size:44px;">5 ore di formazione<br>(prezzi + impostazioni annuncio)</h2>
-          <p class="subtitle">
-            Non teoria. Ti spiego cosa toccare e perché, così capisci dove si guadagna e dove si perde.
-          </p>
-
-          <div class="cols">
-            <div class="panel pad">
-              <div class="h3">PrezzI (senza confusione)</div>
-              <ul class="list">
-                <li>Come costruire prezzi sensati in base a domanda e periodo.</li>
-                <li>Come evitare i periodi “pieni ma poco profittevoli”.</li>
-                <li>Come leggere i segnali: quando alzare, quando proteggere margine.</li>
-              </ul>
-
-              <div class="h3" style="margin-top:18px;">Impostazioni che contano</div>
-              <ul class="list">
-                <li>Regole, minimi notti e disponibilità: evitare buchi e incastri sbagliati.</li>
-                <li>Policy: ridurre frizioni e aumentare prenotazioni buone.</li>
-                <li>Offerte e promozioni: usarle nel modo giusto, non a caso.</li>
-              </ul>
-
-              <div class="note">
-                Obiettivo: tu sai cosa stai facendo, e l’annuncio lavora con una logica chiara.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Dati e qualità</div>
-              <!-- ATTENZIONE: nel repo il file è "screen 2.jpg" con spazio -->
-              <img src="assets/img/screen%202.jpg" alt="Schermata qualità - screen 2">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev4">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next4">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 5 -->
-        <section class="slide" data-title="Modelli di messaggi automatici">
-          <span class="s-tag"><span class="dot"></span> Servizio 3</span>
-          <h2 class="title" style="font-size:44px;">Modelli di messaggi<br>e risposte pronte</h2>
-          <p class="subtitle">
-            La gestione non deve mangiarti il tempo. Qui creiamo messaggi pronti per ridurre stress,
-            velocizzare risposte e aumentare il punteggio qualità.
-          </p>
-
-          <div class="cols">
-            <div class="panel pad">
-              <div class="h3">Cosa ricevi</div>
-              <ul class="list">
-                <li>Messaggi prima dell’arrivo: indicazioni, accessi, regole chiare.</li>
-                <li>Messaggi durante il soggiorno: check rapido, gestione richieste comuni.</li>
-                <li>Messaggi dopo: recensioni e chiusura corretta dell’esperienza.</li>
-                <li>Risposte pronte alle domande tipiche (senza perdere tempo a scrivere ogni volta).</li>
-              </ul>
-
-              <div class="note">
-                Obiettivo: tempi di risposta più rapidi e gestione più ordinata (meno errori, meno caos).
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Esempio calendario</div>
-              <img src="assets/img/screen10.jpg" alt="Esempio calendario e occupazione">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev5">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next5">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 6 -->
-        <section class="slide" data-title="Valorizzazione immobile da remoto">
-          <span class="s-tag"><span class="dot"></span> Servizio 4</span>
-          <h2 class="title" style="font-size:44px;">Valorizzazione dell’immobile<br>(da remoto)</h2>
-          <p class="subtitle">
-            Se le foto non rendono, l’annuncio non converte. Qui ti dico cosa sistemare davvero
-            per far percepire più valore, senza spese inutili.
-          </p>
-
-          <div class="cols">
-            <div class="panel pad">
-              <div class="h3">Come funziona</div>
-              <ul class="list">
-                <li>Tu mi mandi foto e video degli ambienti (anche da telefono, guidati).</li>
-                <li>Ti dico cosa migliorare: luci, ordine, dettagli, punti che “sporcano” la percezione.</li>
-                <li>Indicazioni pratiche su cosa aggiungere/togliere per rendere le foto più forti.</li>
-                <li>Consigli su inquadrature e sequenza, per dare subito il “wow” giusto.</li>
-              </ul>
-
-              <div class="note">
-                Obiettivo: aumentare qualità percepita e fiducia di chi guarda, già dai primi 3 secondi.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Qualità e recensioni</div>
-              <img src="assets/img/screen11.jpg" alt="Qualità e recensioni">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev6">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next6">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 7 -->
-        <section class="slide" data-title="Affiancamento 30 giorni">
-          <span class="s-tag"><span class="dot"></span> Servizio 5</span>
-          <h2 class="title" style="font-size:44px;">Affiancamento 30 giorni<br>(mini avviamento)</h2>
-          <p class="subtitle">
-            La differenza la fa l’applicazione. Per 30 giorni ti seguo mentre metti in pratica tutto:
-            così non resti fermo e non lasci il lavoro “a metà”.
-          </p>
-
-          <div class="cols">
-            <div class="panel pad">
-              <div class="h3">Cosa succede nei 30 giorni</div>
-              <ul class="list">
-                <li>Controlliamo che annuncio e impostazioni siano messi correttamente.</li>
-                <li>Verifichiamo se i risultati stanno andando nella direzione giusta.</li>
-                <li>Correggiamo gli errori che bloccano (foto, testi, regole, prezzi, disponibilità).</li>
-                <li>Ti aiuto a rendere stabile la gestione: procedure semplici, poche cose ma fatte bene.</li>
-              </ul>
-
-              <div class="note">
-                Obiettivo: portarti a una gestione ordinata e a risultati più continui, non “a botte di fortuna”.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Esempio</div>
-              <img src="assets/img/screen12.jpg" alt="Andamento qualità e recensioni">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev7">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next7">Avanti</button>
-          </div>
-        </section>
-
-        <!-- SLIDE 8 -->
-        <section class="slide" data-title="Riepilogo">
-          <span class="s-tag"><span class="dot"></span> Riepilogo</span>
-          <h2 class="title" style="font-size:44px;">Riepilogo: cosa comprerai</h2>
-          <p class="subtitle">
-            Una soluzione costruita su misura, basata sui tuoi numeri e sulla tua struttura.
-            Qui sotto vedi, in modo semplice, cosa include.
-          </p>
-
-          <div class="cols" style="grid-template-columns: 1fr 1fr;">
-            <div class="panel pad">
-              <div class="h3">Incluso</div>
-              <ul class="list">
-                <li>Creazione / refresh annuncio + analisi competitor</li>
-                <li>5 ore di formazione (prezzi + impostazioni annuncio)</li>
-                <li>Modelli di messaggi e risposte pronte</li>
-                <li>Valorizzazione dell’immobile da remoto</li>
-                <li>Affiancamento di 30 giorni (mini avviamento)</li>
-              </ul>
-
-              <div class="note">
-                Se vuoi, durante la chiamata possiamo anche chiarire qual è il punto che oggi ti sta facendo perdere più soldi o più tempo:
-                così ti è chiaro dove agire per primo.
-              </div>
-            </div>
-
-            <div class="imgwrap">
-              <div class="imgcaption">Risultati</div>
-              <img src="assets/img/screen9.jpg" alt="Risultati - esempio">
-            </div>
-          </div>
-
-          <div class="nav">
-            <button class="btn btn-ghost" type="button" id="prev8">Indietro</button>
-            <button class="btn btn-gold" type="button" id="next8">Ricomincia</button>
-          </div>
-        </section>
-
-      </div>
+      <button class="btn btnGhost" id="btnHelp" type="button">Comandi</button>
+      <button class="btn btnGold" id="btnFull" type="button">Schermo intero</button>
     </div>
   </div>
 
-  <div class="toast" id="toast">Suggerimento: usa Spazio / Frecce · tasti 1–8 · F per schermo intero</div>
+  <!-- STAGE -->
+  <div class="stage">
+    <div class="frame" id="frame">
+
+      <!-- SLIDE 1 -->
+      <section class="slide active" data-title="Introduzione">
+        <span class="tag"><span class="tDot"></span> Introduzione</span>
+        <h1 class="title">Cosa comprerai<br>e cosa ottieni</h1>
+        <p class="subtitle">
+          Qui non si va a sensazione: si lavora su annuncio, prezzi, visibilità e gestione.
+          Obiettivo: farti avere una casa vacanze più chiara, più scelta e più stabile nei risultati.
+        </p>
+
+        <div class="grid">
+          <div class="card pad">
+            <div class="h3">In breve</div>
+            <ul class="list">
+              <li>Rifacciamo o miglioriamo l’annuncio per farlo scegliere più spesso.</li>
+              <li>Analisi competitor: capiamo dove stai perdendo prenotazioni e valore.</li>
+              <li>Formazione pratica su prezzi e impostazioni importanti.</li>
+              <li>Modelli di messaggi: meno caos, più ordine, più qualità.</li>
+              <li>Valorizzazione da remoto: foto e resa più “forti”.</li>
+              <li>Affiancamento 30 giorni: ti seguo mentre metti tutto in pratica.</li>
+            </ul>
+
+            <div class="note">
+              Risultato: un annuncio più vendibile e una gestione più ordinata.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Esempio reale</div>
+            <img src="assets/img/screen1.jpg" alt="Esempio risultati screen1">
+          </div>
+        </div>
+
+        <div class="hint">Spazio / → avanti · ← indietro · 1–7 vai alla pagina · F schermo intero</div>
+        <div class="nav">
+          <button class="btn btnGhost" id="prev1" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next1" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 (RISULTATI) -->
+      <section class="slide" data-title="Risultati di Federica">
+        <span class="tag"><span class="tDot"></span> Risultati</span>
+        <h2 class="title" style="font-size:44px;">Risultati di Federica</h2>
+        <p class="subtitle">
+          Esempi di numeri reali su prenotazioni, valore e qualità. (Immagini grandi e leggibili in condivisione schermo)
+        </p>
+
+        <div class="shots">
+          <div class="shot"><img src="assets/img/screen9.jpg"  alt="Risultati screen9"></div>
+          <div class="shot"><img src="assets/img/screen10.jpg" alt="Risultati screen10"></div>
+          <div class="shot"><img src="assets/img/screen11.jpg" alt="Risultati screen11"></div>
+          <div class="shot"><img src="assets/img/screen12.jpg" alt="Risultati screen12"></div>
+        </div>
+
+        <div class="hint">Suggerimento: premi “Schermo intero” prima di mostrare questa pagina.</div>
+        <div class="nav">
+          <button class="btn btnGhost" id="prev2" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next2" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="slide" data-title="Annuncio + competitor">
+        <span class="tag"><span class="tDot"></span> Servizio 1</span>
+        <h2 class="title" style="font-size:44px;">Creazione / refresh annuncio<br>+ analisi competitor</h2>
+        <p class="subtitle">
+          L’annuncio deve farsi scegliere. Qui lavoriamo su foto, testo e posizionamento
+          per aumentare prenotazioni buone e valore.
+        </p>
+
+        <div class="grid">
+          <div class="card pad">
+            <div class="h3">Cosa facciamo</div>
+            <ul class="list">
+              <li>Controllo completo dell’annuncio: cosa manca, cosa confonde, cosa fa perdere fiducia.</li>
+              <li>Analisi competitor in zona: come si presentano, cosa mostrano, dove ti stanno davanti.</li>
+              <li>Riscrittura o miglioramento di titolo e descrizione: più chiari, più “convincente”.</li>
+              <li>Ordine foto e priorità: prima ciò che vende, poi il resto.</li>
+            </ul>
+
+            <div class="note">
+              Obiettivo: aumentare conversione e qualità percepita, senza fumo.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Esempio</div>
+            <img src="assets/img/screen5.jpg" alt="Esempio screen5">
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btnGhost" id="prev3" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next3" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="slide" data-title="Formazione 5 ore">
+        <span class="tag"><span class="tDot"></span> Servizio 2</span>
+        <h2 class="title" style="font-size:44px;">5 ore di formazione<br>(prezzi + impostazioni annuncio)</h2>
+        <p class="subtitle">
+          Ti spiego cosa toccare e perché: così capisci dove si guadagna e dove si perde.
+        </p>
+
+        <div class="grid">
+          <div class="card pad">
+            <div class="h3">Prezzi (in modo semplice)</div>
+            <ul class="list">
+              <li>Come impostare prezzi sensati per periodo e domanda.</li>
+              <li>Come evitare “pieno ma poco profitto”.</li>
+              <li>Quando alzare, quando proteggere il margine.</li>
+            </ul>
+
+            <div class="h3" style="margin-top:18px;">Impostazioni che contano</div>
+            <ul class="list">
+              <li>Minimi notti, disponibilità, regole: meno buchi e incastri sbagliati.</li>
+              <li>Policy: ridurre frizioni e aumentare prenotazioni buone.</li>
+              <li>Offerte e promozioni: usarle nel modo corretto.</li>
+            </ul>
+
+            <div class="note">
+              Obiettivo: decisioni più chiare e gestione più stabile.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Qualità</div>
+            <img src="assets/img/screen2.jpg" alt="Qualità screen2">
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btnGhost" id="prev4" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next4" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="slide" data-title="Modelli messaggi">
+        <span class="tag"><span class="tDot"></span> Servizio 3</span>
+        <h2 class="title" style="font-size:44px;">Modelli di messaggi automatici</h2>
+        <p class="subtitle">
+          La gestione non deve mangiarti il tempo: qui costruisci messaggi pronti per ridurre caos e aumentare qualità.
+        </p>
+
+        <div class="grid">
+          <div class="card pad">
+            <div class="h3">Cosa ottieni</div>
+            <ul class="list">
+              <li>Messaggi prima dell’arrivo: accessi, indicazioni, regole chiare.</li>
+              <li>Messaggi durante: risposte rapide alle richieste più comuni.</li>
+              <li>Messaggi dopo: chiusura corretta e richiesta recensione fatta bene.</li>
+              <li>Risposte pronte: meno tempo perso, più ordine.</li>
+            </ul>
+
+            <div class="note">
+              Obiettivo: tempi di risposta più rapidi e gestione più fluida.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Esempio</div>
+            <img src="assets/img/screen10.jpg" alt="Esempio screen10">
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btnGhost" id="prev5" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next5" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="slide" data-title="Valorizzazione da remoto">
+        <span class="tag"><span class="tDot"></span> Servizio 4</span>
+        <h2 class="title" style="font-size:44px;">Home staging da remoto<br>(con foto/video da telefono)</h2>
+        <p class="subtitle">
+          Se le foto non rendono, l’annuncio non converte. Ti dico cosa sistemare davvero, senza spese inutili.
+        </p>
+
+        <div class="grid">
+          <div class="card pad">
+            <div class="h3">Come funziona</div>
+            <ul class="list">
+              <li>Mi mandi foto e video degli ambienti (guidati, anche da telefono).</li>
+              <li>Ti dico cosa migliorare: luce, ordine, dettagli e punti “critici”.</li>
+              <li>Indicazioni pratiche su cosa aggiungere/togliere per alzare la percezione.</li>
+              <li>Consigli su inquadrature e sequenza foto per dare subito fiducia.</li>
+            </ul>
+
+            <div class="note">
+              Obiettivo: foto più forti e qualità percepita più alta.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Qualità</div>
+            <img src="assets/img/screen11.jpg" alt="Qualità screen11">
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn btnGhost" id="prev6" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next6" type="button">Avanti</button>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 (RIEPILOGO FINALE) -->
+      <section class="slide" data-title="Riepilogo">
+        <span class="tag"><span class="tDot"></span> Riepilogo</span>
+        <h2 class="title" style="font-size:44px;">Riepilogo: cosa comprerai</h2>
+        <p class="subtitle">
+          Una soluzione costruita su misura, basata sui tuoi numeri e sulla tua struttura.
+          Qui trovi in modo semplice cosa include.
+        </p>
+
+        <div class="grid" style="grid-template-columns: 1.05fr .95fr;">
+          <div class="card pad">
+            <div class="h3">Incluso</div>
+            <ul class="list">
+              <li>Creazione / refresh annuncio + analisi competitor</li>
+              <li>5 ore di formazione (prezzi + impostazioni annuncio)</li>
+              <li>Template messaggi automatici (modelli pronti + risposte rapide)</li>
+              <li>Home staging da remoto (foto/video del tuo immobile)</li>
+              <li>Affiancamento di 30 giorni (mini avviamento seguito)</li>
+            </ul>
+
+            <div class="note">
+              Se vuoi, nella chiamata chiarisci subito qual è il punto che oggi ti fa perdere più soldi o più tempo:
+              così sai da dove partire.
+            </div>
+          </div>
+
+          <div class="imgbox">
+            <div class="imglabel">Esempio</div>
+            <img src="assets/img/screen9.jpg" alt="Risultati screen9">
+          </div>
+        </div>
+
+        <div class="hint">Spazio / → avanti = ricomincia · ← indietro · F schermo intero</div>
+        <div class="nav">
+          <button class="btn btnGhost" id="prev7" type="button">Indietro</button>
+          <button class="btn btnGold"  id="next7" type="button">Ricomincia</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Comandi: Spazio / Frecce · 1–7 · F schermo intero</div>
 
   <script>
-    /* ===========================================================
-      PRESENTAZIONE A CLICK
-      - Spazio / Frecce: avanti e indietro
-      - 1..8: vai direttamente
-      - F: schermo intero
-      - Click sullo sfondo: avanti
-    ============================================================ */
+    // ============================================================
+    //  PRESENTAZIONE A SLIDE (impronta "prima")
+    //  - Click sul frame: avanti
+    //  - Spazio / Freccia destra: avanti
+    //  - Freccia sinistra: indietro
+    //  - 1..7: vai a slide
+    //  - F: schermo intero
+    //  NOTE: niente note interne nel contenuto delle slide
+    // ============================================================
 
     const slides = Array.from(document.querySelectorAll('.slide'));
-    const counter = document.getElementById('counter');
-    const progressBar = document.getElementById('progressBar');
     const frame = document.getElementById('frame');
+    const progressBar = document.getElementById('progressBar');
+    const counter = document.getElementById('counter');
 
     const btnFull = document.getElementById('btnFull');
     const btnHelp = document.getElementById('btnHelp');
     const toast = document.getElementById('toast');
 
-    let index = 0;
+    let idx = 0;
 
-    // Bottoni per slide (mappati per semplicità)
-    const mapButtons = [
-      ['prev1','next1'], ['prev2','next2'], ['prev3','next3'], ['prev4','next4'],
-      ['prev5','next5'], ['prev6','next6'], ['prev7','next7'], ['prev8','next8']
-    ];
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
     function showToast(msg){
       toast.textContent = msg;
       toast.classList.add('show');
       clearTimeout(showToast.t);
-      showToast.t = setTimeout(()=>toast.classList.remove('show'), 1800);
+      showToast.t = setTimeout(()=>toast.classList.remove('show'), 1600);
     }
 
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    function updateUI(){
-      slides.forEach((s,i)=>s.classList.toggle('active', i===index));
+    function update(){
+      slides.forEach((s,i)=>s.classList.toggle('active', i === idx));
 
       const total = slides.length;
-      counter.textContent = (index+1) + ' / ' + total;
-
-      const pct = ((index+1)/total)*100;
-      progressBar.style.width = pct + '%';
+      counter.textContent = (idx + 1) + " / " + total;
+      progressBar.style.width = ((idx + 1) / total * 100) + "%";
     }
 
     function goTo(i){
-      index = clamp(i, 0, slides.length - 1);
-      updateUI();
+      idx = clamp(i, 0, slides.length - 1);
+      update();
     }
 
     function next(){
-      if(index < slides.length - 1){
-        index++;
-      } else {
-        index = 0;
-      }
-      updateUI();
+      if(idx < slides.length - 1) idx++;
+      else idx = 0; // ricomincia
+      update();
     }
 
     function prev(){
-      if(index > 0){
-        index--;
-      }
-      updateUI();
+      if(idx > 0) idx--;
+      update();
     }
 
-    // Hook pulsanti prev/next interni
-    mapButtons.forEach((pair, i)=>{
-      const [p,n] = pair;
-      const prevBtn = document.getElementById(p);
-      const nextBtn = document.getElementById(n);
+    // Bottoni di navigazione
+    const btns = [
+      ['prev1','next1'],
+      ['prev2','next2'],
+      ['prev3','next3'],
+      ['prev4','next4'],
+      ['prev5','next5'],
+      ['prev6','next6'],
+      ['prev7','next7'],
+    ];
 
-      if(prevBtn) prevBtn.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
-      if(nextBtn) nextBtn.addEventListener('click', (e)=>{
+    btns.forEach(([p,n], i)=>{
+      const bp = document.getElementById(p);
+      const bn = document.getElementById(n);
+
+      if(bp) bp.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
+
+      if(bn) bn.addEventListener('click', (e)=>{
         e.stopPropagation();
-        if(i === slides.length - 1){ goTo(0); }
+        // ultimo bottone ricomincia
+        if(i === btns.length - 1) goTo(0);
         else next();
       });
     });
 
-    // Click sul frame: avanti (tranne click su bottoni)
+    // Click sul frame (avanti). Evita click su bottoni/elementi interattivi.
     frame.addEventListener('click', (e)=>{
       const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
       if(tag === 'button' || tag === 'a') return;
@@ -919,33 +821,21 @@
 
     // Tastiera
     document.addEventListener('keydown', (e)=>{
-      // evita scorrimenti strani
       if(['ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
 
-      if(e.key === 'ArrowRight' || e.key === ' '){
-        next(); return;
-      }
-      if(e.key === 'ArrowLeft'){
-        prev(); return;
-      }
-      if(e.key.toLowerCase() === 'f'){
-        toggleFullscreen(); return;
-      }
-      // Numeri 1..8
-      if(/^[1-8]$/.test(e.key)){
-        goTo(parseInt(e.key, 10) - 1);
+      if(e.key === 'ArrowRight' || e.key === ' '){ next(); return; }
+      if(e.key === 'ArrowLeft'){ prev(); return; }
+
+      if(/^[1-7]$/.test(e.key)){
+        goTo(parseInt(e.key,10) - 1);
         return;
       }
-      // Esc: esci fullscreen (gestito dal browser, ma aggiungiamo feedback)
-      if(e.key === 'Escape'){
-        showToast('Uscita schermo intero');
-      }
+
+      if(e.key.toLowerCase() === 'f'){ toggleFullscreen(); return; }
     }, {passive:false});
 
     // Fullscreen
-    function isFullscreen(){
-      return !!document.fullscreenElement;
-    }
+    function isFullscreen(){ return !!document.fullscreenElement; }
     function toggleFullscreen(){
       const el = document.documentElement;
       if(!isFullscreen()){
@@ -957,21 +847,27 @@
       }
     }
 
-    btnFull.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      toggleFullscreen();
+    btnFull.addEventListener('click', (e)=>{ e.stopPropagation(); toggleFullscreen(); });
+    btnHelp.addEventListener('click', (e)=>{ e.stopPropagation(); showToast('Spazio/→ avanti · ← indietro · 1–7 pagine · F schermo intero'); });
+
+    // Init
+    update();
+    setTimeout(()=>showToast('Spazio/→ avanti · F schermo intero'), 650);
+
+    // Preload immagini (evita “vuoti” in chiamata)
+    const preload = [
+      'assets/img/screen1.jpg',
+      'assets/img/screen2.jpg',
+      'assets/img/screen5.jpg',
+      'assets/img/screen9.jpg',
+      'assets/img/screen10.jpg',
+      'assets/img/screen11.jpg',
+      'assets/img/screen12.jpg'
+    ];
+    preload.forEach(src=>{
+      const im = new Image();
+      im.src = src;
     });
-
-    btnHelp.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      showToast('Comandi: Spazio/Frecce · 1–8 · F schermo intero');
-    });
-
-    // Aggiorna al caricamento
-    updateUI();
-
-    // Piccolo promemoria iniziale (solo UI)
-    setTimeout(()=>showToast('Spazio/Frecce per avanzare · F schermo intero'), 600);
   </script>
 </body>
 </html>
