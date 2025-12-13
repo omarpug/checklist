@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Federica Property Manager — Presentazione Avviamento</title>
+  <title>Federica Property Manager — Presentazione Avviamento Completo</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
 
   <style>
     :root{
+      /* Palette Federica (navy + gold) */
       --navy:#0A2540;
       --navy2:#0f2f52;
       --gold:#D4AF37;
@@ -35,9 +36,10 @@
                   radial-gradient(900px 520px at 88% 12%, rgba(10,37,64,.12), transparent 60%),
                   var(--bg);
       color:var(--text);
-      overflow:hidden;
+      overflow:hidden; /* modalità "slide" */
     }
 
+    /* Top bar */
     .topbar{
       position:fixed; inset:18px 18px auto 18px;
       display:flex; align-items:center; justify-content:space-between;
@@ -61,7 +63,7 @@
       box-shadow:0 0 0 6px rgba(212,175,55,.20);
     }
     .brand b{color:var(--navy)}
-    .brand small{color:var(--muted); font-weight:700}
+    .brand small{color:var(--muted); font-weight:600}
 
     .hud{
       pointer-events:auto;
@@ -98,6 +100,7 @@
       transition:width .25s ease;
     }
 
+    /* Stage */
     .stage{
       position:fixed; inset:0;
       display:flex;
@@ -135,6 +138,7 @@
       gap:26px;
       align-items:stretch;
     }
+
     .full .content{
       grid-template-columns:1fr;
       gap:18px;
@@ -178,7 +182,7 @@
       line-height:1.5;
       color:var(--muted);
       font-weight:650;
-      max-width:60ch;
+      max-width:62ch;
     }
 
     .grid{
@@ -257,6 +261,7 @@
       line-height:1.35;
     }
 
+    /* Right (screenshot) */
     .shotWrap{
       height:100%;
       border:1px dashed rgba(10,37,64,.20);
@@ -277,7 +282,7 @@
       padding:8px 10px;
       border-radius:999px;
       color:var(--muted);
-      font-weight:900;
+      font-weight:850;
       font-size:12px;
       backdrop-filter: blur(10px);
     }
@@ -291,6 +296,7 @@
       object-fit:contain;
     }
 
+    /* Risultati: griglia (stile "prima presentazione": telefono intero, senza tagli) */
     .proofGrid{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -307,12 +313,23 @@
       flex-direction:column;
       min-height:0;
     }
+    .proofItem .imgArea{
+      height:260px;              /* uguale impostazione: area dedicata */
+      padding:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg,#fff,#fbfcff);
+    }
     .proofItem img{
       width:100%;
-      height:260px;
-      object-fit:cover;
+      height:100%;
+      object-fit:contain;        /* IMPORTANTISSIMO: niente tagli */
       display:block;
+      border-radius:14px;
       background:#fff;
+      border:1px solid rgba(231,235,243,.9);
+      box-shadow:0 10px 24px rgba(10,37,64,.10);
     }
     .proofItem .cap{
       padding:10px 12px;
@@ -323,6 +340,7 @@
       background:linear-gradient(180deg,#fff,#fbfcff);
     }
 
+    /* Controls bottom */
     .controls{
       position:fixed; inset:auto 18px 18px 18px;
       display:flex; align-items:center; justify-content:space-between;
@@ -333,7 +351,7 @@
     .hint{
       pointer-events:auto;
       color:var(--muted);
-      font-weight:800;
+      font-weight:750;
       font-size:13px;
       background:rgba(255,255,255,.74);
       border:1px solid rgba(231,235,243,.9);
@@ -341,14 +359,17 @@
       padding:10px 12px;
       box-shadow:var(--shadow2);
     }
-    .btns{ pointer-events:auto; display:flex; gap:10px; }
+    .btns{
+      pointer-events:auto;
+      display:flex; gap:10px;
+    }
     button{
       appearance:none;
       border:1px solid rgba(231,235,243,.9);
       background:rgba(255,255,255,.78);
       backdrop-filter: blur(10px);
       color:var(--navy);
-      font-weight:950;
+      font-weight:900;
       border-radius:14px;
       padding:10px 14px;
       cursor:pointer;
@@ -361,13 +382,13 @@
     }
     button:active{transform:translateY(1px)}
 
+    /* Responsive */
     @media (max-width: 980px){
       body{overflow:auto}
       .stage{position:relative; padding:86px 14px 80px}
       .slide{height:auto; min-height:calc(100vh - 170px); overflow:visible}
       .content{grid-template-columns:1fr}
       .proofGrid{grid-template-columns:repeat(2, 1fr)}
-      .proofItem img{height:220px}
     }
   </style>
 </head>
@@ -400,37 +421,40 @@
         <div>
           <div class="kicker">
             <span class="pill">Avviamento completo</span>
-            <span class="pill">Operativo + formazione</span>
+            <span class="pill">Setup + metodo</span>
             <span class="pill">Supporto 60 giorni</span>
           </div>
 
-          <h1 class="title">Impostiamo la casa per guadagnare bene</h1>
+          <h1 class="title">Si parte bene. E si parte con un sistema.</h1>
           <p class="subtitle">
-            Qui non si lavora “a sensazione”: si crea un asset pronto a vendere.
-            Tu esci con annuncio, prezzi, procedure e operatività già impostati.
+            Qui non “proviamo”: impostiamo la casa vacanze in modo corretto, passo dopo passo,
+            così da avere <b>annuncio</b>, <b>prezzi</b> e <b>gestione</b> pronti per funzionare.
           </p>
 
           <div class="grid">
-            <div class="mini"><b>Annuncio</b><span>Airbnb + Booking impostati correttamente</span></div>
-            <div class="mini"><b>Prezzi</b><span>metodo pratico per muoverti senza errori</span></div>
-            <div class="mini"><b>Operatività</b><span>procedure + pulizie + automazioni</span></div>
+            <div class="mini"><b>Annunci OTA</b><span>Airbnb + Booking impostati bene</span></div>
+            <div class="mini"><b>Prezzi</b><span>metodo chiaro per aumentare margine</span></div>
+            <div class="mini"><b>Operatività</b><span>procedure, pulizie, dotazioni, messaggi</span></div>
           </div>
 
           <div class="impact">
             <div class="tag">Obiettivo</div>
-            <span>Aprire (o riaprire) la casa in modo professionale: più prenotazioni buone, più controllo, meno caos.</span>
+            <span>Mettere tutto in ordine e far partire la casa vacanze “come un’attività”, non a tentativi.</span>
           </div>
         </div>
 
         <div class="shotWrap">
-          <div class="label">Esempio • risultato mensile</div>
-          <img class="shot" data-src="./assets/img/screen1.jpg" data-alt="./assets/img/screen1.jpg" alt="Risultato mensile" />
+          <div class="label">Esempio • andamento ricavi</div>
+          <img class="shot"
+               data-src="./assets/img/screen1.jpg"
+               data-alt="./assets/img/screen1.jpg"
+               alt="Esempio risultati" />
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 2: Proof -->
-    <section class="slide full" data-title="proof">
+    <!-- SLIDE 2: Risultati (4 card come nello screen, senza tagli) -->
+    <section class="slide full" data-title="risultati">
       <div class="content">
         <div>
           <div class="kicker"><span class="pill">Risultati</span> <span>screen reali</span></div>
@@ -441,260 +465,310 @@
 
           <div class="proofGrid">
             <div class="proofItem">
-              <img data-src="./assets/img/screen9.jpg" data-alt="./assets/img/screen9.jpg" alt="screen9" />
-              <div class="cap">Esempio • andamento qualità e notti</div>
-            </div>
-            <div class="proofItem">
-              <img data-src="./assets/img/screen5.jpg" data-alt="./assets/img/screen5.jpg" alt="screen5" />
-              <div class="cap">Esempio • riepilogo anno</div>
-            </div>
-            <div class="proofItem">
-              <img data-src="./assets/img/screen11.jpg" data-alt="./assets/img/screen11.jpg" alt="screen11" />
+              <div class="imgArea">
+                <img data-src="./assets/img/screen11.jpg" data-alt="./assets/img/screen11.jpg" alt="screen11" />
+              </div>
               <div class="cap">Esempio • qualità e valutazioni</div>
             </div>
+
             <div class="proofItem">
-              <img data-src="./assets/img/screen12.jpg" data-alt="./assets/img/screen12.jpg" alt="screen12" />
+              <div class="imgArea">
+                <img data-src="./assets/img/screen1.jpg" data-alt="./assets/img/screen1.jpg" alt="screen1" />
+              </div>
+              <div class="cap">Esempio • andamento ricavi</div>
+            </div>
+
+            <div class="proofItem">
+              <div class="imgArea">
+                <img data-src="./assets/img/screen2.jpg" data-alt="./assets/img/screen2.jpg" alt="screen2" />
+              </div>
+              <div class="cap">Esempio • notti e valore prenotazioni</div>
+            </div>
+
+            <div class="proofItem">
+              <div class="imgArea">
+                <img data-src="./assets/img/screen12.jpg" data-alt="./assets/img/screen12.jpg" alt="screen12" />
+              </div>
               <div class="cap">Esempio • calendario e andamento</div>
             </div>
           </div>
+
+          <div class="impact" style="margin-top:16px">
+            <div class="tag">Idea chiave</div>
+            <span>Si lavora su ciò che cambia davvero i numeri: annuncio, prezzi e gestione quotidiana.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 3: Setup OTA -->
-    <section class="slide" data-title="ota">
+    <!-- SLIDE 3: Avviamento completo (panoramica) -->
+    <section class="slide" data-title="avviamento">
       <div class="content">
         <div>
-          <div class="kicker"><span class="pill">Step 1</span> <span>Setup OTA (Airbnb + Booking)</span></div>
-          <h2 class="title" style="font-size:46px">Annuncio pronto su Airbnb e Booking</h2>
+          <div class="kicker"><span class="pill">Cosa fai</span> <span>avviamento completo</span></div>
+          <h2 class="title" style="font-size:46px">Avviamento completo</h2>
           <p class="subtitle">
-            Impostiamo l’annuncio come un prodotto: completo, chiaro e coerente con il tipo di ospite che vuoi attirare.
+            In pratica: mettiamo a terra tutto quello che serve per partire bene,
+            con una struttura chiara e controllabile.
           </p>
 
           <div class="box">
-            <h3>Cosa viene fatto</h3>
+            <h3>Cosa viene fatto (in ordine)</h3>
             <ul class="bullets">
-              <li>Creazione o sistemazione profilo e pagine su <b>Airbnb</b> e <b>Booking</b></li>
-              <li>Titolo, descrizione e sezioni compilate senza buchi (quelli che fanno perdere conversioni)</li>
-              <li>Regole, policy e impostazioni di base impostate correttamente</li>
-              <li>Foto ordinate con priorità: <b>prime 5 immagini</b> decisive</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Più fiducia e più richieste: l’annuncio “sembra professionale” e converte meglio.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • notti e valore</div>
-          <img class="shot" data-src="./assets/img/screen2.jpg" data-alt="./assets/img/screen2.jpg" alt="Notti e valore" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 4: Pricing + formazione -->
-    <section class="slide" data-title="pricing">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Step 2</span> <span>Prezzi + 5 ore di formazione</span></div>
-          <h2 class="title" style="font-size:46px">Prezzi: come muoverti davvero</h2>
-          <p class="subtitle">
-            L’obiettivo non è “riempire”: è <b>riempire bene</b>. Ti porti a casa un metodo pratico e replicabile.
-          </p>
-
-          <div class="box">
-            <h3>Cosa impari e cosa impostiamo</h3>
-            <ul class="bullets">
-              <li>Metodo prezzi: stagionalità, domanda, eventi, giorni forti e giorni deboli</li>
-              <li>Minimi notti e gestione buchi: evitare prenotazioni che rovinano il margine</li>
-              <li>Impostazioni annuncio collegate ai prezzi (promo, regole, disponibilità)</li>
-              <li>Routine semplice: quando aggiornare, cosa controllare, come correggere</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Più margine e più stabilità: smetti di lasciare soldi sul tavolo.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • riepilogo anno</div>
-          <img class="shot" data-src="./assets/img/screen5.jpg" data-alt="./assets/img/screen5.jpg" alt="Riepilogo anno" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 5: Home staging -->
-    <section class="slide" data-title="staging">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Step 3</span> <span>Home staging da remoto</span></div>
-          <h2 class="title" style="font-size:46px">Casa “da vacanza”, non “da affitto”</h2>
-          <p class="subtitle">
-            Tu mandi un video della casa: da lì definiamo migliorie pratiche per renderla più desiderabile e più vendibile.
-          </p>
-
-          <div class="box">
-            <h3>Come funziona</h3>
-            <ul class="bullets">
-              <li>Video completo + foto dei punti critici (luci, bagno, cucina, ingresso)</li>
-              <li>Lista interventi: ordine, tessili, dettagli, set fotografico, piccoli acquisti intelligenti</li>
-              <li>Priorità: costo basso / impatto alto</li>
-              <li>Indicazioni per foto migliori (angoli, luce, inquadrature)</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Più click e più conversione: la casa “sembra più curata” e può valere di più.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • risultato</div>
-          <img class="shot" data-src="./assets/img/screen10.jpg" data-alt="./assets/img/screen10.jpg" alt="Risultato" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 6: Automazioni + messaggi -->
-    <section class="slide" data-title="automazioni">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Step 4</span> <span>Procedure + self check-in + messaggi</span></div>
-          <h2 class="title" style="font-size:46px">Meno caos: procedure e messaggi</h2>
-          <p class="subtitle">
-            Qui si elimina la parte “stressante”: ospiti guidati, risposte rapide e processo chiaro.
-          </p>
-
-          <div class="box">
-            <h3>Cosa viene impostato</h3>
-            <ul class="bullets">
-              <li>Procedura <b>self check-in</b>: istruzioni, punti chiave, controllo accessi</li>
-              <li>Messaggi automatici: pre-checkin, check-in, durante soggiorno, check-out, recensione</li>
-              <li>Gestione aspettative: regole chiare e comunicazione che previene problemi</li>
-              <li>Checklist operativa: cosa controllare prima/dopo ogni soggiorno</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Meno problemi e più qualità: più 5 stelle e meno tempo perso.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • qualità</div>
-          <img class="shot" data-src="./assets/img/screen11.jpg" data-alt="./assets/img/screen11.jpg" alt="Qualità" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 7: Dotazioni + pulizie -->
-    <section class="slide" data-title="operativita">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Step 5</span> <span>Dotazioni + pulizie</span></div>
-          <h2 class="title" style="font-size:46px">Operatività: cosa serve e come gestirla</h2>
-          <p class="subtitle">
-            Una casa vacanza funziona se è completa e se le pulizie seguono un metodo. Qui ti togli dubbi e improvvisazione.
-          </p>
-
-          <div class="box">
-            <h3>Dotazioni essenziali (esempi)</h3>
-            <ul class="bullets">
-              <li>Sicurezza: <b>estintore</b>, <b>rilevatore monossido</b> (dove serve), kit primo soccorso</li>
-              <li>Comfort: coperte, asciugacapelli, stendino, ferro da stiro (se coerente col target)</li>
-              <li>Cucina: stoviglie complete, piccoli elettrodomestici utili, set base “pronto ospite”</li>
-            </ul>
-          </div>
-
-          <div class="box" style="margin-top:14px">
-            <h3>Pulizie (workflow base)</h3>
-            <ul class="bullets">
-              <li>In grandi città: se serve, contatti e aggancio operativo</li>
-              <li>In zone periferiche: criteri per scegliere la ditta (preventivi, biancheria, standard)</li>
-              <li>Checklist pulizie: cosa controllare, foto di fine lavoro, gestione anomalie</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Qualità stabile: la casa mantiene standard alto e le recensioni migliorano.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • calendario</div>
-          <img class="shot" data-src="./assets/img/screen12.jpg" data-alt="./assets/img/screen12.jpg" alt="Calendario" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 8: Supporto 60 giorni -->
-    <section class="slide" data-title="supporto">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Step 6</span> <span>Supporto 60 giorni</span></div>
-          <h2 class="title" style="font-size:46px">Supporto 60 giorni (la parte più importante)</h2>
-          <p class="subtitle">
-            Per due mesi non sei “solo”: si corregge, si ottimizza e si consolida. È qui che l’avviamento diventa un sistema.
-          </p>
-
-          <div class="box">
-            <h3>Cosa succede nei 60 giorni</h3>
-            <ul class="bullets">
-              <li>Controllo ricorrente: prezzi, calendario, promo, impostazioni annuncio</li>
-              <li>Correzione errori tipici: buchi, minimi notti, policy, contenuti mancanti</li>
-              <li>Ottimizzazioni su ciò che impatta il risultato: conversione, qualità, margine</li>
-              <li>Routine chiara: cosa fare ogni settimana per non tornare al caos</li>
-            </ul>
-          </div>
-
-          <div class="impact">
-            <div class="tag">Effetto</div>
-            <span>Risultati più stabili: non “migliori una settimana”, costruisci una gestione che regge.</span>
-          </div>
-        </div>
-
-        <div class="shotWrap">
-          <div class="label">Esempio • notti e valore</div>
-          <img class="shot" data-src="./assets/img/screen2.jpg" data-alt="./assets/img/screen2.jpg" alt="Notti e valore" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9: Recap finale -->
-    <section class="slide full" data-title="recap">
-      <div class="content">
-        <div>
-          <div class="kicker"><span class="pill">Riepilogo</span></div>
-          <h2 class="title" style="font-size:44px">In sintesi: cosa farai e cosa otterrai</h2>
-          <p class="subtitle" style="max-width:none">
-            Tutto quello che serve per avviare (bene) una casa vacanze e mantenerla stabile nelle prime settimane.
-          </p>
-
-          <div class="box">
-            <ul class="bullets">
-              <li><b>Avviamento completo</b> → casa pronta ad essere venduta come casa vacanze</li>
-              <li><b>5 ore di formazione</b> → metodo pratico su prezzi e impostazioni</li>
-              <li><b>Setup Airbnb + Booking</b> → annuncio completo e corretto</li>
-              <li><b>Prezzi</b> → come muoverti settimana per settimana senza errori</li>
-              <li><b>Home staging</b> → migliorie e set per aumentare desiderabilità e foto</li>
-              <li><b>Procedure self check-in</b> → operatività più semplice e controllata</li>
-              <li><b>Messaggi automatici</b> → qualità più alta e meno problemi</li>
-              <li><b>Dotazioni essenziali</b> → lista chiara di ciò che non può mancare</li>
-              <li><b>Pulizie</b> → workflow e criteri per avere uno standard stabile</li>
-              <li><b>Supporto 60 giorni</b> → correzioni e ottimizzazioni per consolidare</li>
+              <li><b>Setup annunci</b> su Airbnb e Booking con impostazioni corrette</li>
+              <li><b>Prezzi</b> impostati con metodo (e non “a sentimento”)</li>
+              <li><b>Casa pronta</b>: dotazioni, presentazione, foto e ordine</li>
+              <li><b>Gestione</b>: messaggi, self check-in, pulizie, regole operative</li>
+              <li><b>Supporto 60 giorni</b> per correggere e stabilizzare</li>
             </ul>
           </div>
 
           <div class="impact">
             <div class="tag">Risultato</div>
-            <span>Casa avviata in modo professionale, con metodo, procedure e supporto per farla funzionare davvero.</span>
+            <span>Parti con basi solide: meno errori, meno caos, più prenotazioni “buone”.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • riepilogo anno</div>
+          <img class="shot"
+               data-src="./assets/img/screen5.jpg"
+               data-alt="./assets/img/screen5.jpg"
+               alt="Esempio riepilogo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Setup OTA -->
+    <section class="slide" data-title="ota">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Step 1</span> <span>setup OTA</span></div>
+          <h2 class="title" style="font-size:46px">Setup Airbnb e Booking</h2>
+          <p class="subtitle">
+            Creazione e impostazione degli annunci in modo completo e coerente,
+            così da evitare blocchi, errori e impostazioni “che tagliano” le prenotazioni.
+          </p>
+
+          <div class="box">
+            <h3>Cosa viene impostato</h3>
+            <ul class="bullets">
+              <li><b>Annuncio completo</b>: titolo, descrizione, regole, check-in/out, policy</li>
+              <li><b>Servizi e dotazioni</b>: inseriti correttamente (senza “buchi”)</li>
+              <li><b>Calendario</b>: disponibilità, minimi notti, blocchi e coerenza</li>
+              <li><b>Struttura prezzi</b>: base + logica per stagionalità e domanda</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Annunci pronti a convertire: più fiducia e meno frizioni in fase di prenotazione.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • calendario e andamento</div>
+          <img class="shot"
+               data-src="./assets/img/screen12.jpg"
+               data-alt="./assets/img/screen12.jpg"
+               alt="Calendario" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Formazione 5 ore (pricing + impostazioni) -->
+    <section class="slide" data-title="formazione">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Step 2</span> <span>formazione 5 ore</span></div>
+          <h2 class="title" style="font-size:46px">5 ore di formazione</h2>
+          <p class="subtitle">
+            Capisci cosa fare e quando farlo: prezzi e impostazioni diventano una routine semplice,
+            non una cosa “da indovinare”.
+          </p>
+
+          <div class="box">
+            <h3>Cosa impari (con esempi)</h3>
+            <ul class="bullets">
+              <li><b>Prezzi</b>: stagionalità, domanda, eventi, giorni forti/deboli</li>
+              <li><b>Minimi notti e buchi</b>: come riempire bene senza rovinare il margine</li>
+              <li><b>Impostazioni annuncio</b>: regole, policy e strumenti visibilità</li>
+              <li><b>Controllo</b>: cosa guardare ogni settimana per migliorare</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Più margine: non serve solo “riempire”, serve riempire al prezzo giusto.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • notti e valore prenotazioni</div>
+          <img class="shot"
+               data-src="./assets/img/screen2.jpg"
+               data-alt="./assets/img/screen2.jpg"
+               alt="Notti e valore" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Home staging -->
+    <section class="slide" data-title="staging">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Step 3</span> <span>home staging</span></div>
+          <h2 class="title" style="font-size:46px">Home staging (da remoto)</h2>
+          <p class="subtitle">
+            Tu mandi un video della casa. Da lì, ti diciamo cosa cambiare per renderla più “casa vacanze”:
+            più bella in foto e più desiderabile.
+          </p>
+
+          <div class="box">
+            <h3>Come funziona</h3>
+            <ul class="bullets">
+              <li>Invii <b>video e foto</b> (stanze, punti critici, dettagli)</li>
+              <li>Ricevi una <b>lista interventi</b> (ordine, luci, tessili, dettagli)</li>
+              <li>Priorità: cambiamenti <b>a costo basso</b> ma impatto alto</li>
+              <li>Indicazioni per <b>foto migliori</b> (angoli, luce, composizione)</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Foto più forti = più click = più richieste. E spesso puoi anche alzare il prezzo.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • andamento ricavi</div>
+          <img class="shot"
+               data-src="./assets/img/screen10.jpg"
+               data-alt="./assets/img/screen10.jpg"
+               alt="Esempio ricavi" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Procedure self check-in + messaggi -->
+    <section class="slide" data-title="procedure-messaggi">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Step 4</span> <span>procedure e messaggi</span></div>
+          <h2 class="title" style="font-size:46px">Procedure: meno caos</h2>
+          <p class="subtitle">
+            Self check-in e messaggi automatici servono per avere una gestione stabile:
+            risposte rapide, ospiti guidati e meno problemi.
+          </p>
+
+          <div class="box">
+            <h3>Cosa viene impostato</h3>
+            <ul class="bullets">
+              <li><b>Self check-in</b>: istruzioni chiare e flusso semplice</li>
+              <li><b>Messaggi automatici</b>: pre-checkin, check-in, durante soggiorno, check-out</li>
+              <li><b>FAQ</b>: risposte pronte per le domande tipiche</li>
+              <li><b>Standard</b>: cosa fare e quando farlo (senza improvvisare)</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Più qualità e meno stress: l’esperienza ospite è guidata dall’inizio alla fine.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • qualità e valutazioni</div>
+          <img class="shot"
+               data-src="./assets/img/screen11.jpg"
+               data-alt="./assets/img/screen11.jpg"
+               alt="Qualità" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Dotazioni + Pulizie -->
+    <section class="slide" data-title="dotazioni-pulizie">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Step 5</span> <span>dotazioni e pulizie</span></div>
+          <h2 class="title" style="font-size:46px">Casa pronta davvero</h2>
+          <p class="subtitle">
+            Qui sistemiamo due cose che, se fatte male, distruggono recensioni e serenità:
+            dotazioni e pulizie.
+          </p>
+
+          <div class="box">
+            <h3>Dotazioni (lista completa)</h3>
+            <ul class="bullets">
+              <li><b>Sicurezza</b>: estintore, rilevatore monossido, kit primo soccorso (se necessario)</li>
+              <li><b>Comfort</b>: coperte extra, set asciugamani, cuscini, phon</li>
+              <li><b>Cucina</b>: stoviglie complete, piccoli elettrodomestici, basi essenziali</li>
+              <li><b>Check</b>: elenco chiaro per non dimenticare nulla</li>
+            </ul>
+          </div>
+
+          <div class="box" style="margin-top:12px">
+            <h3>Pulizie (workflow base)</h3>
+            <ul class="bullets">
+              <li><b>Standard</b>: cosa va fatto sempre e come controllarlo</li>
+              <li><b>Biancheria</b>: noleggio o gestione interna (in base alla zona)</li>
+              <li><b>Fornitore</b>: in grandi città aiutiamo con contatti; in zone periferiche ti diciamo come scegliere</li>
+              <li><b>Preventivi</b>: cosa chiedere e cosa evitare</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">Effetto</div>
+            <span>Più 5 stelle e meno lamentele: pulizie e dotazioni fanno la differenza “in silenzio”.</span>
+          </div>
+        </div>
+
+        <div class="shotWrap">
+          <div class="label">Esempio • riepilogo anno</div>
+          <img class="shot"
+               data-src="./assets/img/screen5.jpg"
+               data-alt="./assets/img/screen5.jpg"
+               alt="Riepilogo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Supporto 60 giorni + riepilogo finale -->
+    <section class="slide full" data-title="supporto-recap">
+      <div class="content">
+        <div>
+          <div class="kicker"><span class="pill">Supporto 60 giorni</span> <span>e riepilogo</span></div>
+          <h2 class="title" style="font-size:44px">60 giorni per stabilizzare</h2>
+          <p class="subtitle" style="max-width:none">
+            La parte più importante: non ti lasciamo “da solo” dopo aver impostato tutto.
+            Per 60 giorni si corregge, si aggiusta e si consolida.
+          </p>
+
+          <div class="box">
+            <h3>Cosa succede nei 60 giorni</h3>
+            <ul class="bullets">
+              <li><b>Controllo settimanale</b>: prezzi, calendario, eventuali buchi e correzioni</li>
+              <li><b>Correzioni annuncio</b>: se qualcosa non sta convertendo, si interviene</li>
+              <li><b>Gestione</b>: procedure, pulizie, messaggi e qualità recensioni</li>
+              <li><b>Routine</b>: a fine supporto hai un metodo che puoi replicare</li>
+            </ul>
+          </div>
+
+          <div class="impact">
+            <div class="tag">In sintesi</div>
+            <span>Avviamento completo + 5 ore di formazione + setup Airbnb/Booking + prezzi + staging + procedure + messaggi + dotazioni + pulizie + supporto 60 giorni.</span>
+          </div>
+
+          <div class="box" style="margin-top:12px">
+            <h3>Riepilogo (cosa ottieni)</h3>
+            <ul class="bullets">
+              <li><b>Annunci pronti</b> e impostati correttamente su Airbnb e Booking</li>
+              <li><b>Metodo prezzi</b> chiaro per muoverti ogni settimana</li>
+              <li><b>Casa preparata</b> per piacere in foto e dal vivo</li>
+              <li><b>Gestione ordinata</b> (self check-in, messaggi, pulizie)</li>
+              <li><b>Supporto 60 giorni</b> per rendere i risultati più stabili</li>
+            </ul>
           </div>
         </div>
       </div>
