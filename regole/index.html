@@ -1,3 +1,9 @@
+<!-- =========================
+FILE — REGOLE
+Modifica effettuata SOLO su download checklist:
+- usa link diretto Drive (uc?export=download&id=...)
+- apre in nuova scheda così la landing resta aperta
+========================= -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -167,7 +173,12 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <script>
   const TIPOLOGIA = 'regole';
-  const DOWNLOAD_URL = 'https://drive.google.com/file/d/1XgVZ5-F3TlipuoJtBAL8xpcADdl4sXuA/view?usp=sharing';
+
+  /* ====== SOLO MODIFICA DOWNLOAD CHECKLIST ====== */
+  const DRIVE_FILE_ID = '1XgVZ5-F3TlipuoJtBAL8xpcADdl4sXuA';
+  const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`;
+  /* ============================================== */
+
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
   // sistema i path delle immagini: /checklist/regole/assets/img/...
@@ -209,7 +220,14 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
-    if(el) el.href = withParams(DOWNLOAD_URL);
+    if(!el) return;
+
+    // Link download con UTM + lid
+    el.href = withParams(DOWNLOAD_URL);
+
+    // L'utente resta sulla landing (si apre un nuovo tab per avviare il download)
+    el.target = '_blank';
+    el.rel = 'noopener nofollow';
   });
 
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
