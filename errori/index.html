@@ -1,4 +1,9 @@
-
+<!-- =========================
+FILE 1 — ERRORI
+Modifica effettuata SOLO su download checklist:
+- usa link diretto Drive (uc?export=download&id=...)
+- apre in nuova scheda così la landing resta aperta
+========================= -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -104,7 +109,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
       <p>Parto dai fondamentali (titolo, cover, dotazioni), imposto un <b>pricing dinamico</b> e costruisco <b>processi snelli</b> con template e KPI.</p>
       <p>Analizzo, testo e correggo in fretta ciò che impatta sul calendario. Se vuoi un confronto veloce, prenota la call gratuita: in 20′ ti dico cosa sistemare subito.</p>
       <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
-        <a id="btnDownloadMid" class="btn btn--accent" href="#" rel="nofollow">Scarica la checklist “7 errori”</a>
+               <a id="btnDownloadMid" class="btn btn--accent" href="#" rel="nofollow">Scarica la checklist “7 errori”</a>
         <a id="btnCallMid" class="btn btn--ghost" href="#" rel="nofollow">Prenota la call gratuita</a>
       </div>
     </div>
@@ -161,7 +166,12 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <script>
   const TIPOLOGIA = 'errori';
-  const DOWNLOAD_URL = 'https://drive.google.com/file/d/1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog/view?usp=sharing';
+
+  /* ====== SOLO MODIFICA DOWNLOAD CHECKLIST ====== */
+  const DRIVE_FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
+  const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`;
+  /* ============================================== */
+
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
     (function fixImagesBase(){
@@ -182,10 +192,22 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   function withParams(url){ const u=new URL(url); if(utm_source)u.searchParams.set('utm_source',utm_source); if(utm_medium)u.searchParams.set('utm_medium',utm_medium); if(utm_campaign)u.searchParams.set('utm_campaign',utm_campaign); u.searchParams.set('lid',lid); return u.toString(); }
 
   const dls=['btnDownloadHero','btnDownloadMid','btnDownloadBottom'];
-  dls.forEach(id=>{ const el=document.getElementById(id); if(el) el.href=withParams(DOWNLOAD_URL); });
+  dls.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+
+    // Link download con UTM + lid
+    el.href = withParams(DOWNLOAD_URL);
+
+    // L'utente resta sulla landing (si apre un nuovo tab per avviare il download)
+    el.target = '_blank';
+    el.rel = 'noopener nofollow';
+  });
+
   const calls=['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'];
   calls.forEach(id=>{ const el=document.getElementById(id); if(el) el.href=withParams(CALENDLY_URL); });
 
+  // Nota: qui non cambiamo il comportamento delle immagini (sono su github, non drive)
   document.querySelectorAll('a[href*="calendly.com"],a[href*="drive.google.com"]').forEach(a=>{ try{ a.href=withParams(a.href); }catch(_){}});
 
   document.getElementById('y').textContent=new Date().getFullYear();
