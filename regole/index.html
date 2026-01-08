@@ -1,9 +1,3 @@
-<!-- =========================
-FILE — REGOLE
-Modifica effettuata SOLO su download checklist:
-- usa link diretto Drive (uc?export=download&id=...)
-- apre in nuova scheda così la landing resta aperta
-========================= -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -174,10 +168,9 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 <script>
   const TIPOLOGIA = 'regole';
 
-  /* ====== SOLO MODIFICA DOWNLOAD CHECKLIST ====== */
-  const DRIVE_FILE_ID = '1XgVZ5-F3TlipuoJtBAL8xpcADdl4sXuA';
-  const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`;
-  /* ============================================== */
+  // === DOWNLOAD (resta in landing + download diretto) ===
+  const FILE_ID = '1XgVZ5-F3TlipuoJtBAL8xpcADdl4sXuA';
+  const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
@@ -218,16 +211,27 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
+  // === DOWNLOAD: intercetta click, NON naviga, NON apre tab ===
+  function triggerDownload(url){
+    const a=document.createElement('a');
+    a.href=url;
+    a.rel='nofollow';
+    a.style.display='none';
+    a.setAttribute('download','');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
-
-    // Link download con UTM + lid
-    el.href = withParams(DOWNLOAD_URL);
-
-    // L'utente resta sulla landing (si apre un nuovo tab per avviare il download)
-    el.target = '_blank';
-    el.rel = 'noopener nofollow';
+    el.href = '#';
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      triggerDownload(withParams(DOWNLOAD_URL));
+    });
   });
 
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
@@ -235,7 +239,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     if(el) el.href = withParams(CALENDLY_URL);
   });
 
-  document.querySelectorAll('a[href*="calendly.com"],a[href*="drive.google.com"]').forEach(a=>{
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(a=>{
     try{ a.href = withParams(a.href); }catch(_){}
   });
 
