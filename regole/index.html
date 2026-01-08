@@ -213,15 +213,19 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   // === DOWNLOAD: intercetta click, NON naviga, NON apre tab ===
   function triggerDownload(url){
-    const a=document.createElement('a');
-    a.href=url;
-    a.rel='nofollow';
-    a.style.display='none';
-    a.setAttribute('download','');
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  }
+  // iPhone Safari: evita about:blank usando un iframe invisibile
+  const iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.src = url;
+
+  document.body.appendChild(iframe);
+
+  // pulizia dopo un po' (non chiude il download)
+  setTimeout(() => {
+    try { iframe.remove(); } catch(_) {}
+  }, 60000);
+}
+
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
