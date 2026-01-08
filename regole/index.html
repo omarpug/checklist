@@ -174,13 +174,14 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
-  // sistema i path delle immagini: /checklist/regole/assets/img/...
+  // sistema i path delle immagini: /.../regole/assets/img/...
   (function fixImagesBase(){
-    const parts = location.pathname.split('/').filter(Boolean); // es. ["checklist","regole"]
-    const BASE = '/' + parts.join('/');                         // "/checklist/regole"
+    let p = location.pathname;
+    if (!p.endsWith('/')) p = p.substring(0, p.lastIndexOf('/') + 1);
+    const BASE_DIR = p.replace(/\/$/, ''); // es. "/checklist/regole"
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = img.getAttribute('data-src').replace(/^\/+/, '');
-      img.src = BASE + '/' + rel;
+      const rel = (img.getAttribute('data-src') || '').replace(/^\/+/, ''); // toglie slash iniziali
+      img.src = BASE_DIR + '/' + rel;
       const a = img.closest('a.zoom');
       if(a){ a.href = img.src; }
     });
@@ -199,7 +200,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     }
     return id;
   }
-
   const lid = getLeadId();
 
   function withParams(url){
@@ -211,31 +211,35 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // === DOWNLOAD: intercetta click, NON naviga, NON apre tab ===
+  // === DOWNLOAD: non cambia pagina (iPhone + Android) ===
   function triggerDownload(url){
-  // iPhone Safari: evita about:blank usando un iframe invisibile
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = url;
-
-  document.body.appendChild(iframe);
-
-  // pulizia dopo un po' (non chiude il download)
-  setTimeout(() => {
-    try { iframe.remove(); } catch(_) {}
-  }, 60000);
-}
-
+    const frameName = 'dl_frame';
+    let iframe = document.getElementById('dl_frame');
+    if(!iframe){
+      iframe = document.createElement('iframe');
+      iframe.id = 'dl_frame';
+      iframe.name = frameName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = frameName;
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
-    el.href = '#';
+    el.href = 'javascript:void(0)';
     el.addEventListener('click', (e)=>{
       e.preventDefault();
       e.stopPropagation();
       triggerDownload(withParams(DOWNLOAD_URL));
-    });
+    }, {passive:false});
   });
 
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
