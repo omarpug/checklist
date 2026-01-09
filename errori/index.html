@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Checklist “7 errori” — Federica Cellini</title>
 <meta name="robots" content="noindex,nofollow" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0b1b2b; --muted:#667085; --bg:#f6f8fb; --card:#ffffff;
@@ -36,7 +37,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .card p{margin:0 0 10px;color:var(--muted)}
 .center{text-align:center}
 
-/* Immagini leggibili: mobile 1 colonna, desktop 2 colonne */
+/* immagini + gallery */
 .shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(10,37,64,.10)}
 .shot > a{display:block;cursor:zoom-in}
 .shot img{width:100%;height:auto;object-fit:contain}
@@ -49,10 +50,8 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .bullets{display:grid;gap:10px;margin:12px 0 0}
 .bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
 
-/* CTA finale */
 .final-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
-/* Sticky CTA */
 .sticky{position:sticky;bottom:0;z-index:50;background:#ffffffcc;backdrop-filter:saturate(1.2) blur(6px);border-top:1px solid var(--line)}
 .sticky__in{max-width:1040px;margin:0 auto;padding:12px;display:flex;gap:12px;justify-content:center}
 
@@ -60,7 +59,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 :focus-visible{outline:3px solid #e6c766;outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){ .btn:active{transform:none} }
 
-/* Lightbox */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999}
 .lb img{max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5);border-radius:12px}
 .lb[aria-hidden="false"]{display:flex}
@@ -70,7 +68,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <div class="container">
 
-  <!-- HERO -->
   <section class="hero">
     <p class="kicker">Affitti brevi • Airbnb</p>
     <h1>Checklist <u>7 errori</u> che ti stanno bloccando le prenotazioni</h1>
@@ -86,16 +83,14 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- RISULTATI -->
   <section class="section">
     <h2>Risultati reali (dal mio cruscotto)</h2>
     <div class="card proof">
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/riepilogo-2025.png" alt="Riepilogo risultati" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/riepilogo-2025.png" alt="Riepilogo risultati" loading="lazy"></a></div>
       <div class="caption">Dopo l’ottimizzazione: calendario più pieno e entrate in crescita stabile.</div>
     </div>
   </section>
 
-  <!-- CHI SONO -->
   <section class="section">
     <div class="card">
       <h2>Chi sono</h2>
@@ -109,20 +104,18 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- ALTRI RISULTATI -->
   <section class="section">
     <h2>Altri risultati (schermate reali)</h2>
     <div class="gallery">
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/entrate-2025.png" alt="Entrate 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/1-2025.png" alt="Dettaglio 1 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/2-2025.png" alt="Dettaglio 2 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/3-2025.png" alt="Dettaglio 3 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/4-2025.png" alt="Dettaglio 4 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/5-2025.png" alt="Dettaglio 5 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/entrate-2025.png" alt="Entrate 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/1-2025.png" alt="Dettaglio 1 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/2-2025.png" alt="Dettaglio 2 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/3-2025.png" alt="Dettaglio 3 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/4-2025.png" alt="Dettaglio 4 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/5-2025.png" alt="Dettaglio 5 2025" loading="lazy"></a></div>
     </div>
   </section>
 
-  <!-- COME FUNZIONA LA CALL -->
   <section class="section">
     <div class="card">
       <h2>Come funziona la call</h2>
@@ -133,7 +126,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- CTA FINALE -->
   <section class="section">
     <div class="card center">
       <h2>Pronto a sbloccare il calendario?</h2>
@@ -150,111 +142,108 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   </footer>
 </div>
 
-<!-- Sticky CTA -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
 </div>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita"><img id="lbimg" alt="Anteprima ingrandita" /></div>
+<div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita">
+  <img id="lbimg" alt="Anteprima ingrandita" />
+</div>
 
 <script>
   const TIPOLOGIA = 'errori';
 
-  // === DOWNLOAD (resta in landing + download diretto) ===
+  // DOWNLOAD: file Drive
   const FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
+  // path immagini: /checklist/errori/assets/img/...
   (function fixImagesBase(){
-    // Prende il path della cartella corrente (es. /checklist/errori)
-    const BASE_PATH = location.pathname.replace(/\/$/, '');
+    const parts = location.pathname.split('/').filter(Boolean);
+    const BASE = '/' + parts.join('/');
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = img.getAttribute('data-src'); // tipo /assets/img/1-2025.png
-      img.src = BASE_PATH + rel;               // → /checklist/errori/assets/img/1-2025.png
+      const rel = img.getAttribute('data-src').replace(/^\/+/, '');
+      img.src = BASE + '/' + rel;
       const a = img.closest('a.zoom');
-      if (a) a.href = img.src;
+      if(a){ a.href = img.src; }
     });
   })();
 
   const q = new URLSearchParams(location.search);
-  const utm_source=q.get('utm_source')||'';
-  const utm_medium=q.get('utm_medium')||'';
-  const utm_campaign=q.get('utm_campaign')||TIPOLOGIA;
+  const utm_source   = q.get('utm_source')   || '';
+  const utm_medium   = q.get('utm_medium')   || '';
+  const utm_campaign = q.get('utm_campaign') || TIPOLOGIA;
 
   function getLeadId(){
-    let id=localStorage.getItem('lid');
+    let id = localStorage.getItem('lid');
     if(!id){
-      id='ld_'+(crypto.randomUUID?crypto.randomUUID():Math.random().toString(16).slice(2));
-      localStorage.setItem('lid',id);
+      id = 'ld_'+(crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(16).slice(2));
+      localStorage.setItem('lid', id);
     }
     return id;
   }
-  const lid=getLeadId();
+  const lid = getLeadId();
 
   function withParams(url){
-    const u=new URL(url);
-    if(utm_source)u.searchParams.set('utm_source',utm_source);
-    if(utm_medium)u.searchParams.set('utm_medium',utm_medium);
-    if(utm_campaign)u.searchParams.set('utm_campaign',utm_campaign);
-    u.searchParams.set('lid',lid);
+    const u = new URL(url);
+    if(utm_source)   u.searchParams.set('utm_source', utm_source);
+    if(utm_medium)   u.searchParams.set('utm_medium', utm_medium);
+    if(utm_campaign) u.searchParams.set('utm_campaign', utm_campaign);
+    u.searchParams.set('lid', lid);
     return u.toString();
   }
 
-  // === DOWNLOAD: intercetta click, NON naviga, NON apre tab ===
-  function triggerDownload(url){
-  // iPhone Safari: evita about:blank usando un iframe invisibile
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = url;
-
-  document.body.appendChild(iframe);
-
-  // pulizia dopo un po' (non chiude il download)
-  setTimeout(() => {
-    try { iframe.remove(); } catch(_) {}
-  }, 60000);
-}
-
+  // DOWNLOAD robusto: apre NUOVA scheda via form target=_blank (mobile friendly)
+  function triggerDownloadNewTab(url){
+    const form = document.createElement('form');
+    form.method = 'GET';
+    form.action = url;
+    form.target = '_blank';
+    form.style.display = 'none';
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+  }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
-    const el=document.getElementById(id);
+    const el = document.getElementById(id);
     if(!el) return;
-    el.href = '#';
-    el.addEventListener('click',(e)=>{
+    el.href = withParams(DOWNLOAD_URL);          // fallback se JS non parte
+    el.target = '_blank';
+    el.rel = 'noopener';
+    el.addEventListener('click', (e)=>{
       e.preventDefault();
-      e.stopPropagation();
-      triggerDownload(withParams(DOWNLOAD_URL));
+      triggerDownloadNewTab(withParams(DOWNLOAD_URL));
     });
   });
 
-  // CALL: normale navigazione verso Calendly
-  const calls=['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'];
-  calls.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el) el.href=withParams(CALENDLY_URL);
+  ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.href = withParams(CALENDLY_URL);
   });
 
-  // Non tocchiamo i link Drive (download è gestito dai bottoni), ma tracciamo eventuali calendly
   document.querySelectorAll('a[href*="calendly.com"]').forEach(a=>{
-    try{ a.href=withParams(a.href); }catch(_){}
+    try{ a.href = withParams(a.href); }catch(_){}
   });
 
-  document.getElementById('y').textContent=new Date().getFullYear();
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-  const lb=document.getElementById('lightbox'), lbimg=document.getElementById('lbimg');
+  const lb = document.getElementById('lightbox');
+  const lbimg = document.getElementById('lbimg');
   document.querySelectorAll('a.zoom').forEach(a=>{
-    a.addEventListener('click',e=>{
+    a.addEventListener('click', e=>{
       e.preventDefault();
-      lbimg.src=a.href;
+      lbimg.src = a.href;
       lb.setAttribute('aria-hidden','false');
     });
   });
-  lb.addEventListener('click',()=>lb.setAttribute('aria-hidden','true'));
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape') lb.setAttribute('aria-hidden','true');
+  lb.addEventListener('click', ()=>lb.setAttribute('aria-hidden','true'));
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape') lb.setAttribute('aria-hidden','true');
   });
 </script>
+
 </body>
 </html>
