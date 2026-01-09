@@ -156,7 +156,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
-  // ✅ path immagini robusto (come errori/regole)
+  // ✅ path immagini robusto
   (function fixImagesBase(){
     let base = location.pathname.replace(/\/index\.html$/i, '');
     base = base.replace(/\/$/, '');
@@ -192,7 +192,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // ✅ download mobile-safe: iframe invisibile (niente about:blank)
+  // ✅ download mobile-safe: iframe invisibile
   function triggerDownloadInBackground(url){
     const old = document.getElementById('dl_iframe');
     if(old){ try{ old.remove(); }catch(_){} }
@@ -217,6 +217,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     }, 350);
   }
 
+  // ✅ click download
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
@@ -228,12 +229,24 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     });
   });
 
+  // ✅ auto-download se arrivi dal form con download=1
+  (function autoDownloadFromForm(){
+    const q = new URLSearchParams(location.search);
+    if(q.get('download') !== '1') return;
+
+    triggerDownloadInBackground(DOWNLOAD_URL);
+
+    // pulisci URL (togli download=1 ma lascia UTM + lid)
+    q.delete('download');
+    const clean = location.pathname + (q.toString() ? '?' + q.toString() : '');
+    try{ history.replaceState({}, '', clean); }catch(_){}
+  })();
+
   // ✅ Calendly con UTM + lid
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
   });
-
   document.querySelectorAll('a[href*="calendly.com"]').forEach(a=>{
     try{ a.href = withParams(a.href); }catch(_){}
   });
