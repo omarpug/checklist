@@ -162,20 +162,18 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 <script>
   const TIPOLOGIA = 'errori';
 
-  // === DOWNLOAD (NUOVA SCHEDA + UTENTE RESTA IN LANDING) ===
-  // NOTA: NON aggiungere parametri (utm/lid) a questo link Drive, altrimenti su iPhone/Android spesso dà "400 formato non valido".
+  // DOWNLOAD: lascia la landing aperta e apre una NUOVA SCHEDA "pulita" (no about:blank) che avvia il download
   const FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
   (function fixImagesBase(){
-    // /checklist/errori/  oppure /checklist/errori/index.html
     let base = location.pathname.replace(/\/index\.html$/i, '');
     base = base.replace(/\/$/, '');
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = img.getAttribute('data-src'); // es. /assets/img/1-2025.png
-      img.src = base + rel;                     // -> /checklist/errori/assets/img/1-2025.png
+      const rel = img.getAttribute('data-src');
+      img.src = base + rel;
       const a = img.closest('a.zoom');
       if (a) a.href = img.src;
     });
@@ -205,13 +203,52 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // Apre il download in una NUOVA SCHEDA e lascia la landing intatta
+  // ✅ FIX MOBILE: nuova scheda con una pagina "Download in corso..." (non about:blank),
+  // poi redirect al file e tentativo di auto-chiusura.
   function triggerDownloadNewTab(url){
-    // 1) prova window.open (più affidabile su desktop)
-    const w = window.open(url, '_blank', 'noopener,noreferrer');
-    if (w) return;
+    const w = window.open('', '_blank', 'noopener,noreferrer');
+    if (w) {
+      try {
+        const html = `<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Download in corso...</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0A2540;color:#fff}
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .card{max-width:520px;width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+        border-radius:16px;padding:18px 16px;text-align:center}
+  h1{font-size:18px;margin:0 0 8px}
+  p{margin:0 0 12px;opacity:.9;font-size:14px;line-height:1.4}
+  a{color:#D4AF37;font-weight:700}
+</style>
+</head><body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Download in corso…</h1>
+      <p>Se non parte automaticamente, tocca qui:</p>
+      <p><a id="dl" href="${url}" target="_self" rel="noopener">Avvia download</a></p>
+      <p style="opacity:.7">Puoi tornare alla landing in qualsiasi momento.</p>
+    </div>
+  </div>
+<script>
+  // avvia subito
+  location.href = "${url}";
+  // prova a chiudere dopo qualche secondo (funziona in molti casi)
+  setTimeout(()=>{ try{ window.close(); }catch(e){} }, 5000);
+<\/script>
+</body></html>`;
+        w.document.open();
+        w.document.write(html);
+        w.document.close();
+        return;
+      } catch (_) {
+        // fallback sotto
+      }
+    }
 
-    // 2) fallback: click programmatico su <a target=_blank> (più affidabile su mobile)
+    // fallback: link target blank
     const a = document.createElement('a');
     a.href = url;
     a.target = '_blank';
@@ -232,7 +269,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     });
   });
 
-  // CALL (qui sì che tracciamo con parametri)
+  // CALL (qui sì tracciamo)
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
