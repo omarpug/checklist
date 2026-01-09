@@ -162,12 +162,11 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
-  // ✅ path immagini robusto come in "errori"
   (function fixImagesBase(){
     let base = location.pathname.replace(/\/index\.html$/i, '');
     base = base.replace(/\/$/, '');
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = img.getAttribute('data-src').replace(/^\/+/, '');
+      const rel = (img.getAttribute('data-src') || '').replace(/^\/+/, '');
       img.src = base + '/' + rel;
       const a = img.closest('a.zoom');
       if(a) a.href = img.src;
@@ -198,7 +197,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // ✅ download mobile-safe: iframe invisibile (niente about:blank)
   function triggerDownloadInBackground(url){
     const old = document.getElementById('dl_iframe');
     if(old){ try{ old.remove(); }catch(_){} }
@@ -209,7 +207,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     iframe.src = url;
     document.body.appendChild(iframe);
 
-    // fallback extra
     setTimeout(()=>{
       try{
         const a = document.createElement('a');
@@ -234,18 +231,28 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     });
   });
 
+  // ✅ auto-download se arrivi dal form con download=1
+  (function autoDownloadFromForm(){
+    const q = new URLSearchParams(location.search);
+    if(q.get('download') !== '1') return;
+
+    triggerDownloadInBackground(DOWNLOAD_URL);
+
+    q.delete('download');
+    const clean = location.pathname + (q.toString() ? '?' + q.toString() : '');
+    try{ history.replaceState({}, '', clean); }catch(_){}
+  })();
+
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
   });
-
   document.querySelectorAll('a[href*="calendly.com"]').forEach(a=>{
     try{ a.href = withParams(a.href); }catch(_){}
   });
 
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbimg = document.getElementById('lbimg');
   document.querySelectorAll('a.zoom').forEach(a=>{
