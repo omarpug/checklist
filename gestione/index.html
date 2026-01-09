@@ -17,10 +17,12 @@ img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 .container{max-width:1040px;margin:0 auto;padding:20px}
 .section{margin:28px 0}
-h1{font-size:40px;line-height:1.1;margin:0 0 10px;letter-spacing:-.3px}
-h2{font-size:24px;margin:0 0 12px}
-.lead{font-size:18px;color:var(--muted);max-width:900px;margin:0 0 16px}
-.kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#2d3b4a;margin:0 0 8px;font-weight:700}
+
+/* ✅ FONT leggermente più piccoli */
+h1{font-size:38px;line-height:1.1;margin:0 0 10px;letter-spacing:-.3px}
+h2{font-size:22px;margin:0 0 12px}
+.lead{font-size:16px;color:var(--muted);max-width:900px;margin:0 0 14px}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2d3b4a;margin:0 0 8px;font-weight:700}
 u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 .hero{padding:4px 0 6px}
@@ -34,20 +36,20 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .btn:active{transform:translateY(1px)}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.card p{margin:0 0 10px;color:var(--muted)}
+.card p{margin:0 0 10px;color:var(--muted);font-size:15px} /* ✅ più piccolo */
 .center{text-align:center}
 
 .shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(10,37,64,.10)}
 .shot > a{display:block;cursor:zoom-in}
 .shot img{width:100%;height:auto;object-fit:contain}
-.caption{font-size:14px;color:#667085;font-weight:600;margin-top:8px}
+.caption{font-size:13px;color:#667085;font-weight:600;margin-top:8px} /* ✅ più piccolo */
 
 .proof{display:grid;gap:10px}
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px}
 @media (max-width:900px){ .gallery{grid-template-columns:1fr} }
 
 .bullets{display:grid;gap:10px;margin:12px 0 0}
-.bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
+.bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600;font-size:14px} /* ✅ più piccolo */
 
 .final-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
@@ -70,11 +72,18 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   <section class="hero">
     <p class="kicker">Affitti brevi • Airbnb</p>
     <h1>Checklist <u>Gestione</u> per evitare caos e imprevisti</h1>
-    <p class="lead">Procedure, messaggi e controllo operativo: scarica la checklist e, se vuoi, prenota una call gratuita per applicarla al tuo caso.</p>
+
+    <!-- ✅ TESTO HERO aggiornato -->
+    <p class="lead">
+      Procedure, messaggi e controllo operativo: scarica la checklist e prenota una chiamata per capire come aumentare <b>REALMENTE</b>
+      i guadagni della tua casa vacanze con il mio percorso di affiancamento
+    </p>
+
     <div class="cta-row">
       <a id="btnDownloadHero" class="btn btn--accent" href="#" rel="nofollow">Scarica la checklist</a>
-      <a id="btnCallHero" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a>
+      <a id="btnCallHero" class="btn btn--primary" href="#" rel="nofollow">PRENOTA ORA</a>
     </div>
+
     <div class="bullets">
       <div class="i">Checklist check-in/out + gestione pulizie senza buchi.</div>
       <div class="i">Messaggi automatici: istruzioni chiare, meno domande, meno stress.</div>
@@ -93,18 +102,32 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   <section class="section">
     <div class="card">
       <h2>Chi sono</h2>
+
+      <!-- ✅ CHI SONO: terzo paragrafo aggiornato -->
       <p>Ciao, sono <b>Federica Cellini</b>. Il punto non è “fare tutto”: è avere un sistema che regge quando arrivano imprevisti e cambi last-minute.</p>
       <p>Imposto procedure, template e checklist operative per check-in/out, pulizie, manutenzione e comunicazioni. Così la gestione diventa stabile.</p>
-      <p>Se vuoi un confronto veloce, prenota la call gratuita: in 20′ capiamo cosa sistemare subito.</p>
+      <p><b>Prenota ora una chiamata</b> per aumentare i guadagni della tua casa vacanze con il mio percorso di affiancamento</p>
+
       <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
         <a id="btnDownloadMid" class="btn btn--accent" href="#" rel="nofollow">Scarica la checklist “Gestione”</a>
-        <a id="btnCallMid" class="btn btn--ghost" href="#" rel="nofollow">Prenota la call gratuita</a>
+        <a id="btnCallMid" class="btn btn--ghost" href="#" rel="nofollow">PRENOTA ORA</a>
       </div>
     </div>
   </section>
 
+  <!-- ✅ SEZIONE SCHERMATE: titolo + testo proof inseriti prima della gallery -->
   <section class="section">
-    <h2>Altri risultati (schermate reali)</h2>
+    <h2>Risultati reali, non promesse</h2>
+
+    <p class="lead"><b>Queste non sono opinioni, sono dati reali.</b><br>
+      Qui sotto trovi schermate del mio cruscotto di gestione: risultati concreti, non promesse.</p>
+
+    <p class="lead">La differenza non la fa la casa, né la fortuna.<br>
+      La fa il <b>metodo</b>: annuncio impostato correttamente, prezzi aggiornati in modo intelligente e un processo di gestione che lavora ogni giorno al posto tuo.</p>
+
+    <p class="lead">Se oggi stai gestendo “a sensazione”, i numeri restano fermi.<br>
+      Quando inizi a trattare la tua casa vacanze come un vero business, <b>calendario e guadagni iniziano a muoversi sul serio</b>.</p>
+
     <div class="gallery">
       <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/entrate-2025.png" alt="Entrate 2025" loading="lazy"></a></div>
       <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/1-2025.png" alt="Dettaglio 1 2025" loading="lazy"></a></div>
@@ -115,23 +138,16 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <section class="section">
-    <div class="card">
-      <h2>Come funziona la call</h2>
-      <p><b>1) Analisi lampo</b> — dove perdi tempo e dove nascono gli imprevisti.</p>
-      <p><b>2) Fix prioritari</b> — procedure e template per stabilizzare la gestione.</p>
-      <p><b>3) Processo & KPI</b> — controllo operativo semplice e replicabile.</p>
-      <div style="margin-top:12px"><a id="btnCallBottom" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
-    </div>
-  </section>
+  <!-- ✅ ELIMINATA COMPLETAMENTE la sezione "Come funziona la call" -->
 
   <section class="section">
     <div class="card center">
-      <h2>Pronto a semplificare la gestione?</h2>
-      <p class="lead">Scarica la checklist e, se vuoi, facciamo una call per applicarla al tuo annuncio.</p>
+      <!-- ✅ CTA finale aggiornata -->
+      <h2>Sei pronto a semplificare la gestione della tua casa vacanze tramite il mio percorso di affiancamento?</h2>
+      <p class="lead">Scarica la checklist e prenota una chiamata</p>
       <div class="final-cta">
         <a id="btnDownloadBottom" class="btn btn--accent" href="#" rel="nofollow">Scarica la checklist “Gestione”</a>
-        <a id="btnCallFinal" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a>
+        <a id="btnCallFinal" class="btn btn--primary" href="#" rel="nofollow">PRENOTA ORA</a>
       </div>
     </div>
   </section>
@@ -142,7 +158,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 </div>
 
 <div class="sticky" aria-label="Prenotazione rapida">
-  <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
+  <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">PRENOTA ORA</a></div>
 </div>
 
 <div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita"><img id="lbimg" alt="Anteprima ingrandita" /></div>
