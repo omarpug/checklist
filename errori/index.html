@@ -37,7 +37,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .card p{margin:0 0 10px;color:var(--muted)}
 .center{text-align:center}
 
-/* Immagini leggibili: mobile 1 colonna, desktop 2 colonne */
 .shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(10,37,64,.10)}
 .shot > a{display:block;cursor:zoom-in}
 .shot img{width:100%;height:auto;object-fit:contain}
@@ -50,10 +49,8 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .bullets{display:grid;gap:10px;margin:12px 0 0}
 .bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
 
-/* CTA finale */
 .final-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
-/* Sticky CTA */
 .sticky{position:sticky;bottom:0;z-index:50;background:#ffffffcc;backdrop-filter:saturate(1.2) blur(6px);border-top:1px solid var(--line)}
 .sticky__in{max-width:1040px;margin:0 auto;padding:12px;display:flex;gap:12px;justify-content:center}
 
@@ -61,7 +58,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 :focus-visible{outline:3px solid #e6c766;outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){ .btn:active{transform:none} }
 
-/* Lightbox */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999}
 .lb img{max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5);border-radius:12px}
 .lb[aria-hidden="false"]{display:flex}
@@ -71,7 +67,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <div class="container">
 
-  <!-- HERO -->
   <section class="hero">
     <p class="kicker">Affitti brevi • Airbnb</p>
     <h1>Checklist <u>7 errori</u> che ti stanno bloccando le prenotazioni</h1>
@@ -87,7 +82,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- RISULTATI -->
   <section class="section">
     <h2>Risultati reali (dal mio cruscotto)</h2>
     <div class="card proof">
@@ -96,7 +90,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- CHI SONO -->
   <section class="section">
     <div class="card">
       <h2>Chi sono</h2>
@@ -110,7 +103,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- ALTRI RISULTATI -->
   <section class="section">
     <h2>Altri risultati (schermate reali)</h2>
     <div class="gallery">
@@ -123,7 +115,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- COME FUNZIONA LA CALL -->
   <section class="section">
     <div class="card">
       <h2>Come funziona la call</h2>
@@ -134,7 +125,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- CTA FINALE -->
   <section class="section">
     <div class="card center">
       <h2>Pronto a sbloccare il calendario?</h2>
@@ -151,18 +141,16 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   </footer>
 </div>
 
-<!-- Sticky CTA -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
 </div>
 
-<!-- Lightbox -->
 <div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita"><img id="lbimg" alt="Anteprima ingrandita" /></div>
 
 <script>
   const TIPOLOGIA = 'errori';
 
-  // DOWNLOAD: lascia la landing aperta e apre una NUOVA SCHEDA "pulita" (no about:blank) che avvia il download
+  // ✅ Link download diretto (NON ci attacchiamo UTM, altrimenti Drive può dare 400)
   const FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
@@ -203,59 +191,30 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // ✅ FIX MOBILE: nuova scheda con una pagina "Download in corso..." (non about:blank),
-  // poi redirect al file e tentativo di auto-chiusura.
-  function triggerDownloadNewTab(url){
-    const w = window.open('', '_blank', 'noopener,noreferrer');
-    if (w) {
-      try {
-        const html = `<!doctype html>
-<html lang="it"><head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Download in corso...</title>
-<style>
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0A2540;color:#fff}
-  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-  .card{max-width:520px;width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
-        border-radius:16px;padding:18px 16px;text-align:center}
-  h1{font-size:18px;margin:0 0 8px}
-  p{margin:0 0 12px;opacity:.9;font-size:14px;line-height:1.4}
-  a{color:#D4AF37;font-weight:700}
-</style>
-</head><body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Download in corso…</h1>
-      <p>Se non parte automaticamente, tocca qui:</p>
-      <p><a id="dl" href="${url}" target="_self" rel="noopener">Avvia download</a></p>
-      <p style="opacity:.7">Puoi tornare alla landing in qualsiasi momento.</p>
-    </div>
-  </div>
-<script>
-  // avvia subito
-  location.href = "${url}";
-  // prova a chiudere dopo qualche secondo (funziona in molti casi)
-  setTimeout(()=>{ try{ window.close(); }catch(e){} }, 5000);
-<\/script>
-</body></html>`;
-        w.document.open();
-        w.document.write(html);
-        w.document.close();
-        return;
-      } catch (_) {
-        // fallback sotto
-      }
-    }
+  // ✅ DOWNLOAD MOBILE-SAFE: iframe invisibile (niente tab bianca, resti sulla landing)
+  function triggerDownloadInBackground(url){
+    // rimuovi eventuale iframe precedente
+    const old = document.getElementById('dl_iframe');
+    if (old) { try { old.remove(); } catch(_){} }
 
-    // fallback: link target blank
-    const a = document.createElement('a');
-    a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    const iframe = document.createElement('iframe');
+    iframe.id = 'dl_iframe';
+    iframe.style.display = 'none';
+    iframe.src = url;
+    document.body.appendChild(iframe);
+
+    // fallback extra (alcuni webview sono “capricciosi”)
+    setTimeout(()=>{
+      try{
+        const a = document.createElement('a');
+        a.href = url;
+        a.rel = 'noopener';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }catch(_){}
+    }, 350);
   }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
@@ -265,11 +224,10 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     el.addEventListener('click', (e)=>{
       e.preventDefault();
       e.stopPropagation();
-      triggerDownloadNewTab(DOWNLOAD_URL);
+      triggerDownloadInBackground(DOWNLOAD_URL);
     });
   });
 
-  // CALL (qui sì tracciamo)
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
@@ -281,7 +239,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbimg = document.getElementById('lbimg');
   document.querySelectorAll('a.zoom').forEach(a=>{
