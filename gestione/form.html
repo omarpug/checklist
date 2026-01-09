@@ -31,7 +31,7 @@ button:disabled{opacity:.6;cursor:not-allowed}
 <body>
 <div class="container">
   <h1>Scarica la checklist</h1>
-  <p class="lead">Compila i campi e vieni reindirizzato alla guida “Gestione completa”.</p>
+  <p class="lead">Compila i campi e vieni reindirizzato alla guida “Gestione”.</p>
 
   <form id="leadForm" novalidate>
     <label for="name">Nome</label>
@@ -69,7 +69,9 @@ button:disabled{opacity:.6;cursor:not-allowed}
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec";
 const TIPOLOGIA = "gestione";
-const REDIRECT  = "https://federicapropertymanager.github.io/checklisterrori/gestione/";
+
+/* ✅ MODIFICA: redirect sul TUO repo (omarpug), non sul vecchio dominio */
+const REDIRECT  = "https://omarpug.github.io/checklist/gestione/";
 
 const q = new URLSearchParams(location.search);
 const utm_source   = q.get('utm_source')   || '';
@@ -78,6 +80,7 @@ const utm_campaign = q.get('utm_campaign') || TIPOLOGIA;
 const PROVENIENZA  = utm_source || 'instagram';
 
 const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
 function getLeadId(){
   let id = localStorage.getItem('lid');
   if(!id){
@@ -128,7 +131,13 @@ document.getElementById("leadForm").addEventListener("submit", (e)=>{
   };
 
   const qs=new URLSearchParams(payload).toString();
-  const redirect = REDIRECT + (location.search ? location.search+'&' : '?') + 'lid='+encodeURIComponent(lead_id);
+
+  /* ✅ MODIFICA: aggiungo download=1 così la landing fa partire il download da sola */
+  const redirect =
+    REDIRECT +
+    (location.search ? location.search + "&" : "?") +
+    "lid=" + encodeURIComponent(lead_id) +
+    "&download=1";
 
   try{
     if(navigator.sendBeacon){
