@@ -37,7 +37,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .card p{margin:0 0 10px;color:var(--muted)}
 .center{text-align:center}
 
-/* immagini + gallery */
+/* Immagini leggibili: mobile 1 colonna, desktop 2 colonne */
 .shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(10,37,64,.10)}
 .shot > a{display:block;cursor:zoom-in}
 .shot img{width:100%;height:auto;object-fit:contain}
@@ -50,8 +50,10 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .bullets{display:grid;gap:10px;margin:12px 0 0}
 .bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
 
+/* CTA finale */
 .final-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
+/* Sticky CTA */
 .sticky{position:sticky;bottom:0;z-index:50;background:#ffffffcc;backdrop-filter:saturate(1.2) blur(6px);border-top:1px solid var(--line)}
 .sticky__in{max-width:1040px;margin:0 auto;padding:12px;display:flex;gap:12px;justify-content:center}
 
@@ -59,6 +61,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 :focus-visible{outline:3px solid #e6c766;outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){ .btn:active{transform:none} }
 
+/* Lightbox */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999}
 .lb img{max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5);border-radius:12px}
 .lb[aria-hidden="false"]{display:flex}
@@ -68,6 +71,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <div class="container">
 
+  <!-- HERO -->
   <section class="hero">
     <p class="kicker">Affitti brevi • Airbnb</p>
     <h1>Checklist <u>7 errori</u> che ti stanno bloccando le prenotazioni</h1>
@@ -83,14 +87,16 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
+  <!-- RISULTATI -->
   <section class="section">
     <h2>Risultati reali (dal mio cruscotto)</h2>
     <div class="card proof">
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/riepilogo-2025.png" alt="Riepilogo risultati" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/riepilogo-2025.png" alt="Riepilogo risultati" loading="lazy"></a></div>
       <div class="caption">Dopo l’ottimizzazione: calendario più pieno e entrate in crescita stabile.</div>
     </div>
   </section>
 
+  <!-- CHI SONO -->
   <section class="section">
     <div class="card">
       <h2>Chi sono</h2>
@@ -104,18 +110,20 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
+  <!-- ALTRI RISULTATI -->
   <section class="section">
     <h2>Altri risultati (schermate reali)</h2>
     <div class="gallery">
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/entrate-2025.png" alt="Entrate 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/1-2025.png" alt="Dettaglio 1 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/2-2025.png" alt="Dettaglio 2 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/3-2025.png" alt="Dettaglio 3 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/4-2025.png" alt="Dettaglio 4 2025" loading="lazy"></a></div>
-      <div class="shot"><a class="zoom" href="#"><img data-src="assets/img/5-2025.png" alt="Dettaglio 5 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/entrate-2025.png" alt="Entrate 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/1-2025.png" alt="Dettaglio 1 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/2-2025.png" alt="Dettaglio 2 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/3-2025.png" alt="Dettaglio 3 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/4-2025.png" alt="Dettaglio 4 2025" loading="lazy"></a></div>
+      <div class="shot"><a class="zoom" href="#"><img data-src="/assets/img/5-2025.png" alt="Dettaglio 5 2025" loading="lazy"></a></div>
     </div>
   </section>
 
+  <!-- COME FUNZIONA LA CALL -->
   <section class="section">
     <div class="card">
       <h2>Come funziona la call</h2>
@@ -126,6 +134,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
+  <!-- CTA FINALE -->
   <section class="section">
     <div class="card center">
       <h2>Pronto a sbloccare il calendario?</h2>
@@ -142,32 +151,33 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   </footer>
 </div>
 
+<!-- Sticky CTA -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
 </div>
 
-<div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita">
-  <img id="lbimg" alt="Anteprima ingrandita" />
-</div>
+<!-- Lightbox -->
+<div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita"><img id="lbimg" alt="Anteprima ingrandita" /></div>
 
 <script>
   const TIPOLOGIA = 'errori';
 
-  // DOWNLOAD: file Drive
+  // === DOWNLOAD (NUOVA SCHEDA + UTENTE RESTA IN LANDING) ===
+  // NOTA: NON aggiungere parametri (utm/lid) a questo link Drive, altrimenti su iPhone/Android spesso dà "400 formato non valido".
   const FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
-  // path immagini: /checklist/errori/assets/img/...
   (function fixImagesBase(){
-    const parts = location.pathname.split('/').filter(Boolean);
-    const BASE = '/' + parts.join('/');
+    // /checklist/errori/  oppure /checklist/errori/index.html
+    let base = location.pathname.replace(/\/index\.html$/i, '');
+    base = base.replace(/\/$/, '');
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = img.getAttribute('data-src').replace(/^\/+/, '');
-      img.src = BASE + '/' + rel;
+      const rel = img.getAttribute('data-src'); // es. /assets/img/1-2025.png
+      img.src = base + rel;                     // -> /checklist/errori/assets/img/1-2025.png
       const a = img.closest('a.zoom');
-      if(a){ a.href = img.src; }
+      if (a) a.href = img.src;
     });
   })();
 
@@ -179,7 +189,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   function getLeadId(){
     let id = localStorage.getItem('lid');
     if(!id){
-      id = 'ld_'+(crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(16).slice(2));
+      id = 'ld_' + (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(16).slice(2));
       localStorage.setItem('lid', id);
     }
     return id;
@@ -195,30 +205,34 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // DOWNLOAD robusto: apre NUOVA scheda via form target=_blank (mobile friendly)
+  // Apre il download in una NUOVA SCHEDA e lascia la landing intatta
   function triggerDownloadNewTab(url){
-    const form = document.createElement('form');
-    form.method = 'GET';
-    form.action = url;
-    form.target = '_blank';
-    form.style.display = 'none';
-    document.body.appendChild(form);
-    form.submit();
-    form.remove();
+    // 1) prova window.open (più affidabile su desktop)
+    const w = window.open(url, '_blank', 'noopener,noreferrer');
+    if (w) return;
+
+    // 2) fallback: click programmatico su <a target=_blank> (più affidabile su mobile)
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
-    el.href = withParams(DOWNLOAD_URL);          // fallback se JS non parte
-    el.target = '_blank';
-    el.rel = 'noopener';
+    el.href = '#';
     el.addEventListener('click', (e)=>{
       e.preventDefault();
-      triggerDownloadNewTab(withParams(DOWNLOAD_URL));
+      e.stopPropagation();
+      triggerDownloadNewTab(DOWNLOAD_URL);
     });
   });
 
+  // CALL (qui sì che tracciamo con parametri)
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
@@ -230,6 +244,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   document.getElementById('y').textContent = new Date().getFullYear();
 
+  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbimg = document.getElementById('lbimg');
   document.querySelectorAll('a.zoom').forEach(a=>{
@@ -244,6 +259,5 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     if(e.key === 'Escape') lb.setAttribute('aria-hidden','true');
   });
 </script>
-
 </body>
 </html>
