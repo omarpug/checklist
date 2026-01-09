@@ -150,7 +150,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 <script>
   const TIPOLOGIA = 'errori';
 
-  // ✅ Link download diretto (NON ci attacchiamo UTM, altrimenti Drive può dare 400)
+  // ✅ Link download diretto (NO UTM su Drive)
   const FILE_ID = '1aJmnfQn4-Q31_UiskQMJAQ0O11YKpWog';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
@@ -171,6 +171,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   const utm_source   = q.get('utm_source')   || '';
   const utm_medium   = q.get('utm_medium')   || '';
   const utm_campaign = q.get('utm_campaign') || TIPOLOGIA;
+  const utm_content  = q.get('utm_content')  || ''; // ✅ MODIFICA: preservo anche utm_content
 
   function getLeadId(){
     let id = localStorage.getItem('lid');
@@ -187,13 +188,13 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     if(utm_source)   u.searchParams.set('utm_source', utm_source);
     if(utm_medium)   u.searchParams.set('utm_medium', utm_medium);
     if(utm_campaign) u.searchParams.set('utm_campaign', utm_campaign);
+    if(utm_content)  u.searchParams.set('utm_content', utm_content);
     u.searchParams.set('lid', lid);
     return u.toString();
   }
 
-  // ✅ DOWNLOAD MOBILE-SAFE: iframe invisibile (niente tab bianca, resti sulla landing)
+  // ✅ DOWNLOAD MOBILE-SAFE: iframe invisibile (resti sulla landing)
   function triggerDownloadInBackground(url){
-    // rimuovi eventuale iframe precedente
     const old = document.getElementById('dl_iframe');
     if (old) { try { old.remove(); } catch(_){} }
 
@@ -203,7 +204,7 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     iframe.src = url;
     document.body.appendChild(iframe);
 
-    // fallback extra (alcuni webview sono “capricciosi”)
+    // fallback
     setTimeout(()=>{
       try{
         const a = document.createElement('a');
@@ -216,6 +217,21 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
       }catch(_){}
     }, 350);
   }
+
+  // ✅ MODIFICA: auto-download solo quando arrivi dal form con download=1
+  (function autoDownloadIfRequested(){
+    const qp = new URLSearchParams(location.search);
+    if (qp.get('download') !== '1') return;
+
+    // avvia download
+    try { triggerDownloadInBackground(DOWNLOAD_URL); } catch(_) {}
+
+    // pulisce l'URL (toglie download=1 ma lascia gli altri parametri)
+    qp.delete('download');
+    const clean = qp.toString();
+    const newUrl = location.pathname + (clean ? `?${clean}` : '');
+    history.replaceState({}, '', newUrl);
+  })();
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
