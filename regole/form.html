@@ -20,14 +20,10 @@ button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:12px;curso
 button:disabled{opacity:.6;cursor:not-allowed}
 .success{display:none;margin-top:12px;padding:12px;border-radius:12px;text-align:center;background:#e8f7ef;color:#0a6b2b;font-weight:600;font-size:14px}
 .err{display:none;color:#b00020;font-size:13px;margin-top:8px}
-
-/* Consenso privacy */
 .consent{display:flex;align-items:flex-start;gap:10px;margin-top:10px}
 .consent input[type="checkbox"]{margin-top:3px;min-width:18px;width:18px;height:18px;cursor:pointer}
 .consent label{margin:0;font-weight:500;color:#334155;line-height:1.45}
 .consent a{color:#0A2540;text-decoration:underline;text-underline-offset:2px}
-
-/* footer mini */
 .meta{margin-top:10px;color:#94a3b8;font-size:12px;text-align:left}
 .meta a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 </style>
@@ -55,7 +51,6 @@ button:disabled{opacity:.6;cursor:not-allowed}
       <option>Gestisco per altri</option>
     </select>
 
-    <!-- unico consenso privacy -->
     <div class="consent">
       <input id="consent" type="checkbox" required>
       <label for="consent">
@@ -74,7 +69,9 @@ button:disabled{opacity:.6;cursor:not-allowed}
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec";
 const TIPOLOGIA = "regole";
-const REDIRECT  = "https://federicapm.github.io/checklist/regole/"; // <<< QUI IL DOMINIO GIUSTO
+
+/* ✅ MODIFICA: redirect sul TUO repo */
+const REDIRECT  = "https://omarpug.github.io/checklist/regole/";
 
 const q = new URLSearchParams(location.search);
 const utm_source   = q.get('utm_source')   || '';
@@ -126,7 +123,13 @@ document.getElementById("leadForm").addEventListener("submit", (e)=>{
   };
 
   const qs=new URLSearchParams(payload).toString();
-  const redirect = REDIRECT + (location.search ? location.search+'&' : '?') + 'lid='+encodeURIComponent(lead_id);
+
+  /* ✅ MODIFICA: download=1 per auto-download in landing */
+  const redirect =
+    REDIRECT +
+    (location.search ? location.search + "&" : "?") +
+    "lid=" + encodeURIComponent(lead_id) +
+    "&download=1";
 
   try{
     if(navigator.sendBeacon){
