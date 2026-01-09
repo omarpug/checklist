@@ -217,13 +217,16 @@
 
     const TIPOLOGIA = "errori";
 
-    // Nuovo URL su questo repo
-    const REDIRECT = "https://federicapm.github.io/checklist/errori/";
+    // ✅ MODIFICA: redirect al TUO repo (omarpug) e alla landing index
+    // NOTA: uso path relativo " ./ " così funziona sempre dentro /errori/
+    const REDIRECT_RELATIVE = "./"; // -> /checklist/errori/
 
     const q = new URLSearchParams(location.search);
     const utm_source   = q.get("utm_source")   || "";
     const utm_medium   = q.get("utm_medium")   || "";
     const utm_campaign = q.get("utm_campaign") || TIPOLOGIA;
+    const utm_content  = q.get("utm_content")  || ""; // ✅ MODIFICA: preservo anche utm_content
+
     const PROVENIENZA  = utm_source || "instagram";
 
     const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -235,6 +238,19 @@
         localStorage.setItem("lid", id);
       }
       return id;
+    }
+
+    // ✅ MODIFICA: costruisce URL landing con UTM + lid + download=1
+    function buildRedirectUrl(lead_id){
+      const next = new URL(REDIRECT_RELATIVE, location.href); // /errori/
+      if (utm_source)   next.searchParams.set("utm_source", utm_source);
+      if (utm_medium)   next.searchParams.set("utm_medium", utm_medium);
+      if (utm_campaign) next.searchParams.set("utm_campaign", utm_campaign);
+      if (utm_content)  next.searchParams.set("utm_content", utm_content);
+
+      next.searchParams.set("lid", lead_id);
+      next.searchParams.set("download", "1"); // ✅ MODIFICA: attiva l’auto-download sull’index
+      return next.toString();
     }
 
     document.getElementById("leadForm").addEventListener("submit", (e) => {
@@ -273,6 +289,7 @@
         utm_source,
         utm_medium,
         utm_campaign,
+        utm_content, // ✅ MODIFICA: invio anche utm_content
         lead_id,
         ts: new Date().toISOString(),
         userAgent: navigator.userAgent,
@@ -281,10 +298,8 @@
 
       const qs = new URLSearchParams(payload).toString();
 
-      const redirect =
-        REDIRECT +
-        (location.search ? location.search + "&" : "?") +
-        "lid=" + encodeURIComponent(lead_id);
+      // ✅ MODIFICA: redirect corretto (index) + download=1
+      const redirect = buildRedirectUrl(lead_id);
 
       try{
         if (navigator.sendBeacon){
