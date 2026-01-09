@@ -37,7 +37,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .card p{margin:0 0 10px;color:var(--muted)}
 .center{text-align:center}
 
-/* immagini + gallery */
 .shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(10,37,64,.10)}
 .shot > a{display:block;cursor:zoom-in}
 .shot img{width:100%;height:auto;object-fit:contain}
@@ -50,10 +49,8 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 .bullets{display:grid;gap:10px;margin:12px 0 0}
 .bullets .i{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
 
-/* CTA finale */
 .final-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
-/* Sticky CTA */
 .sticky{position:sticky;bottom:0;z-index:50;background:#ffffffcc;backdrop-filter:saturate(1.2) blur(6px);border-top:1px solid var(--line)}
 .sticky__in{max-width:1040px;margin:0 auto;padding:12px;display:flex;gap:12px;justify-content:center}
 
@@ -61,7 +58,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 :focus-visible{outline:3px solid #e6c766;outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){ .btn:active{transform:none} }
 
-/* Lightbox */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999}
 .lb img{max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5);border-radius:12px}
 .lb[aria-hidden="false"]{display:flex}
@@ -71,7 +67,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
 <div class="container">
 
-  <!-- HERO -->
   <section class="hero">
     <p class="kicker">Affitti brevi • Airbnb</p>
     <h1>Checklist <u>Regole essenziali</u> per ospitare senza rischi</h1>
@@ -87,7 +82,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- RISULTATI -->
   <section class="section">
     <h2>Risultati reali (dal mio cruscotto)</h2>
     <div class="card proof">
@@ -100,7 +94,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- CHI SONO -->
   <section class="section">
     <div class="card">
       <h2>Chi sono</h2>
@@ -114,7 +107,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- ALTRI RISULTATI -->
   <section class="section">
     <h2>Altri risultati (schermate reali)</h2>
     <div class="gallery">
@@ -127,7 +119,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- COME FUNZIONA LA CALL -->
   <section class="section">
     <div class="card">
       <h2>Come funziona la call</h2>
@@ -138,7 +129,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     </div>
   </section>
 
-  <!-- CTA FINALE -->
   <section class="section">
     <div class="card center">
       <h2>Pronto a mettere ordine?</h2>
@@ -155,12 +145,10 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
   </footer>
 </div>
 
-<!-- Sticky CTA -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in"><a id="btnCallSticky" class="btn btn--primary" href="#" rel="nofollow">Prenota la call gratuita</a></div>
 </div>
 
-<!-- Lightbox -->
 <div id="lightbox" class="lb" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita">
   <img id="lbimg" alt="Anteprima ingrandita" />
 </div>
@@ -168,20 +156,17 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 <script>
   const TIPOLOGIA = 'regole';
 
-  // === DOWNLOAD (resta in landing + download diretto) ===
   const FILE_ID = '1XgVZ5-F3TlipuoJtBAL8xpcADdl4sXuA';
   const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const CALENDLY_URL = 'https://calendly.com/federica-cellini88/30min';
 
-  // sistema i path delle immagini: /.../regole/assets/img/...
   (function fixImagesBase(){
-    let p = location.pathname;
-    if (!p.endsWith('/')) p = p.substring(0, p.lastIndexOf('/') + 1);
-    const BASE_DIR = p.replace(/\/$/, ''); // es. "/checklist/regole"
+    const parts = location.pathname.split('/').filter(Boolean);
+    const BASE = '/' + parts.join('/');
     document.querySelectorAll('img[data-src]').forEach(img=>{
-      const rel = (img.getAttribute('data-src') || '').replace(/^\/+/, ''); // toglie slash iniziali
-      img.src = BASE_DIR + '/' + rel;
+      const rel = img.getAttribute('data-src').replace(/^\/+/, '');
+      img.src = BASE + '/' + rel;
       const a = img.closest('a.zoom');
       if(a){ a.href = img.src; }
     });
@@ -211,35 +196,27 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     return u.toString();
   }
 
-  // === DOWNLOAD: non cambia pagina (iPhone + Android) ===
-  function triggerDownload(url){
-    const frameName = 'dl_frame';
-    let iframe = document.getElementById('dl_frame');
-    if(!iframe){
-      iframe = document.createElement('iframe');
-      iframe.id = 'dl_frame';
-      iframe.name = frameName;
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-    }
-    const a = document.createElement('a');
-    a.href = url;
-    a.target = frameName;
-    a.rel = 'noopener';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+  function triggerDownloadNewTab(url){
+    const form = document.createElement('form');
+    form.method = 'GET';
+    form.action = url;
+    form.target = '_blank';
+    form.style.display = 'none';
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
   }
 
   ['btnDownloadHero','btnDownloadMid','btnDownloadBottom'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
-    el.href = 'javascript:void(0)';
+    el.href = withParams(DOWNLOAD_URL);
+    el.target = '_blank';
+    el.rel = 'noopener';
     el.addEventListener('click', (e)=>{
       e.preventDefault();
-      e.stopPropagation();
-      triggerDownload(withParams(DOWNLOAD_URL));
-    }, {passive:false});
+      triggerDownloadNewTab(withParams(DOWNLOAD_URL));
+    });
   });
 
   ['btnCallHero','btnCallMid','btnCallBottom','btnCallFinal','btnCallSticky'].forEach(id=>{
@@ -253,7 +230,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
 
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbimg = document.getElementById('lbimg');
   document.querySelectorAll('a.zoom').forEach(a=>{
@@ -268,5 +244,6 @@ u{ text-decoration-thickness:6px; text-underline-offset:6px }
     if(e.key === 'Escape') lb.setAttribute('aria-hidden','true');
   });
 </script>
+
 </body>
 </html>
