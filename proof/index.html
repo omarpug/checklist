@@ -389,9 +389,90 @@
       .split{grid-template-columns:minmax(0,1fr);}
       h1{font-size:2.05rem}
     }
+
+    /* ✅ MODIFICA: Mobile più compatto (testo + bottoni + cards + immagini) */
     @media (max-width: 640px){
-      .page{padding-inline: 14px;}
-      h1{font-size:1.85rem}
+      /* Layout generale */
+      .page{ padding: 22px 14px 102px; }
+      .section{ margin-bottom: 28px; }
+      .hdr{ margin-bottom: 10px; }
+
+      /* Hero più compatta */
+      .hero{ padding: 20px 16px 16px; margin-bottom: 12px; border-radius: 22px; }
+      .hero-grid{ gap: 14px; }
+      .badge{ font-size: .68rem; padding: 4px 10px; margin-bottom: 10px; }
+      .hero-sub{ font-size: .90rem; line-height: 1.55; }
+      .hero-sub br{ display:none; } /* elimina i doppi a capo “vuoti” su mobile */
+
+      /* Tipografia generale */
+      h1{ font-size: 1.58rem; line-height: 1.06; }
+      h2{ font-size: 1.28rem; margin-bottom: 6px; }
+      h3{ font-size: 1.00rem; }
+      p{ font-size: .93rem; }
+      .eyebrow{ font-size: .70rem; }
+      .hdr p{ font-size: .90rem; }
+      .mini{ font-size: .84rem; }
+      .kpi-note{ font-size: .78rem; }
+
+      /* KPI box hero */
+      .hero-kpi{ padding: 12px 12px; border-radius: 18px; }
+      .kpi-label{ font-size: .72rem; margin-bottom: 4px; }
+      .kpi-val{ font-size: 1.85rem; margin-bottom: 4px; }
+
+      /* Bottoni (meno “grossi”) */
+      .cta-row{ gap: 8px; }
+      .btn{ padding: 10px 14px; font-weight: 900; font-size: .92rem; }
+      .btn--accent{ box-shadow: 0 14px 32px rgba(250,204,21,.12); }
+
+      /* Cards e griglie più compatte */
+      .card{ padding: 14px 14px 13px; border-radius: 18px; }
+      .grid3{ gap: 10px; }
+      .box{ padding: 12px 12px 10px; border-radius: 16px; }
+      .box p{ font-size: .88rem; }
+
+      .kpi-grid{ gap: 12px; }
+      .kpi{ padding: 14px 14px 12px; border-radius: 18px; }
+      .kpi .t{ font-size: .76rem; margin-bottom: 5px; }
+      .kpi .v{ font-size: 1.35rem; }
+      .kpi .d{ font-size: .90rem; }
+      .kpi .n{ font-size: .78rem; }
+
+      /* Case study più compatto */
+      .case-card{ padding: 14px; border-radius: 18px; }
+      .case-meta{ font-size: .72rem; }
+      .case-lead{ font-size: .92rem; }
+      .case-grid{ font-size: .82rem; gap: 6px 12px; }
+
+      /* ✅ Immagini: riduco “altezza percepita” senza tagliare (contain) */
+      .img-shell{ border-radius: 14px; }
+      .img-shell img{
+        max-height: 320px;
+        width: 100%;
+        object-fit: contain;
+        background: rgba(15,23,42,1);
+      }
+      .caption{ font-size: .74rem; padding: 9px 10px 8px; }
+
+      /* Gallery più compatta + immagini meno alte */
+      .gallery{ gap: 12px; }
+      .g-item{ padding: 9px; border-radius: 18px; }
+      .thumb{ border-radius: 12px; margin-bottom: 7px; }
+      .thumb img{
+        max-height: 220px;
+        width: 100%;
+        object-fit: contain;
+        background: rgba(15,23,42,1);
+      }
+      .g-title{ font-size: .86rem; margin-bottom: 3px; }
+      .g-text{ font-size: .78rem; }
+
+      /* Details più compatti */
+      details{ padding: 10px 12px; border-radius: 16px; }
+      details p{ font-size: .86rem; }
+
+      /* Sticky meno invadente */
+      .sticky__in{ padding: 10px 12px; }
+      .sticky-note{ font-size: .80rem; }
     }
   </style>
 </head>
@@ -414,7 +495,7 @@
           numeri ottenuti quando si mette <b>ordine</b> e si applica un <b>metodo</b>.
         </p>
 
-        <!-- CTA SOLO dopo “vendita” (qui è già vendita forte) -->
+        <!-- CTA SOLO dopo “vendita” -->
         <div class="cta-row">
           <a id="btnCalendlyHero" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
           <a class="btn btn--ghost" href="#proof" rel="nofollow">VEDI I RISULTATI</a>
@@ -436,9 +517,7 @@
     </div>
   </section>
 
-  <!-- Notice se arrivo dal form -->
-
-  <!-- QUALIFICA: a chi è rivolto (alta selezione) -->
+  <!-- QUALIFICA -->
   <section class="section">
     <div class="hdr">
       <div class="eyebrow">Prima di tutto</div>
@@ -464,14 +543,13 @@
       </div>
     </div>
 
-    <!-- CTA dopo qualifica -->
     <div class="cta-row" style="margin-top:14px;">
       <a id="btnCalendlyQualifica" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
       <span class="mini">Ti basta una call per capire se sei nel target e cosa fare subito.</span>
     </div>
   </section>
 
-  <!-- MECCANISMO (alto livello, senza dettagli) -->
+  <!-- MECCANISMO -->
   <section class="section">
     <div class="hdr">
       <div class="eyebrow">Il meccanismo</div>
@@ -506,14 +584,13 @@
       </article>
     </div>
 
-    <!-- CTA dopo spiegazione leva -->
     <div class="cta-row" style="margin-top:14px;">
       <a id="btnCalendlyMeccanismo" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
       <a class="btn btn--ghost" href="#proof" rel="nofollow">VAI AGLI SCREENSHOT</a>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF intro (prima dei risultati) -->
+  <!-- SOCIAL PROOF intro -->
   <section class="section">
     <div class="card">
       <div class="hdr" style="margin-bottom:10px;">
@@ -526,7 +603,6 @@
         </p>
       </div>
 
-      <!-- CTA proprio prima dei risultati -->
       <div class="cta-row">
         <a id="btnCalendlyPreProof" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
         <span class="mini">Se vuoi replicare questo sul tuo caso, in call capiamo cosa correggere prima.</span>
@@ -545,7 +621,6 @@
       </p>
     </div>
 
-    <!-- CASE STUDY 1 -->
     <article class="case-card">
       <div class="case-layout">
         <div>
@@ -579,7 +654,6 @@
             <span class="pill">Stabilità</span>
           </div>
 
-          <!-- CTA subito dopo un blocco “valore” -->
           <div class="cta-row" style="margin-top:14px;">
             <a id="btnCalendlyCase" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
             <span class="mini">Se vuoi, ti dico cosa sta bloccando i tuoi numeri e qual è la priorità #1.</span>
@@ -639,7 +713,6 @@
       </article>
     </div>
 
-    <!-- CTA dopo proof (momento “ok, ci credo”) -->
     <div class="cta-row" style="margin-top:14px;">
       <a id="btnCalendlyAfterGallery" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
       <span class="mini">In call capiamo cosa ti sta facendo perdere prenotazioni e come mettere ordine in 30 giorni.</span>
@@ -688,7 +761,7 @@
     </p>
   </section>
 
-  <!-- CHIUSURA “VENDITA” (senza dettagli operativi) -->
+  <!-- CHIUSURA “VENDITA” -->
   <section id="final" class="section">
     <div class="card">
       <div class="hdr" style="margin-bottom:10px;">
@@ -719,7 +792,6 @@
         </div>
       </div>
 
-      <!-- CTA finale dopo vendita -->
       <div class="cta-row" style="margin-top:14px;">
         <a id="btnCalendlyFinal" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
         <a class="btn btn--ghost" href="#proof" rel="nofollow">RIVEDI I RISULTATI</a>
@@ -732,7 +804,7 @@
     </div>
   </section>
 
-  <!-- FAQ (post-CTA per ridurre frizione, non prima) -->
+  <!-- FAQ -->
   <section class="section">
     <div class="hdr">
       <div class="eyebrow">Domande frequenti</div>
@@ -757,7 +829,6 @@
       </details>
     </div>
 
-    <!-- CTA “anti procrastinazione” -->
     <div class="cta-row" style="margin-top:14px;">
       <a id="btnCalendlyFaq" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
       <span class="mini">Se sei serio e vuoi struttura, la call è lo step più veloce.</span>
@@ -766,7 +837,7 @@
 
 </main>
 
-<!-- Sticky CTA (sempre presente, coerente e non invasiva) -->
+<!-- Sticky CTA -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in">
     <span class="sticky-note">Vuoi struttura + affiancamento? Prenota la call.</span>
@@ -821,7 +892,6 @@
     const el = document.getElementById(id);
     if(el) el.href = withParams(CALENDLY_URL);
   });
-
 
   // Year footer
   document.getElementById("y").textContent = new Date().getFullYear();
