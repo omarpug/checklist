@@ -437,9 +437,6 @@
   </section>
 
   <!-- Notice se arrivo dal form -->
-  <div id="notice" class="notice">
-    Perfetto ✅ Qui sotto trovi risultati reali. Se vuoi capire cosa replicare sul tuo caso, clicca “PRENOTA ORA”.
-  </div>
 
   <!-- QUALIFICA: a chi è rivolto (alta selezione) -->
   <section class="section">
@@ -825,14 +822,6 @@
     if(el) el.href = withParams(CALENDLY_URL);
   });
 
-  // Banner se arrivi dal form
-  if(q.get("from") === "form"){
-    const n = document.getElementById("notice");
-    if(n) n.style.display = "block";
-    q.delete("from");
-    const clean = location.pathname + (q.toString() ? "?" + q.toString() : "");
-    try{ history.replaceState({}, "", clean); }catch(_){}
-  }
 
   // Year footer
   document.getElementById("y").textContent = new Date().getFullYear();
