@@ -2,210 +2,140 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Cruscotto risultati – Federica Property Manager</title>
+  <title>Risultati reali — Federica Property Manager</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
 
   <style>
-    :root {
-      --bg: #020617;
+    :root{
+      --bg:#020617;
       --bg2:#0b1220;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --border-strong: rgba(148, 163, 184, 0.5);
+      --card:#0b1220;
+      --card2: rgba(15,23,42,.65);
 
-      --text: #f9fafb;
-      --muted: #9ca3af;
+      --border: rgba(148,163,184,.25);
+      --border2: rgba(148,163,184,.45);
 
-      --accent: #facc15;
-      --accent-soft: rgba(250, 204, 21, 0.12);
-      --accent-strong: #fbbf24;
+      --text:#f9fafb;
+      --muted:#9ca3af;
 
-      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.70);
+      --accent:#facc15;
+      --accent2:#fbbf24;
+      --accentSoft: rgba(250,204,21,.12);
 
-      --radius-xl: 26px;
-      --radius-lg: 22px;
-      --radius-md: 18px;
-      --radius-pill: 999px;
+      --shadow: 0 22px 60px rgba(0,0,0,.70);
 
-      --max-width: 1160px;
+      --rXL: 26px;
+      --rLG: 22px;
+      --rMD: 18px;
+      --rP: 999px;
+
+      --max: 1160px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    a { color: inherit; text-decoration: none; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       background: radial-gradient(circle at top, var(--bg2) 0, var(--bg) 42%, var(--bg) 70%) fixed;
       color: var(--text);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
 
-    .page {
-      max-width: var(--max-width);
+    .page{
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 32px 16px 118px;
+      padding: 30px 16px 118px;
     }
 
-    h1, h2, h3 { letter-spacing: 0.02em; font-weight: 750; }
-    h1 { font-size: 2.35rem; line-height: 1.1; }
-    h2 { font-size: 1.65rem; margin-bottom: 8px; }
-    h3 { font-size: 1.06rem; margin-bottom: 6px; }
+    h1,h2,h3{letter-spacing:.02em;font-weight:800}
+    h1{font-size:2.35rem;line-height:1.08}
+    h2{font-size:1.65rem;margin-bottom:8px}
+    h3{font-size:1.05rem;margin-bottom:6px}
+    p{color:#e5e7eb}
 
-    p { color: #e5e7eb; }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;
+      padding: 4px 12px;border-radius: var(--rP);
+      border: 1px solid rgba(148,163,184,.55);
+      background: rgba(15,23,42,.85);
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accentSoft);
+    }
 
-    /* HERO */
-    .hero {
-      position: relative;
-      border-radius: var(--radius-xl);
+    .hero{
+      position:relative;
+      border-radius: var(--rXL);
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(250, 204, 21, 0.20), transparent 60%),
+        radial-gradient(circle at top left, rgba(37,99,235,.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(250,204,21,.20), transparent 60%),
         linear-gradient(135deg, #020617, #020617);
-      padding: 28px 26px 26px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: var(--shadow);
+      padding: 26px 24px 22px;
+      overflow:hidden;
       margin-bottom: 16px;
-      overflow: hidden;
     }
-
     .hero::before{
       content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
+      position:absolute;inset:0;border-radius:inherit;
       border:1px solid transparent;
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.25), rgba(56, 189, 248, 0.08)) border-box;
+      background: linear-gradient(135deg, rgba(250,204,21,.25), rgba(56,189,248,.08)) border-box;
       mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
       mask-composite: exclude;
       pointer-events:none;
     }
 
-    .hero-content{
+    .hero-grid{
       position:relative;
-      display:flex;
-      flex-wrap:wrap;
-      gap:24px;
-      justify-content:space-between;
-      align-items:flex-start;
+      display:grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      gap: 18px;
+      align-items:start;
     }
 
-    .hero-left{ flex: 1 1 280px; max-width: 720px; }
-    .hero-right{ flex: 0 0 260px; text-align: right; }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:0.75rem;
-      text-transform:uppercase;
-      letter-spacing:0.16em;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.85);
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .badge-dot{
-      width:7px;height:7px;border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
-    }
-
-    .hero-subtitle{
+    .hero-sub{
       margin-top:10px;
-      max-width: 620px;
+      max-width: 760px;
       font-size: 0.98rem;
       color: #d1d5db;
     }
+    .hero-sub b{color:#fff}
 
-    .hero-subtitle b{ color:#fff; }
-
-    .hero-right-main{
-      display:inline-flex;
-      flex-direction:column;
-      align-items:flex-end;
-      padding: 14px 18px;
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,1));
-      border: 1px solid rgba(148,163,184,0.5);
-      box-shadow: 0 20px 50px rgba(15,23,42,0.9);
-      min-width: 240px;
-    }
-
-    .hero-kpi-label{
-      font-size:0.78rem;
-      text-transform:uppercase;
-      letter-spacing:0.14em;
-      color: var(--muted);
-      margin-bottom:4px;
-    }
     .hero-kpi{
-      font-size: 2.3rem;
-      line-height: 1;
-      font-weight: 800;
-      color: var(--accent-strong);
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top, rgba(15,23,42,.92), rgba(15,23,42,1));
+      border: 1px solid rgba(148,163,184,.5);
+      box-shadow: 0 20px 50px rgba(15,23,42,.9);
+      padding: 14px 16px;
+    }
+    .kpi-label{
+      font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;
+      color: var(--muted);
       margin-bottom: 6px;
     }
-    .hero-kpi-note{
-      font-size:0.82rem;
-      color: var(--muted);
-      max-width: 260px;
+    .kpi-val{
+      font-size:2.25rem;line-height:1;
+      font-weight:900;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+    .kpi-note{
+      font-size:.83rem;color: var(--muted);
     }
 
-    /* CTA */
-    .cta-row{
-      margin-top: 14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius: 999px;
-      padding: 12px 16px;
-      font-weight: 850;
-      border: 1px solid rgba(148,163,184,.55);
-      background: rgba(15,23,42,.75);
-      color: var(--text);
-      letter-spacing: .02em;
-      user-select:none;
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, filter .12s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(250,204,21,.8); }
-    .btn:active{ transform: translateY(0); }
-    .btn--accent{
-      background: linear-gradient(180deg, rgba(250,204,21,.95), rgba(251,191,36,.92));
-      color: #0b1220;
-      border-color: rgba(250,204,21,.95);
-      box-shadow: 0 18px 40px rgba(250,204,21,.14);
-    }
-    .btn--ghost{
-      background: rgba(2,6,23,.35);
-      border-color: rgba(148,163,184,.45);
-      color:#e5e7eb;
-    }
-
-    .helper{
-      margin-top: 10px;
-      font-size: .88rem;
-      color: var(--muted);
-      max-width: 650px;
-    }
-
-    /* Notice */
     .notice{
       display:none;
-      margin: 0 0 22px;
-      border-radius: var(--radius-lg);
+      margin: 0 0 18px;
+      border-radius: var(--rLG);
       border: 1px solid rgba(250,204,21,.35);
       background: rgba(250,204,21,.10);
       padding: 12px 14px;
@@ -213,204 +143,195 @@
       font-size: .92rem;
     }
 
-    /* SECTION */
-    .section{ margin-bottom: 40px; }
-    .section-header{ margin-bottom: 16px; max-width: 780px; }
-    .section-eyebrow{
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+    .section{margin-bottom: 40px}
+    .hdr{max-width: 820px;margin-bottom: 14px}
+    .eyebrow{
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
       color: var(--muted);
       margin-bottom: 6px;
     }
-    .section-header p{
-      font-size: 0.96rem;
-      color: #d1d5db;
-    }
+    .hdr p{font-size:.98rem;color:#d1d5db}
 
-    /* Cards */
     .card{
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), #020617);
-      border: 1px solid var(--border-subtle);
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top left, rgba(15,23,42,.90), #020617);
+      border: 1px solid var(--border);
       padding: 18px 18px 16px;
-      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 16px;
-      align-items: stretch;
+    .cta-row{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+      margin-top: 12px;
     }
-
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      border: 1px solid rgba(148,163,184,.55);
+      background: rgba(15,23,42,.75);
+      color: var(--text);
+      letter-spacing:.02em;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, filter .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(250,204,21,.82)}
+    .btn:active{transform: translateY(0)}
+    .btn--accent{
+      background: linear-gradient(180deg, rgba(250,204,21,.96), rgba(251,191,36,.93));
+      color:#0b1220;
+      border-color: rgba(250,204,21,.95);
+      box-shadow: 0 18px 40px rgba(250,204,21,.14);
+    }
+    .btn--ghost{
+      background: rgba(2,6,23,.35);
+      border-color: rgba(148,163,184,.40);
+      color:#e5e7eb;
+    }
     .mini{
-      font-size: .9rem;
-      color: var(--muted);
+      font-size:.9rem;color: var(--muted);
     }
 
-    /* KPI GRID */
-    .kpi-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .kpi-card{
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), #020617);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 18px 14px;
-      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
-    }
-    .kpi-title{
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .kpi-value{
-      font-size: 1.6rem;
-      font-weight: 850;
-      color: var(--accent-strong);
-      margin-bottom: 2px;
-    }
-    .kpi-label{
-      font-size: 0.95rem;
-      color: #e5e7eb;
-      margin-bottom: 6px;
-    }
-    .kpi-note{
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* Case study */
-    .case-card{
-      border-radius: var(--radius-lg);
-      background:
-        radial-gradient(circle at top left, rgba(30, 64, 175, 0.26), transparent 60%),
-        linear-gradient(135deg, #020617, #020617);
-      border: 1px solid var(--border-subtle);
-      padding: 18px;
-      box-shadow: var(--shadow-soft);
-    }
-    .case-layout{
-      display:grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
-      gap: 18px;
-      align-items: stretch;
-    }
-    .case-meta{
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .case-lead{
-      margin-bottom: 12px;
-      color: #e5e7eb;
-      font-size: 0.96rem;
-    }
-    .case-grid-numbers{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px 18px;
-      margin-bottom: 12px;
-      font-size: 0.88rem;
-    }
-    .case-grid-numbers span{ color: var(--muted); }
-    .case-grid-numbers strong{ color: #e5e7eb; font-weight: 650; }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-top: 10px;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 2px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.9);
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .case-image-shell{
-      border-radius: var(--radius-md);
-      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,1));
-      border: 1px solid rgba(148,163,184,0.45);
-      overflow:hidden;
-      box-shadow: 0 20px 45px rgba(15,23,42,0.95);
-    }
-    .case-image-shell img{ display:block; width:100%; height:auto; }
-    .case-caption{
-      padding: 10px 12px 9px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* Gallery */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .gallery-item{
-      border-radius: var(--radius-lg);
-      background: #020617;
-      border: 1px solid var(--border-subtle);
-      padding: 10px 10px 11px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.65);
-    }
-    .gallery-thumb-shell{
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: radial-gradient(circle at top, rgba(15,23,42,1), rgba(15,23,42,1));
-      margin-bottom: 8px;
-    }
-    .gallery-thumb-shell img{ display:block; width:100%; height:auto; }
-    .gallery-title{
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #e5e7eb;
-      margin-bottom: 4px;
-    }
-    .gallery-text{
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .note-bottom{
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* Steps */
-    .steps{
+    .grid3{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
       margin-top: 12px;
     }
-    .step{
+    .box{
       border-radius: 18px;
       border: 1px solid rgba(148,163,184,.28);
       background: rgba(15,23,42,.55);
       padding: 14px 14px 12px;
     }
-    .step b{ color:#fff; }
-    .step p{ color:#cbd5e1; font-size:.92rem; margin-top:6px; }
+    .box b{color:#fff}
+    .box p{margin-top:6px;color:#cbd5e1;font-size:.92rem}
 
-    /* FAQ */
-    .faq{ display:grid; gap:10px; margin-top:12px; }
+    .kpi-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .kpi{
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top left, rgba(15,23,42,.90), #020617);
+      border: 1px solid var(--border);
+      padding: 16px 18px 14px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
+    }
+    .kpi .t{
+      font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .kpi .v{
+      font-size:1.55rem;font-weight:900;color: var(--accent2);
+      margin-bottom: 4px;
+    }
+    .kpi .d{font-size:.95rem;color:#e5e7eb;margin-bottom:6px}
+    .kpi .n{font-size:.82rem;color: var(--muted)}
+
+    .split{
+      display:grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top: 10px}
+    .pill{
+      display:inline-flex;align-items:center;
+      padding: 2px 10px;
+      border-radius: var(--rP);
+      border: 1px solid rgba(148,163,184,.6);
+      background: rgba(15,23,42,.9);
+      font-size:.75rem;
+      color: var(--muted);
+    }
+
+    .case-card{
+      border-radius: var(--rLG);
+      background:
+        radial-gradient(circle at top left, rgba(30,64,175,.26), transparent 60%),
+        linear-gradient(135deg, #020617, #020617);
+      border: 1px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .case-layout{
+      display:grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(0,1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .case-meta{
+      font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .case-lead{
+      margin-bottom: 12px;
+      color:#e5e7eb;
+      font-size:.98rem;
+    }
+    .case-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 6px 18px;
+      margin-bottom: 12px;
+      font-size:.88rem;
+    }
+    .case-grid span{color: var(--muted)}
+    .case-grid strong{color:#e5e7eb;font-weight:700}
+
+    .img-shell{
+      border-radius: var(--rMD);
+      background: radial-gradient(circle at top, rgba(15,23,42,.9), rgba(15,23,42,1));
+      border: 1px solid rgba(148,163,184,.45);
+      overflow:hidden;
+      box-shadow: 0 20px 45px rgba(15,23,42,.95);
+    }
+    .caption{
+      padding: 10px 12px 9px;
+      border-top: 1px solid rgba(31,41,55,.9);
+      font-size:.78rem;
+      color: var(--muted);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .g-item{
+      border-radius: var(--rLG);
+      background: #020617;
+      border: 1px solid var(--border);
+      padding: 10px 10px 11px;
+      box-shadow: 0 16px 34px rgba(0,0,0,.65);
+    }
+    .thumb{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,1);
+      margin-bottom: 8px;
+    }
+    .g-title{
+      font-size:.92rem;font-weight:800;color:#e5e7eb;margin-bottom:4px
+    }
+    .g-text{
+      font-size:.82rem;color: var(--muted);
+    }
+
     details{
       border: 1px solid rgba(148,163,184,.28);
       background: rgba(15,23,42,.55);
@@ -420,43 +341,40 @@
     summary{
       cursor:pointer;
       list-style:none;
-      font-weight: 700;
+      font-weight:800;
       color:#e5e7eb;
     }
-    summary::-webkit-details-marker{ display:none; }
-    details p{ margin-top:8px; color:#cbd5e1; font-size:.92rem; }
+    summary::-webkit-details-marker{display:none}
+    details p{margin-top:8px;color:#cbd5e1;font-size:.92rem}
 
-    /* Footer */
     .footer{
-      margin-top: 26px;
+      margin-top: 18px;
       color: var(--muted);
       font-size: 12.5px;
       opacity: .95;
     }
 
-    /* Sticky CTA */
     .sticky{
-      position:fixed;
-      left:0; right:0; bottom:0;
+      position:fixed;left:0;right:0;bottom:0;
       z-index:50;
-      background: rgba(2,6,23,.82);
+      background: rgba(2,6,23,.84);
       backdrop-filter: blur(10px) saturate(1.2);
       border-top: 1px solid rgba(148,163,184,.25);
     }
     .sticky__in{
-      max-width: var(--max-width);
+      max-width: var(--max);
       margin: 0 auto;
       padding: 12px 16px;
       display:flex;
       justify-content:center;
       gap:10px;
       flex-wrap:wrap;
+      align-items:center;
     }
 
     .sticky-note{
       color: var(--muted);
       font-size: .86rem;
-      align-self:center;
     }
 
     :focus-visible{
@@ -465,20 +383,15 @@
       border-radius: 12px;
     }
 
-    /* Responsive */
-    @media (max-width: 880px){
-      .hero{ padding:24px 20px 22px; }
-      .hero-content{ flex-direction:column; align-items:flex-start; }
-      .hero-right{ text-align:left; }
-      .hero-right-main{ align-items:flex-start; min-width:0; }
-      h1{ font-size:2rem; }
-      .case-layout{ grid-template-columns: minmax(0,1fr); }
-      .grid-2{ grid-template-columns: minmax(0,1fr); }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: minmax(0,1fr); }
+      .case-layout{grid-template-columns: minmax(0,1fr);}
+      .split{grid-template-columns:minmax(0,1fr);}
+      h1{font-size:2.05rem}
     }
     @media (max-width: 640px){
-      .page{ padding-inline: 14px; }
-      h1{ font-size: 1.85rem; }
-      .hero-subtitle{ font-size: .93rem; }
+      .page{padding-inline: 14px;}
+      h1{font-size:1.85rem}
     }
   </style>
 </head>
@@ -486,166 +399,152 @@
 <body>
 <main class="page">
 
-  <!-- HERO -->
+  <!-- HERO (solo promessa + dolore + chi è) -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-left">
-        <div class="badge"><span class="badge-dot"></span> RISULTATI REALI · CASE VACANZE</div>
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span> RISULTATI REALI · CASE VACANZE</div>
 
-        <h1>Questi risultati non arrivano “per fortuna”. Arrivano quando la casa vacanze è gestita come un business.</h1>
+        <h1>Se la tua casa vacanze è “piena” ma i guadagni non si muovono, il problema quasi mai è la casa.</h1>
 
-        <p class="hero-subtitle">
-          Qui trovi <b>screenshot reali</b> dei cruscotti di proprietari seguiti da <b>Federica Cellini</b>.
-          Sono numeri ottenuti lavorando su <b>annuncio, prezzi e processo operativo</b> (non “a sensazione”).
+        <p class="hero-sub">
+          Quello che blocca i proprietari è quasi sempre lo stesso: <b>annuncio impostato male</b>, <b>prezzi a sensazione</b>,
+          <b>zero struttura</b> e gestione che diventa caos. <br><br>
+          Qui trovi <b>screenshot reali</b> dei cruscotti (portali) di proprietari seguiti da <b>Federica Cellini</b>:
+          numeri ottenuti quando si mette <b>ordine</b> e si applica un <b>metodo</b>.
         </p>
 
+        <!-- CTA SOLO dopo “vendita” (qui è già vendita forte) -->
         <div class="cta-row">
           <a id="btnCalendlyHero" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
-          <a class="btn btn--ghost" href="#proof" rel="nofollow">VAI AI RISULTATI</a>
+          <a class="btn btn--ghost" href="#proof" rel="nofollow">VEDI I RISULTATI</a>
         </div>
 
-        <div class="helper">
-          Vuoi sapere cosa replicare sul tuo caso? In call (20’) ti dico le 2–3 leve che sbloccano subito calendario e margine.
-        </div>
+        <p class="mini" style="margin-top:10px;">
+          Call gratuita (20’): ti dico cosa sta frenando il tuo annuncio e se la tua casa può rendere davvero (senza perdere altri mesi).
+        </p>
       </div>
 
-      <div class="hero-right">
-        <div class="hero-right-main">
-          <div class="hero-kpi-label">Incremento medio stimato</div>
-          <div class="hero-kpi">+37%</div>
-          <p class="hero-kpi-note">
-            Valore indicativo su un gruppo di case seguite 6–12 mesi.
-            I risultati dipendono da zona, punto di partenza e qualità dell’immobile.
-          </p>
-        </div>
+      <div class="hero-kpi">
+        <div class="kpi-label">Incremento medio stimato</div>
+        <div class="kpi-val">+37%</div>
+        <p class="kpi-note">
+          Valore indicativo su un gruppo di case seguite 6–12 mesi.
+          I risultati dipendono da zona, punto di partenza e gestione.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Notice (arrivo da form) -->
+  <!-- Notice se arrivo dal form -->
   <div id="notice" class="notice">
-    Perfetto ✅ Qui sotto trovi schermate reali dai cruscotti. Se vuoi capire cosa replicare sul tuo annuncio, clicca “PRENOTA ORA”.
+    Perfetto ✅ Qui sotto trovi risultati reali. Se vuoi capire cosa replicare sul tuo caso, clicca “PRENOTA ORA”.
   </div>
 
-  <!-- PERCHÉ QUESTI RISULTATI -->
+  <!-- QUALIFICA: a chi è rivolto (alta selezione) -->
   <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Perché funziona</div>
-      <h2>La differenza la fa il metodo (non la piattaforma)</h2>
+    <div class="hdr">
+      <div class="eyebrow">Prima di tutto</div>
+      <h2>A chi è rivolto (e a chi no)</h2>
       <p>
-        Airbnb/Booking premiano annunci chiari, prezzi coerenti e gestione affidabile.
-        Quando la casa è impostata bene, i numeri iniziano a muoversi in modo stabile:
-        più notti utili, meno buchi, meno caos operativo.
+        Questa non è una lista di “consigli”. È un percorso per proprietari che vogliono fare le cose seriamente,
+        con struttura e affiancamento.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <div class="box">
+        <b>È per te se…</b>
+        <p>Vuoi mettere ordine e smettere di gestire in emergenza continua.</p>
+      </div>
+      <div class="box">
+        <b>È per te se…</b>
+        <p>Vuoi essere affiancato, non “lasciato con un PDF” e basta.</p>
+      </div>
+      <div class="box">
+        <b>È per te se…</b>
+        <p>Sei pronto a dedicare tempo per sistemare tutto e farlo diventare un sistema stabile.</p>
+      </div>
+    </div>
+
+    <!-- CTA dopo qualifica -->
+    <div class="cta-row" style="margin-top:14px;">
+      <a id="btnCalendlyQualifica" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+      <span class="mini">Ti basta una call per capire se sei nel target e cosa fare subito.</span>
+    </div>
+  </section>
+
+  <!-- MECCANISMO (alto livello, senza dettagli) -->
+  <section class="section">
+    <div class="hdr">
+      <div class="eyebrow">Il meccanismo</div>
+      <h2>“Mettiamo ordine subito” → poi stabilizziamo risultati e gestione</h2>
+      <p>
+        I proprietari non perdono soldi perché non lavorano abbastanza. Li perdono perché lavorano nel modo sbagliato:
+        si muovono a caso, cambiano cose “a intuito” e non hanno controllo.
+        Il percorso serve a trasformare la casa in una macchina che funziona con metodo.
       </p>
     </div>
 
     <div class="kpi-grid">
-      <article class="kpi-card">
-        <div class="kpi-title">Calendario</div>
-        <div class="kpi-value">Più notti</div>
-        <div class="kpi-label">Occupazione più alta senza “svendere”.</div>
-        <p class="kpi-note">Si lavora su posizionamento, conversione annuncio e minimo soggiorno.</p>
+      <article class="kpi">
+        <div class="t">Sollievo immediato</div>
+        <div class="v">Ordine</div>
+        <div class="d">Si bloccano oggi gli errori che bruciano prenotazioni e visibilità.</div>
+        <p class="n">Senza ordine, qualsiasi altra cosa “non attacca”.</p>
       </article>
 
-      <article class="kpi-card">
-        <div class="kpi-title">Prezzi</div>
-        <div class="kpi-value">Più margine</div>
-        <div class="kpi-label">Pricing dinamico e regole tariffarie intelligenti.</div>
-        <p class="kpi-note">Picchi in alta stagione + protezione dei giorni deboli.</p>
+      <article class="kpi">
+        <div class="t">Diagnosi</div>
+        <div class="v">Chiarezza</div>
+        <div class="d">Capisci se la tua casa può rendere davvero e cosa la sta frenando.</div>
+        <p class="n">Non “sensazioni”: direzione, priorità, sequenza.</p>
       </article>
 
-      <article class="kpi-card">
-        <div class="kpi-title">Gestione</div>
-        <div class="kpi-value">Meno stress</div>
-        <div class="kpi-label">Processi e template che evitano imprevisti.</div>
-        <p class="kpi-note">Messaggi, check-in/out, pulizie e manutenzione tracciabili.</p>
+      <article class="kpi">
+        <div class="t">Affiancamento</div>
+        <div class="v">Metodo</div>
+        <div class="d">Non sei solo: si correggono errori in corsa e si stabilizza.</div>
+        <p class="n">È qui che la maggior parte dei proprietari fallisce da solo.</p>
       </article>
+    </div>
+
+    <!-- CTA dopo spiegazione leva -->
+    <div class="cta-row" style="margin-top:14px;">
+      <a id="btnCalendlyMeccanismo" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+      <a class="btn btn--ghost" href="#proof" rel="nofollow">VAI AGLI SCREENSHOT</a>
     </div>
   </section>
 
-  <!-- CHI È FEDERICA + PERCORSO -->
+  <!-- SOCIAL PROOF intro (prima dei risultati) -->
   <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Chi è Federica</div>
-      <h2>Non “consigli generici”: è un percorso di affiancamento operativo</h2>
-      <p>
-        Federica Cellini è Property Manager su Roma e dintorni.
-        Il suo lavoro è trasformare case vacanza gestite “a sensazione” in asset che generano prenotazioni reali,
-        con numeri controllabili e una gestione sostenibile.
-      </p>
-    </div>
-
     <div class="card">
-      <div class="grid-2">
-        <div>
-          <h3>Cosa succede nel percorso</h3>
-          <p class="mini">
-            Si parte da ciò che impatta subito sul calendario e sui guadagni: annuncio, pricing e processi.
-            Poi si costruisce un sistema replicabile che regge anche quando arrivano imprevisti e cambi last-minute.
-          </p>
-
-          <div class="steps">
-            <div class="step">
-              <b>1) Audit annuncio</b>
-              <p>Titolo, cover, dotazioni, storytelling, foto e punti “frenanti” che riducono conversione.</p>
-            </div>
-            <div class="step">
-              <b>2) Pricing dinamico</b>
-              <p>Regole tariffarie per domanda/stagionalità/eventi + minimo soggiorno + protezione margine.</p>
-            </div>
-            <div class="step">
-              <b>3) Processo operativo</b>
-              <p>Template + checklist per check-in/out, pulizie, manutenzione e messaggi automatici.</p>
-            </div>
-            <div class="step">
-              <b>4) KPI e controllo</b>
-              <p>Mini-dashboard per leggere numeri e intervenire in fretta (senza gestione a sensazione).</p>
-            </div>
-          </div>
-
-          <div class="cta-row" style="margin-top:14px;">
-            <a id="btnCalendlyMid" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
-            <span class="mini">Call gratuita (20’) per capire cosa sbloccare subito.</span>
-          </div>
-        </div>
-
-        <div class="card" style="background: rgba(15,23,42,.55); box-shadow:none;">
-          <h3>Cosa ottieni in call</h3>
-          <p class="mini">
-            Non è una “chiamata conoscitiva” generica: è un confronto rapido dove esci con una direzione chiara.
-          </p>
-          <div class="steps" style="margin-top:10px;">
-            <div class="step">
-              <b>Leva #1</b>
-              <p>Dove stai perdendo conversione (annuncio/pricing) e come correggere.</p>
-            </div>
-            <div class="step">
-              <b>Leva #2</b>
-              <p>Qual è il collo di bottiglia che blocca calendario e margine.</p>
-            </div>
-            <div class="step">
-              <b>Prossimo step</b>
-              <p>Se ha senso, ti spiego il percorso e cosa succede nelle prime settimane.</p>
-            </div>
-          </div>
-        </div>
+      <div class="hdr" style="margin-bottom:10px;">
+        <div class="eyebrow">Risultati</div>
+        <h2>Risultati reali, non promesse</h2>
+        <p>
+          Queste non sono opinioni: sono dati reali presi dai cruscotti dei portali.
+          La differenza la fa il metodo: quando smetti di gestire a sensazione,
+          calendario e guadagni iniziano a muoversi sul serio.
+        </p>
       </div>
 
-      <p class="mini" style="margin-top:12px;">
-        Nota: i risultati variano in base a zona, immobile, stagionalità e punto di partenza.
-        Gli screenshot qui sotto mostrano dati reali provenienti dai portali.
-      </p>
+      <!-- CTA proprio prima dei risultati -->
+      <div class="cta-row">
+        <a id="btnCalendlyPreProof" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+        <span class="mini">Se vuoi replicare questo sul tuo caso, in call capiamo cosa correggere prima.</span>
+      </div>
     </div>
   </section>
 
   <!-- PROOF -->
   <section id="proof" class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Risultati reali</div>
-      <h2>Screenshot dai cruscotti: numeri reali, non promesse</h2>
+    <div class="hdr">
+      <div class="eyebrow">Cruscotti reali</div>
+      <h2>Screenshot dai portali: numeri reali dei proprietari seguiti</h2>
       <p>
-        Qui sotto trovi schermate reali dei portali: ricavi, notti, durata media e performance su 365 giorni.
-        Sono risultati ottenuti da proprietari seguiti nel percorso (annuncio + prezzi + gestione).
+        Qui sotto trovi estratti reali: entrate, notti vendute e performance su 365 giorni.
+        (I risultati variano in base a zona, immobile, stagionalità e punto di partenza.)
       </p>
     </div>
 
@@ -654,14 +553,14 @@
       <div class="case-layout">
         <div>
           <div class="case-meta">Roma · appartamento turistico · Airbnb</div>
-          <h3>Stessa struttura, anno su anno: calendario più pieno e soggiorni più lunghi</h3>
+          <h3>Stessa struttura, anno su anno: calendario più pieno e durata media più alta</h3>
 
           <p class="case-lead">
-            L’obiettivo non è “fare più prenotazioni” a qualsiasi costo: è aumentare notti utili,
-            alzare la durata media e rendere il flusso di cassa più stabile.
+            Il punto non è riempire a caso: è farlo con numeri che hanno senso.
+            Quando entra il metodo, cambia il ritmo: più notti utili, soggiorni più lunghi e incassi più stabili.
           </p>
 
-          <div class="case-grid-numbers">
+          <div class="case-grid">
             <span>Ricavi anno 2024: <strong>5.696,02 €*</strong></span>
             <span>Ricavi anno 2025: <strong>21.949,05 €*</strong></span>
 
@@ -677,21 +576,22 @@
           </p>
 
           <div class="pill-row">
-            <span class="pill">Strategia prezzi</span>
-            <span class="pill">Minimo soggiorno</span>
-            <span class="pill">Annuncio (conversione)</span>
-            <span class="pill">Processi operativi</span>
+            <span class="pill">Ordine</span>
+            <span class="pill">Metodo</span>
+            <span class="pill">Controllo</span>
+            <span class="pill">Stabilità</span>
           </div>
 
+          <!-- CTA subito dopo un blocco “valore” -->
           <div class="cta-row" style="margin-top:14px;">
-            <a id="btnCalendlyProof" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
-            <a class="btn btn--ghost" href="#final" rel="nofollow">VAI ALLA CHIUSURA</a>
+            <a id="btnCalendlyCase" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+            <span class="mini">Se vuoi, ti dico cosa sta bloccando i tuoi numeri e qual è la priorità #1.</span>
           </div>
         </div>
 
-        <div class="case-image-shell">
+        <div class="img-shell">
           <img src="assets/proof/screen1.jpg" alt="Cruscotto annuale con confronto tra 2024 e 2025">
-          <div class="case-caption">
+          <div class="caption">
             Cruscotto annuale reale: stessa casa, stesso portale. Nel 2025 entrate e notti vendute sono nettamente più alte rispetto al 2024.
           </div>
         </div>
@@ -701,138 +601,132 @@
 
   <!-- GALLERY MENSILE -->
   <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Estratti mensili</div>
+    <div class="hdr">
+      <div class="eyebrow">Estratti mensili</div>
       <h2>Altri esempi dal cruscotto mensile</h2>
       <p>
         Schermate mensili di diverse strutture: non simulazioni.
-        Sono gli stessi grafici che i proprietari vedono quando controllano i risultati.
+        Sono gli stessi grafici che i proprietari vedono nelle loro app.
       </p>
     </div>
 
-    <div class="gallery-grid">
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen2.jpg" alt="Guadagni mensili struttura 1"></div>
-        <div class="gallery-title">3.610,47 € in un mese</div>
-        <p class="gallery-text">Ottobre su una singola struttura: picchi in alta stagione e occupazione stabile.</p>
+    <div class="gallery">
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen2.jpg" alt="Guadagni mensili struttura 1"></div>
+        <div class="g-title">3.610,47 € in un mese</div>
+        <p class="g-text">Picchi in alta stagione e occupazione più stabile.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen3.jpg" alt="Guadagni mensili struttura 2"></div>
-        <div class="gallery-title">Oltre 3.200 € in un mese</div>
-        <p class="gallery-text">Struttura che supera i 3.200 € nel mese, con entrate già confermate nei mesi successivi.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen3.jpg" alt="Guadagni mensili struttura 2"></div>
+        <div class="g-title">Oltre 3.200 € in un mese</div>
+        <p class="g-text">Entrate importanti su singola struttura con continuità.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen4.jpg" alt="Guadagni mensili struttura con entrate future"></div>
-        <div class="gallery-title">3.206,21 € + entrate future</div>
-        <p class="gallery-text">Somme già corrisposte + prenotazioni future ancora in arrivo dal portale.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen4.jpg" alt="Guadagni mensili con entrate future"></div>
+        <div class="g-title">3.206,21 € + entrate future</div>
+        <p class="g-text">Liquidato + prenotazioni future ancora in arrivo dal portale.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen5.jpg" alt="Guadagni mensili Anna Maria"></div>
-        <div class="gallery-title">Oltre 2.600 €</div>
-        <p class="gallery-text">Importi liquidati e importi in arrivo separati in modo chiaro dal portale.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen5.jpg" alt="Guadagni mensili"></div>
+        <div class="g-title">Oltre 2.600 €</div>
+        <p class="g-text">Importi già incassati + importi in arrivo separati dal portale.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen6.jpg" alt="Guadagni mensili altra struttura"></div>
-        <div class="gallery-title">Struttura monitorata</div>
-        <p class="gallery-text">Obiettivo: stabilizzare il flusso, non solo “riempire” a caso il calendario.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen6.jpg" alt="Guadagni mensili altra struttura"></div>
+        <div class="g-title">Struttura monitorata</div>
+        <p class="g-text">Obiettivo: stabilizzare il flusso, non solo “riempire” a caso.</p>
       </article>
+    </div>
+
+    <!-- CTA dopo proof (momento “ok, ci credo”) -->
+    <div class="cta-row" style="margin-top:14px;">
+      <a id="btnCalendlyAfterGallery" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+      <span class="mini">In call capiamo cosa ti sta facendo perdere prenotazioni e come mettere ordine in 30 giorni.</span>
     </div>
   </section>
 
   <!-- 365 GIORNI -->
   <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Performance 365 giorni</div>
+    <div class="hdr">
+      <div class="eyebrow">Performance 365 giorni</div>
       <h2>Panoramica 365 giorni: notti, valore prenotazioni e qualità</h2>
       <p>
-        Estratti dai pannelli “ultimi 365 giorni” di vari profili:
-        notti prenotate, valore prenotazioni e percentuale di recensioni a 5 stelle.
+        Estratti da pannelli “ultimi 365 giorni” di vari profili:
+        notti prenotate, valore prenotazioni e percentuali di recensioni a 5 stelle.
       </p>
     </div>
 
-    <div class="gallery-grid">
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen9.jpg" alt="Riepilogo 365 giorni con 949 notti prenotate"></div>
-        <div class="gallery-title">Riepilogo 365 giorni – 949 notti</div>
-        <p class="gallery-text">949 notti, 107.000 € valore prenotazioni, 89,7% recensioni a 5 stelle.</p>
+    <div class="gallery">
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen9.jpg" alt="Riepilogo 365 giorni con 949 notti"></div>
+        <div class="g-title">Riepilogo 365 giorni – 949 notti</div>
+        <p class="g-text">107.000 € valore prenotazioni e 89,7% recensioni a 5 stelle.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen10.jpg" alt="Riepilogo dall'inizio dell'anno"></div>
-        <div class="gallery-title">Riepilogo inizio anno</div>
-        <p class="gallery-text">Totale proprietario dall’inizio dell’anno dopo costi/correzioni/commissioni del portale.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen10.jpg" alt="Riepilogo dall'inizio dell'anno"></div>
+        <div class="g-title">Riepilogo inizio anno</div>
+        <p class="g-text">Totale per il proprietario dall’inizio dell’anno (dati portale).</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen11.jpg" alt="Performance 365 giorni con 980 notti"></div>
-        <div class="gallery-title">Performance 365 giorni – 980 notti</div>
-        <p class="gallery-text">Qualità stabile e andamento mese per mese.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen11.jpg" alt="Performance 365 giorni con 980 notti"></div>
+        <div class="g-title">Performance 365 giorni – 980 notti</div>
+        <p class="g-text">Qualità stabile e andamento mese per mese.</p>
       </article>
 
-      <article class="gallery-item">
-        <div class="gallery-thumb-shell"><img src="assets/proof/screen12.jpg" alt="Altro profilo con oltre 1000 notti prenotate"></div>
-        <div class="gallery-title">Altro profilo – oltre 1.000 notti</div>
-        <p class="gallery-text">Profilo stabile con qualità alta e problemi recenti sotto controllo.</p>
+      <article class="g-item">
+        <div class="thumb"><img src="assets/proof/screen12.jpg" alt="Altro profilo con oltre 1000 notti"></div>
+        <div class="g-title">Altro profilo – oltre 1.000 notti</div>
+        <p class="g-text">Profilo stabile con qualità alta e problemi sotto controllo.</p>
       </article>
     </div>
 
-    <p class="note-bottom">
-      Ogni screenshot corrisponde a un profilo reale gestito o monitorato nel percorso:
-      la metrica non è solo il fatturato, ma la combinazione tra notti vendute, qualità e sostenibilità operativa.
+    <p class="mini" style="margin-top:10px;">
+      La metrica chiave non è solo il fatturato: è la combinazione tra notti vendute, qualità e sostenibilità (meno caos = più continuità).
     </p>
   </section>
 
-  <!-- FAQ -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">Domande frequenti</div>
-      <h2>Prima di prenotare</h2>
-      <p>Risposte rapide alle domande che di solito blocca i proprietari prima della call.</p>
-    </div>
-
-    <div class="faq">
-      <details>
-        <summary>“Quanto ci vuole per vedere risultati?”</summary>
-        <p>Dipende dal punto di partenza. In genere si parte da ciò che impatta subito sul calendario (annuncio e pricing) e poi si stabilizza la gestione. L’obiettivo è creare numeri sostenibili, non picchi casuali.</p>
-      </details>
-
-      <details>
-        <summary>“Devo essere a Roma?”</summary>
-        <p>Federica lavora su Roma e dintorni come gestione diretta, ma in call può comunque dirti cosa sbloccare sul tuo annuncio e se ha senso un percorso in base alla tua zona.</p>
-      </details>
-
-      <details>
-        <summary>“È adatto anche se sto iniziando?”</summary>
-        <p>Sì: spesso partire bene evita mesi di errori. In call si capisce cosa impostare subito (annuncio, regole, pricing e processo operativo).</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
+  <!-- CHIUSURA “VENDITA” (senza dettagli operativi) -->
   <section id="final" class="section">
     <div class="card">
-      <div class="section-header" style="margin-bottom:10px;">
-        <div class="section-eyebrow">Ultimo step</div>
-        <h2>Vuoi capire cosa sblocca calendario e guadagni nel tuo caso?</h2>
+      <div class="hdr" style="margin-bottom:10px;">
+        <div class="eyebrow">Se vuoi replicare</div>
+        <h2>Risolviamo oggi gli errori che ti fanno perdere prenotazioni… e capiamo se la tua casa può davvero rendere.</h2>
         <p>
-          Prenota la call gratuita: in 20 minuti analizziamo il tuo punto di partenza e ti dico
-          le 2–3 correzioni più impattanti (annuncio, prezzi, processo).
+          In call non ti vendo “aria”: ti faccio capire se sei nel target, qual è il blocco principale
+          e cosa serve per trasformare gestione e risultati in un sistema stabile.
         </p>
       </div>
 
-      <div class="cta-row">
+      <div class="split">
+        <div class="box" style="background: rgba(15,23,42,.55);">
+          <b>Cosa ottieni dalla call</b>
+          <p>
+            1) Diagnosi rapida: dove stai perdendo prenotazioni o margine.<br>
+            2) Priorità: cosa sistemare prima (e cosa NON toccare ora).<br>
+            3) Direzione: se ha senso un percorso di affiancamento per sbloccare risultati.
+          </p>
+        </div>
+
+        <div class="box" style="background: rgba(15,23,42,.55);">
+          <b>Perché funziona</b>
+          <p>
+            Perché non ti lascia da solo: si mette struttura, si corregge in corsa,
+            e si lavora con metodo invece che a tentativi.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA finale dopo vendita -->
+      <div class="cta-row" style="margin-top:14px;">
         <a id="btnCalendlyFinal" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
         <a class="btn btn--ghost" href="#proof" rel="nofollow">RIVEDI I RISULTATI</a>
       </div>
-
-      <p class="mini" style="margin-top:10px;">
-        Se oggi stai gestendo “a sensazione”, i numeri restano fermi.
-        Quando inizi a trattare la casa vacanze come un business, calendario e guadagni iniziano a muoversi sul serio.
-      </p>
 
       <div class="footer">
         © <span id="y"></span> Federica Cellini — Tutti i diritti riservati ·
@@ -841,22 +735,54 @@
     </div>
   </section>
 
+  <!-- FAQ (post-CTA per ridurre frizione, non prima) -->
+  <section class="section">
+    <div class="hdr">
+      <div class="eyebrow">Domande frequenti</div>
+      <h2>Prima di prenotare</h2>
+      <p>Se hai dubbi, qui trovi le risposte più comuni (senza perdere tempo).</p>
+    </div>
+
+    <div style="display:grid;gap:10px;">
+      <details>
+        <summary>“Quanto ci vuole per vedere risultati?”</summary>
+        <p>Dipende dal punto di partenza. In genere, quando si mette ordine e si smette di lavorare a caso, i segnali arrivano prima (richieste, posizionamento, continuità). Poi si stabilizza il sistema.</p>
+      </details>
+
+      <details>
+        <summary>“È adatto anche se sto iniziando?”</summary>
+        <p>Sì, spesso partire bene evita mesi di errori costosi. In call capiamo se sei nel target e quali fondamenta servono.</p>
+      </details>
+
+      <details>
+        <summary>“E se non sono a Roma?”</summary>
+        <p>In call si può comunque capire cosa blocca il tuo annuncio e se ha senso un percorso in base alla tua zona e situazione.</p>
+      </details>
+    </div>
+
+    <!-- CTA “anti procrastinazione” -->
+    <div class="cta-row" style="margin-top:14px;">
+      <a id="btnCalendlyFaq" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
+      <span class="mini">Se sei serio e vuoi struttura, la call è lo step più veloce.</span>
+    </div>
+  </section>
+
 </main>
 
-<!-- STICKY CTA -->
+<!-- Sticky CTA (sempre presente, coerente e non invasiva) -->
 <div class="sticky" aria-label="Prenotazione rapida">
   <div class="sticky__in">
-    <span class="sticky-note">Vuoi replicare questi risultati sul tuo caso?</span>
+    <span class="sticky-note">Vuoi struttura + affiancamento? Prenota la call.</span>
     <a id="btnCalendlySticky" class="btn btn--accent" href="#" rel="nofollow">PRENOTA ORA</a>
   </div>
 </div>
 
 <script>
-  // ====== CONFIG ======
+  // ===== CONFIG =====
   const CALENDLY_URL = "https://calendly.com/federica-cellini88/30min";
   const TIPOLOGIA = "proof";
 
-  // ====== PARAMS ======
+  // ===== PARAMS =====
   const q = new URLSearchParams(location.search);
   const utm_source   = q.get("utm_source")   || "";
   const utm_medium   = q.get("utm_medium")   || "";
@@ -883,12 +809,16 @@
     return u.toString();
   }
 
-  // CTA -> Calendly con UTM + lid
+  // Aggancia TUTTI i bottoni PRENOTA ORA
   [
     "btnCalendlyHero",
-    "btnCalendlyMid",
-    "btnCalendlyProof",
+    "btnCalendlyQualifica",
+    "btnCalendlyMeccanismo",
+    "btnCalendlyPreProof",
+    "btnCalendlyCase",
+    "btnCalendlyAfterGallery",
     "btnCalendlyFinal",
+    "btnCalendlyFaq",
     "btnCalendlySticky"
   ].forEach(id=>{
     const el = document.getElementById(id);
@@ -904,7 +834,7 @@
     try{ history.replaceState({}, "", clean); }catch(_){}
   }
 
-  // Footer year
+  // Year footer
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
