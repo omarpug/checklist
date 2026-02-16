@@ -39,18 +39,18 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
 
     .page{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 30px 16px 70px;
+      padding: 30px 16px 78px;
     }
 
     h1,h2,h3{letter-spacing:.02em;font-weight:900}
     h1{font-size:2.25rem;line-height:1.08}
-    h2{font-size:1.52rem;line-height:1.2;margin-bottom:8px}
+    h2{font-size:1.48rem;line-height:1.2;margin-bottom:8px}
     p{color:#e5e7eb}
 
     .badge{
@@ -68,7 +68,7 @@
       box-shadow: 0 0 0 4px var(--accentSoft);
     }
 
-    /* HERO (card) */
+    /* HERO card */
     .hero{
       position:relative;
       border-radius: var(--rXL);
@@ -93,15 +93,14 @@
     }
     .hero p{
       margin-top:10px;
-      max-width: 860px;
+      max-width: 900px;
       font-size: 1.00rem;
       color: #d1d5db;
     }
     .hero p b{color:#fff}
 
-    /* SECTIONS (mix: minimal + card) */
     .section{margin-top: 26px}
-    .eyebrow{
+    .kicker{
       font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;
       color: var(--muted);
       margin-bottom: 6px;
@@ -109,7 +108,7 @@
     .lead{
       color:#d1d5db;
       font-size:.98rem;
-      max-width: 900px;
+      max-width: 920px;
     }
 
     .card{
@@ -121,37 +120,27 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.55);
     }
 
-    .list{
-      margin-top: 10px;
+    .split{
       display:grid;
-      gap: 10px;
-      max-width: 920px;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: 12px;
+      margin-top: 12px;
     }
-    .li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,.20);
-      background: rgba(15,23,42,.45);
+    .box{
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,.24);
+      background: rgba(15,23,42,.55);
+      padding: 14px 14px 12px;
     }
-    .check{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accentSoft);
-      margin-top: 6px;
-      flex: 0 0 auto;
-    }
-    .li b{color:#fff}
-    .li span{color:#cbd5e1;font-size:.95rem}
+    .box b{color:#fff}
+    .box p{margin-top:6px;color:#cbd5e1;font-size:.92rem}
 
     .quote{
       margin-top: 10px;
       border-left: 3px solid rgba(250,204,21,.75);
       padding-left: 12px;
       color:#e5e7eb;
-      font-weight: 700;
+      font-weight: 800;
     }
     .quote small{
       display:block;
@@ -160,7 +149,7 @@
       color: var(--muted);
     }
 
-    /* RISULTATI + GALLERY */
+    /* Gallery risultati */
     .gallery{
       margin-top: 14px;
       display:grid;
@@ -194,16 +183,28 @@
       font-size:.82rem;color: var(--muted);
     }
 
-    .pillrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-    .pill{
-      display:inline-flex;align-items:center;
-      padding: 2px 10px;
-      border-radius: var(--rP);
-      border: 1px solid rgba(148,163,184,.55);
-      background: rgba(15,23,42,.85);
-      font-size:.75rem;
-      color: var(--muted);
+    /* Specchietto finale (preparazione) */
+    .prep{
+      position:relative;
+      border-radius: var(--rLG);
+      border: 1px solid rgba(250,204,21,.30);
+      background: rgba(250,204,21,.09);
+      padding: 16px 16px 14px;
+      margin-top: 12px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.35);
     }
+    .prep h3{
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+    .prep p{color:#fde68a}
+    .prep ul{
+      margin-top: 10px;
+      padding-left: 18px;
+      color:#ffe9a6;
+    }
+    .prep li{margin: 6px 0}
+    .prep b{color:#fff}
 
     .footer{
       margin-top: 18px;
@@ -214,18 +215,19 @@
 
     @media (max-width: 980px){
       h1{font-size:2.00rem}
+      .split{grid-template-columns:minmax(0,1fr)}
     }
     @media (max-width: 640px){
       .page{ padding: 22px 14px 56px; }
       .hero{ padding: 20px 16px 16px; border-radius: 22px; }
       .badge{ font-size: .68rem; padding: 4px 10px; margin-bottom: 10px; }
       h1{ font-size: 1.54rem; line-height: 1.06; }
-      h2{ font-size: 1.26rem; }
+      h2{ font-size: 1.24rem; }
       .hero p{ font-size: .92rem; line-height: 1.55; }
       .lead{ font-size: .90rem; }
       .card{ padding: 14px 14px 13px; border-radius: 18px; }
-      .li span{ font-size: .90rem; }
       .thumb img{ max-height: 220px; }
+      .prep{ padding: 14px 14px 12px; border-radius: 18px; }
     }
   </style>
 </head>
@@ -243,111 +245,104 @@
     </p>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="section" id="problema">
-    <div class="eyebrow">Problema</div>
+  <!-- PROBLEMA (prosa, non lista) -->
+  <section class="section">
+    <div class="kicker">Il punto di partenza</div>
     <h2>Il problema non è delegare. Il problema è delegare senza capire.</h2>
-    <p class="lead">
-      Molti proprietari affidano la gestione senza sapere realmente:
-    </p>
-
-    <div class="list">
-      <div class="li"><span class="check"></span><span><b>Quanto potrebbe rendere</b> il loro immobile</span></div>
-      <div class="li"><span class="check"></span><span><b>Quali leve</b> aumentano i guadagni</span></div>
-      <div class="li"><span class="check"></span><span><b>Quali dati</b> indicano se sta performando bene</span></div>
-    </div>
 
     <div class="card">
       <p class="lead" style="margin:0;">
-        Quando mancano questi riferimenti, la gestione diventa una somma di decisioni “a sensazione”.
-        E senza controllo, è facile perdere margine senza nemmeno accorgersene.
+        La maggior parte dei proprietari delega pensando che “l’importante è che la casa sia online”.
+        Il problema nasce quando non hai una lettura chiara di ciò che sta accadendo: quanto può rendere davvero l’immobile,
+        quali leve muovono i numeri, e quali dati dicono se stai andando bene oppure no.
+        <br><br>
+        In quel momento succede una cosa semplice: inizi a dipendere dalle decisioni di qualcun altro,
+        senza avere gli strumenti per valutare se quelle decisioni sono giuste per i tuoi obiettivi.
       </p>
+    </div>
+
+    <div class="split">
+      <div class="box">
+        <b>Cosa manca di solito</b>
+        <p>
+          Un quadro chiaro: numeri, margini, motivi reali per cui una casa performa o non performa.
+          Senza questo, ogni scelta diventa “a intuito”.
+        </p>
+      </div>
+      <div class="box">
+        <b>Cosa succede quando manca</b>
+        <p>
+          Anche se il calendario si muove, non sai se stai massimizzando oppure lasciando valore sul tavolo.
+          E spesso te ne accorgi tardi.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- CAMBIO DI PROSPETTIVA -->
-  <section class="section" id="cambio">
-    <div class="eyebrow">Cambio di prospettiva</div>
-    <h2>Non stanno diventando gestori. Stanno imparando come funziona davvero la gestione.</h2>
-    <p class="lead">
-      Sempre più proprietari stanno cambiando approccio.
-      Perché quando capisci:
-    </p>
-
-    <div class="list">
-      <div class="li"><span class="check"></span><span><b>Cosa guardare</b> (e cosa ignorare)</span></div>
-      <div class="li"><span class="check"></span><span><b>Cosa misurare</b> per capire se sei sulla strada giusta</span></div>
-      <div class="li"><span class="check"></span><span><b>Cosa ottimizzare</b> per aumentare rendimento e stabilità</span></div>
-    </div>
+  <!-- CAMBIO DI PROSPETTIVA (senza chiamarlo così) -->
+  <section class="section">
+    <div class="kicker">Quello che sta cambiando</div>
+    <h2>Molti proprietari non stanno diventando gestori. Stanno imparando come funziona davvero la gestione.</h2>
 
     <div class="card">
       <p class="lead" style="margin:0;">
-        Inizi a vedere il tuo immobile con occhi diversi: non come “una casa da riempire”,
+        Negli ultimi mesi sempre più proprietari stanno facendo un passaggio semplice, ma potente:
+        prima di scegliere cosa fare, vogliono capire.
+        <br><br>
+        Perché quando sai <b>cosa guardare</b>, <b>cosa misurare</b> e <b>cosa ottimizzare</b>,
+        inizi a vedere il tuo immobile con occhi diversi: non come “una casa da riempire”,
         ma come un asset da gestire con criterio.
       </p>
     </div>
   </section>
 
-  <!-- CONSAPEVOLEZZA -->
-  <section class="section" id="consapevolezza">
-    <div class="eyebrow">Consapevolezza</div>
+  <!-- CONSAPEVOLEZZA (profonda, senza lista) -->
+  <section class="section">
+    <div class="kicker">La differenza pratica</div>
     <h2>Non è una formula magica. È comprensione.</h2>
-    <p class="lead">
-      Quando conosci il funzionamento reale:
-    </p>
-
-    <div class="list">
-      <div class="li"><span class="check"></span><span><b>Riconosci subito</b> cosa non sta performando</span></div>
-      <div class="li"><span class="check"></span><span><b>Capisci</b> dove stai perdendo margine</span></div>
-      <div class="li"><span class="check"></span><span><b>Sai</b> quali modifiche aumentano valore e rendimento</span></div>
-    </div>
 
     <div class="card">
       <p class="lead" style="margin:0;">
-        La differenza non è “fare di più”. È fare le cose giuste, nel giusto ordine.
+        Quando conosci il funzionamento reale, alcune cose diventano immediate:
+        riconosci cosa non sta performando senza andare a tentativi,
+        capisci dove stai perdendo margine,
+        e sai quali modifiche aumentano valore e rendimento senza stravolgere tutto.
+        <br><br>
+        Il punto non è “fare di più”. È fare le cose giuste, nel giusto ordine.
       </p>
     </div>
   </section>
 
-  <!-- POSIZIONAMENTO MENTALE -->
-  <section class="section" id="posizionamento">
-    <div class="eyebrow">Posizionamento mentale</div>
+  <!-- POSIZIONAMENTO MENTALE (senza titoli tecnici) -->
+  <section class="section">
+    <div class="kicker">Una frase che cambia tutto</div>
     <h2>Questa è la vera differenza.</h2>
 
     <div class="card">
       <div class="quote">
         “Ho bisogno di qualcuno che lo gestisca al posto mio.”
-        <small>→ pensiero iniziale (comune)</small>
+        <small>È un pensiero comune quando non hai strumenti per valutare.</small>
       </div>
 
       <div class="quote" style="margin-top:14px;">
         “Se capisco come funziona, posso decidere io cosa fare.”
-        <small>→ cambio di paradigma</small>
+        <small>Qui cambia tutto: torni a scegliere con criterio, in base ai tuoi obiettivi.</small>
       </div>
-    </div>
-
-    <div class="pillrow">
-      <span class="pill">Controllo</span>
-      <span class="pill">Criterio</span>
-      <span class="pill">Decisioni</span>
-      <span class="pill">Metodo</span>
     </div>
   </section>
 
-  <!-- RISULTATO + SCREEN -->
+  <!-- RISULTATO + SCREEN (solo qui) -->
   <section class="section" id="risultato">
-    <div class="eyebrow">Risultato</div>
+    <div class="kicker">Quando cambia la mentalità</div>
     <h2>Chi acquisisce questa consapevolezza non cambia solo gestione. Cambia mentalità.</h2>
-    <p class="lead">
-      Inizia a ragionare in termini di:
-      rendimento, margine, ottimizzazione, valore dell’immobile.
-      Ed è lì che iniziano i risultati diversi.
-    </p>
 
     <div class="card">
       <p class="lead" style="margin:0;">
-        Qui sotto trovi alcuni screenshot di cruscotti/risultati (portali).
-        Non sono “promesse”: sono esempi di come appare la gestione quando viene letta e governata con metodo.
+        Inizia a ragionare in termini di <b>rendimento</b>, <b>margine</b>, <b>ottimizzazione</b> e <b>valore dell’immobile</b>.
+        Ed è lì che iniziano i risultati diversi: perché non stai più “provando cose”, stai governando un processo.
+        <br><br>
+        Qui sotto trovi alcuni screenshot di cruscotti/risultati (portali): servono per darti contesto su come appare una gestione
+        quando viene letta e guidata con metodo.
       </p>
     </div>
 
@@ -355,13 +350,13 @@
       <article class="g-item">
         <div class="thumb"><img src="../errori/assets/img/riepilogo-2025.png" alt="Riepilogo 2025"></div>
         <div class="g-title">Riepilogo</div>
-        <p class="g-text">Visione d’insieme: leggere il quadro prima di intervenire.</p>
+        <p class="g-text">Visione d’insieme: prima lettura, poi decisione.</p>
       </article>
 
       <article class="g-item">
         <div class="thumb"><img src="../errori/assets/img/entrate-2025.png" alt="Entrate 2025"></div>
         <div class="g-title">Entrate</div>
-        <p class="g-text">Andamento: capire stabilità e margine nel tempo.</p>
+        <p class="g-text">Andamento: stabilità e margine nel tempo.</p>
       </article>
 
       <article class="g-item">
@@ -373,7 +368,7 @@
       <article class="g-item">
         <div class="thumb"><img src="../errori/assets/img/2-2025.png" alt="Screen 2"></div>
         <div class="g-title">Cruscotto</div>
-        <p class="g-text">Dati utili per individuare cosa frena.</p>
+        <p class="g-text">Dati utili per capire cosa frena.</p>
       </article>
 
       <article class="g-item">
@@ -396,15 +391,32 @@
     </div>
   </section>
 
-  <!-- CHIUSURA -->
-  <section class="section" id="chiusura">
-    <div class="eyebrow">Chiusura</div>
+  <!-- CHIUSURA + SPECCHIETTO PREPARAZIONE -->
+  <section class="section">
+    <div class="kicker">Prima di sentirci</div>
     <h2>Il punto non è gestire o delegare. Il punto è sapere.</h2>
+
     <div class="card">
       <p class="lead" style="margin:0;">
         Perché solo quando sai come funziona davvero il tuo immobile,
         puoi scegliere cosa fare nel modo giusto.
       </p>
+
+      <div class="prep" aria-label="Preparazione alla call">
+        <h3>Per fare una call utile (e arrivare subito al punto)</h3>
+        <p style="margin:0;">
+          Ti chiedo solo una cosa: <b>proteggi questi minuti</b>. Non serve preparare presentazioni.
+          Serve arrivare lucidi e senza interruzioni, così possiamo ragionare in modo serio sul tuo caso.
+        </p>
+
+        <ul>
+          <li><b>Blocca 20–30 minuti reali</b> (senza guidare, senza fare altro in contemporanea).</li>
+          <li><b>Metti il telefono in silenzioso</b> e scegli un ambiente tranquillo (se puoi usa cuffie).</li>
+          <li><b>Tieni a portata</b>: zona dell’immobile, tipo (casa/appartamento), e la piattaforma principale (Airbnb/Booking/altro).</li>
+          <li><b>Se hai accesso</b> al pannello/portale, aprilo prima: bastano 2 minuti per vedere dati utili.</li>
+          <li><b>Arriva con un obiettivo</b> semplice: “voglio capire cosa sta frenando e qual è la priorità #1”.</li>
+        </ul>
+      </div>
 
       <div class="footer">
         © <span id="y"></span> Federica Cellini — Tutti i diritti riservati ·
