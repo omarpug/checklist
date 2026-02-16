@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prima della call — Percorsi | Federica Property Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#020617;
+      --bg2:#0b1220;
+      --card:#0b1220;
+      --card2: rgba(15,23,42,.65);
+
+      --border: rgba(148,163,184,.25);
+      --border2: rgba(148,163,184,.45);
+
+      --text:#f9fafb;
+      --muted:#9ca3af;
+
+      --accent:#facc15;
+      --accent2:#fbbf24;
+      --accentSoft: rgba(250,204,21,.12);
+
+      --shadow: 0 22px 60px rgba(0,0,0,.70);
+
+      --rXL: 26px;
+      --rLG: 22px;
+      --rMD: 18px;
+      --rP: 999px;
+
+      --max: 1160px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top, var(--bg2) 0, var(--bg) 42%, var(--bg) 70%) fixed;
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    .page{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 16px 64px;
+    }
+
+    h1,h2,h3{letter-spacing:.02em;font-weight:800}
+    h1{font-size:2.35rem;line-height:1.08}
+    h2{font-size:1.65rem;margin-bottom:8px}
+    h3{font-size:1.05rem;margin-bottom:6px}
+    p{color:#e5e7eb}
+
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;
+      padding: 4px 12px;border-radius: var(--rP);
+      border: 1px solid rgba(148,163,184,.55);
+      background: rgba(15,23,42,.85);
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accentSoft);
+    }
+
+    .hero{
+      position:relative;
+      border-radius: var(--rXL);
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(250,204,21,.20), transparent 60%),
+        linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: var(--shadow);
+      padding: 26px 24px 22px;
+      overflow:hidden;
+      margin-bottom: 16px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;border-radius:inherit;
+      border:1px solid transparent;
+      background: linear-gradient(135deg, rgba(250,204,21,.25), rgba(56,189,248,.08)) border-box;
+      mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      gap: 18px;
+      align-items:start;
+    }
+
+    .hero-sub{
+      margin-top:10px;
+      max-width: 780px;
+      font-size: 0.98rem;
+      color: #d1d5db;
+    }
+    .hero-sub b{color:#fff}
+
+    .hero-kpi{
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top, rgba(15,23,42,.92), rgba(15,23,42,1));
+      border: 1px solid rgba(148,163,184,.5);
+      box-shadow: 0 20px 50px rgba(15,23,42,.9);
+      padding: 14px 16px;
+    }
+    .kpi-label{
+      font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .kpi-val{
+      font-size:1.25rem;line-height:1.15;
+      font-weight:900;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+    .kpi-note{
+      font-size:.83rem;color: var(--muted);
+    }
+
+    .section{margin-bottom: 34px}
+    .hdr{max-width: 920px;margin-bottom: 14px}
+    .eyebrow{
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .hdr p{font-size:.98rem;color:#d1d5db}
+
+    .card{
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top left, rgba(15,23,42,.90), #020617);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .box{
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,.28);
+      background: rgba(15,23,42,.55);
+      padding: 14px 14px 12px;
+    }
+    .box b{color:#fff}
+    .box p{margin-top:6px;color:#cbd5e1;font-size:.92rem}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .g-item{
+      border-radius: var(--rLG);
+      background: #020617;
+      border: 1px solid var(--border);
+      padding: 10px 10px 11px;
+      box-shadow: 0 16px 34px rgba(0,0,0,.65);
+    }
+    .thumb{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,1);
+      margin-bottom: 8px;
+    }
+    .thumb img{
+      width: 100%;
+      object-fit: contain;
+      background: rgba(15,23,42,1);
+      max-height: 260px;
+    }
+    .g-title{
+      font-size:.92rem;font-weight:800;color:#e5e7eb;margin-bottom:4px
+    }
+    .g-text{
+      font-size:.82rem;color: var(--muted);
+    }
+
+    details{
+      border: 1px solid rgba(148,163,184,.28);
+      background: rgba(15,23,42,.55);
+      border-radius: 18px;
+      padding: 12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:800;
+      color:#e5e7eb;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin-top:8px;color:#cbd5e1;font-size:.92rem}
+
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+      opacity: .95;
+    }
+
+    :focus-visible{
+      outline: 3px solid rgba(250,204,21,.55);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: minmax(0,1fr); }
+      h1{font-size:2.05rem}
+    }
+
+    @media (max-width: 640px){
+      .page{ padding: 22px 14px 52px; }
+      .section{ margin-bottom: 26px; }
+      .hero{ padding: 20px 16px 16px; margin-bottom: 12px; border-radius: 22px; }
+      .badge{ font-size: .68rem; padding: 4px 10px; margin-bottom: 10px; }
+      h1{ font-size: 1.58rem; line-height: 1.06; }
+      h2{ font-size: 1.28rem; margin-bottom: 6px; }
+      .hero-sub{ font-size: .90rem; line-height: 1.55; }
+      .hero-sub br{ display:none; }
+      .hero-kpi{ padding: 12px 12px; border-radius: 18px; }
+      .kpi-label{ font-size: .72rem; }
+      .kpi-val{ font-size: 1.10rem; }
+      .hdr p{ font-size: .90rem; }
+      .box p{ font-size: .88rem; }
+      .thumb img{ max-height: 220px; }
+    }
+  </style>
+</head>
+
+<body>
+<main class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span> PRIMA DELLA CALL · PERCORSI</div>
+
+        <h1>Leggi questo prima della call: così arriviamo subito al punto.</h1>
+
+        <p class="hero-sub">
+          Il focus non è “delegare o non delegare”.<br>
+          Il focus è <b>capire</b> come sta funzionando il tuo immobile: numeri, leve, margini e cosa sta frenando i risultati.
+          Quando hai chiarezza, poi decidi tu la strada migliore.
+        </p>
+      </div>
+
+      <div class="hero-kpi">
+        <div class="kpi-label">In call ottieni</div>
+        <div class="kpi-val">Chiarezza + priorità</div>
+        <p class="kpi-note">
+          Ragioniamo sul tuo caso, in modo pratico e diretto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSA FACCIAMO IN CALL -->
+  <section class="section">
+    <div class="hdr">
+      <div class="eyebrow">In call</div>
+      <h2>Cosa analizziamo insieme</h2>
+      <p>
+        L’obiettivo è uscire con una direzione chiara, non con “consigli generici”.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <div class="box">
+        <b>1) Dove stai perdendo margine</b>
+        <p>Capire se il problema è annuncio, prezzi, impostazioni o gestione a tentativi.</p>
+      </div>
+      <div class="box">
+        <b>2) Le leve che muovono i numeri</b>
+        <p>Quali interventi aumentano rendimento e stabilità (con criterio).</p>
+      </div>
+      <div class="box">
+        <b>3) Prossimi step in ordine</b>
+        <p>Una sequenza pratica: cosa fare prima e cosa evitare di cambiare ora.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCETTO CHIAVE -->
+  <section class="section">
+    <div class="card">
+      <div class="hdr" style="margin-bottom:10px;">
+        <div class="eyebrow">Concetto chiave</div>
+        <h2>Quando non sai come funziona la gestione, non hai controllo.</h2>
+        <p>
+          Molti proprietari affidano tutto senza una lettura chiara di cosa stia succedendo davvero.
+          Il metodo serve a trasformare la gestione in un sistema: comprensione, ordine e decisioni con criterio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN -->
+  <section class="section" id="proof">
+    <div class="hdr">
+      <div class="eyebrow">Esempi</div>
+      <h2>Screenshot di risultati e cruscotti</h2>
+      <p>
+        Sono schermate reali (portali/cruscotti): servono a dare contesto su come si ragiona quando c’è metodo.
+      </p>
+    </div>
+
+    <div class="gallery">
+      <article class="g-item">
+        <div class="thumb">
+          <img src="../errori/assets/img/riepilogo-2025.png" alt="Riepilogo 2025">
+        </div>
+        <div class="g-title">Riepilogo annuale</div>
+        <p class="g-text">Leggere il quadro completo prima di intervenire.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb">
+          <img src="../errori/assets/img/entrate-2025.png" alt="Entrate 2025">
+        </div>
+        <div class="g-title">Entrate</div>
+        <p class="g-text">Capire andamento e stabilità dei numeri.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/1-2025.png" alt="Screen 1"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Esempio report: numeri e lettura operativa.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/2-2025.png" alt="Screen 2"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Dati utili per capire cosa sta frenando.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/3-2025.png" alt="Screen 3"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Quando c’è metodo: ordine e continuità.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/4-2025.png" alt="Screen 4"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Lettura → decisione, non tentativi.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/5-2025.png" alt="Screen 5"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Obiettivo: controllo e scelte con criterio.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- NOTE FINALI -->
+  <section class="section">
+    <div class="hdr">
+      <div class="eyebrow">Nota</div>
+      <h2>Due cose importanti</h2>
+      <p>Così arrivi in call con aspettative corrette.</p>
+    </div>
+
+    <div style="display:grid;gap:10px;">
+      <details>
+        <summary>Questa pagina non sostituisce l’analisi del tuo caso</summary>
+        <p>Gli screenshot servono a contestualizzare: in call ragioniamo sul tuo immobile e sulla tua situazione reale.</p>
+      </details>
+
+      <details>
+        <summary>Il punto non è “fare tutto da soli”</summary>
+        <p>Il punto è capire: quando hai chiarezza, puoi scegliere la strada migliore senza muoverti a tentativi.</p>
+      </details>
+    </div>
+
+    <div class="footer">
+      © <span id="y"></span> Federica Cellini — Tutti i diritti riservati ·
+      <a href="/privacy.html" target="_blank" rel="noopener">Privacy</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
