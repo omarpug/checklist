@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestioni — Prima della call | Federica Property Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#020617;
+      --bg2:#0b1220;
+
+      --text:#f9fafb;
+      --muted:#9ca3af;
+
+      --border: rgba(148,163,184,.25);
+      --border2: rgba(148,163,184,.45);
+
+      --accent:#facc15;
+      --accent2:#fbbf24;
+      --accentSoft: rgba(250,204,21,.12);
+
+      --shadow: 0 22px 60px rgba(0,0,0,.70);
+
+      --rXL: 26px;
+      --rLG: 22px;
+      --rMD: 18px;
+      --rP: 999px;
+
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top, var(--bg2) 0, var(--bg) 42%, var(--bg) 70%) fixed;
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    .page{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 16px 78px;
+    }
+
+    h1,h2,h3{letter-spacing:.02em;font-weight:900}
+    h1{font-size:2.25rem;line-height:1.08}
+    h2{font-size:1.48rem;line-height:1.2;margin-bottom:8px}
+    p{color:#e5e7eb}
+
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;
+      padding: 4px 12px;border-radius: var(--rP);
+      border: 1px solid rgba(148,163,184,.55);
+      background: rgba(15,23,42,.85);
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accentSoft);
+    }
+
+    .hero{
+      position:relative;
+      border-radius: var(--rXL);
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(250,204,21,.20), transparent 60%),
+        linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: var(--shadow);
+      padding: 26px 24px 22px;
+      overflow:hidden;
+      margin-bottom: 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;border-radius:inherit;
+      border:1px solid transparent;
+      background: linear-gradient(135deg, rgba(250,204,21,.25), rgba(56,189,248,.08)) border-box;
+      mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      pointer-events:none;
+    }
+    .hero p{
+      margin-top:10px;
+      max-width: 920px;
+      font-size: 1.00rem;
+      color: #d1d5db;
+    }
+    .hero p b{color:#fff}
+
+    .section{margin-top: 26px}
+    .lead{
+      color:#d1d5db;
+      font-size:.98rem;
+      max-width: 920px;
+    }
+
+    .card{
+      margin-top: 12px;
+      border-radius: var(--rLG);
+      background: radial-gradient(circle at top left, rgba(15,23,42,.90), #020617);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
+    }
+
+    .softlist{
+      margin-top: 12px;
+      display:grid;
+      gap: 10px;
+      max-width: 920px;
+    }
+    .softitem{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,.20);
+      background: rgba(15,23,42,.45);
+    }
+    .check{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accentSoft);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+    .softitem b{color:#fff}
+    .softitem span{color:#cbd5e1;font-size:.95rem}
+
+    .quote{
+      margin-top: 10px;
+      border-left: 3px solid rgba(250,204,21,.75);
+      padding-left: 12px;
+      color:#e5e7eb;
+      font-weight: 900;
+    }
+    .quote small{
+      display:block;
+      margin-top:6px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .gallery{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .g-item{
+      border-radius: var(--rLG);
+      background: #020617;
+      border: 1px solid var(--border);
+      padding: 10px 10px 11px;
+      box-shadow: 0 16px 34px rgba(0,0,0,.65);
+    }
+    .thumb{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,1);
+      margin-bottom: 8px;
+    }
+    .thumb img{
+      width: 100%;
+      object-fit: contain;
+      background: rgba(15,23,42,1);
+      max-height: 280px;
+    }
+    .g-title{
+      font-size:.92rem;font-weight:900;color:#e5e7eb;margin-bottom:4px
+    }
+    .g-text{
+      font-size:.82rem;color: var(--muted);
+    }
+
+    .prep{
+      margin-top: 12px;
+      border-radius: var(--rLG);
+      border: 1px solid rgba(250,204,21,.30);
+      background: rgba(250,204,21,.09);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.35);
+    }
+    .prep h3{font-size:1.03rem;margin-bottom:6px}
+    .prep p{color:#fde68a}
+    .prep ul{
+      margin-top: 10px;
+      padding-left: 18px;
+      color:#ffe9a6;
+    }
+    .prep li{margin: 6px 0}
+    .prep b{color:#fff}
+
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+      opacity: .95;
+    }
+
+    @media (max-width: 980px){
+      h1{font-size:2.00rem}
+    }
+    @media (max-width: 640px){
+      .page{ padding: 22px 14px 56px; }
+      .hero{ padding: 20px 16px 16px; border-radius: 22px; }
+      .badge{ font-size: .68rem; padding: 4px 10px; margin-bottom: 10px; }
+      h1{ font-size: 1.54rem; line-height: 1.06; }
+      h2{ font-size: 1.24rem; }
+      .hero p{ font-size: .92rem; line-height: 1.55; }
+      .lead{ font-size: .90rem; }
+      .card{ padding: 14px 14px 13px; border-radius: 18px; }
+      .softitem span{ font-size: .90rem; }
+      .thumb img{ max-height: 220px; }
+      .prep{ padding: 14px 14px 12px; border-radius: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+<main class="page">
+
+  <!-- HEADLINE + SOTTOHEADLINE -->
+  <section class="hero">
+    <div class="badge"><span class="dot"></span> GESTIONI · PRIMA DELLA CALL</div>
+
+    <h1>Perché sempre più proprietari stanno affidando la gestione a property manager professionisti</h1>
+
+    <p>
+      Non per “scaricare il problema”.<br>
+      Ma perché hanno capito che <b>delegare a caso</b> (o al professionista sbagliato) può costare caro.
+    </p>
+
+    <p class="lead" style="margin-top:12px;color:#d1d5db;">
+      Questa pagina serve solo a farti arrivare alla call con le idee chiare, così in pochi minuti capiamo se la gestione professionale è la scelta giusta per il tuo caso.
+    </p>
+  </section>
+
+  <!-- SEZIONE PROBLEMA -->
+  <section class="section" id="problema">
+    <h2>Il problema non è delegare. Il problema è delegare senza criteri.</h2>
+
+    <div class="card">
+      <p class="lead" style="margin:0;">
+        Molti proprietari delegano “per togliersi pensieri”, ma senza sapere cosa distinguere tra una gestione improvvisata e una gestione professionale.
+        Di solito mancano tre riferimenti chiave:
+      </p>
+
+      <div class="softlist">
+        <div class="softitem"><span class="check"></span><span><b>Cosa deve fare davvero un property manager</b> per aumentare guadagni e stabilità (non solo “gestire messaggi”).</span></div>
+        <div class="softitem"><span class="check"></span><span><b>Quali leve muovono i risultati</b> (prezzi, posizionamento, qualità, processi).</span></div>
+        <div class="softitem"><span class="check"></span><span><b>Quali dati dimostrano che la gestione funziona</b> (e non solo che “la casa è piena”).</span></div>
+      </div>
+
+      <p class="lead" style="margin-top:12px;">
+        Senza questi criteri, il rischio è semplice: paghi una gestione, ma non sai se stai massimizzando o lasciando margine sul tavolo.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEZIONE CAMBIO DI PROSPETTIVA -->
+  <section class="section" id="prospettiva">
+    <h2>Sempre più proprietari stanno cambiando approccio.</h2>
+
+    <div class="card">
+      <p class="lead" style="margin:0;">
+        Non cercano “qualcuno che risponda ai messaggi”.<br>
+        Cercano un professionista che <b>governi risultati e processi</b>.
+      </p>
+
+      <p class="lead" style="margin-top:12px;">
+        Perché quando capisci:
+      </p>
+
+      <div class="softlist">
+        <div class="softitem"><span class="check"></span><span><b>cosa guardare</b> per capire se la gestione è seria (e dove interviene).</span></div>
+        <div class="softitem"><span class="check"></span><span><b>cosa misurare</b> per valutare andamento, margine e stabilità.</span></div>
+        <div class="softitem"><span class="check"></span><span><b>cosa ottimizzare</b> per aumentare rendimento e ridurre caos operativo.</span></div>
+      </div>
+
+      <p class="lead" style="margin-top:12px;">
+        scegli meglio a chi affidarti e soprattutto <b>capisci cosa aspettarti</b> da una gestione professionale.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEZIONE CONSAPEVOLEZZA -->
+  <section class="section" id="consapevolezza">
+    <h2>Non è una formula magica. È metodo.</h2>
+
+    <div class="card">
+      <p class="lead" style="margin:0;">
+        Quando sai come funziona una gestione professionale:
+      </p>
+
+      <div class="softlist">
+        <div class="softitem"><span class="check"></span><span><b>riconosci subito</b> una gestione improvvisata (e i segnali tipici).</span></div>
+        <div class="softitem"><span class="check"></span><span><b>capisci</b> dove si perde margine (prezzi, regole, posizionamento, qualità, inefficienze).</span></div>
+        <div class="softitem"><span class="check"></span><span><b>sai</b> quali interventi aumentano valore e rendimento senza “stravolgere tutto”.</span></div>
+      </div>
+
+      <p class="lead" style="margin-top:12px;">
+        Delegare bene non significa “sparire”. Significa avere un sistema e sapere cosa stai ottenendo.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEZIONE POSIZIONAMENTO MENTALE -->
+  <section class="section" id="posizionamento">
+    <h2>Questa è la vera differenza.</h2>
+
+    <div class="card">
+      <div class="quote">
+        “Basta che qualcuno la gestisca al posto mio.”
+        <small>È il pensiero più comune quando si delega senza criteri.</small>
+      </div>
+
+      <div class="quote" style="margin-top:14px;">
+        “Voglio un professionista che migliori numeri e mi dia controllo.”
+        <small>Qui la gestione cambia livello: obiettivi chiari, metodo e dati.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE RISULTATO + SCREEN -->
+  <section class="section" id="risultato">
+    <h2>Quando deleghi bene, non cambia solo la gestione. Cambia mentalità.</h2>
+
+    <div class="card">
+      <p class="lead" style="margin:0;">
+        Inizi a ragionare in termini di:
+        <b>rendimento</b>, <b>margine</b>, <b>ottimizzazione</b>, <b>valore dell’immobile</b>.
+        Ed è lì che iniziano i risultati diversi.
+      </p>
+
+      <p class="lead" style="margin-top:12px;">
+        Qui sotto trovi alcuni screenshot di cruscotti/risultati (portali): servono solo come contesto su come appare una gestione quando viene governata con metodo.
+      </p>
+    </div>
+
+    <div class="gallery">
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/riepilogo-2025.png" alt="Riepilogo 2025"></div>
+        <div class="g-title">Riepilogo</div>
+        <p class="g-text">Visione d’insieme: leggere prima di intervenire.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/entrate-2025.png" alt="Entrate 2025"></div>
+        <div class="g-title">Entrate</div>
+        <p class="g-text">Andamento: stabilità e margine nel tempo.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/1-2025.png" alt="Screen 1"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Esempio report: lettura operativa.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/2-2025.png" alt="Screen 2"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Dati utili per capire cosa frena.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/3-2025.png" alt="Screen 3"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Ordine e continuità.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/4-2025.png" alt="Screen 4"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Lettura → decisione.</p>
+      </article>
+
+      <article class="g-item">
+        <div class="thumb"><img src="../errori/assets/img/5-2025.png" alt="Screen 5"></div>
+        <div class="g-title">Cruscotto</div>
+        <p class="g-text">Controllo e criterio.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHIUSURA + SPECCHIETTO -->
+  <section class="section" id="chiusura">
+    <h2>Il punto non è delegare o non delegare. Il punto è delegare bene.</h2>
+
+    <div class="card">
+      <p class="lead" style="margin:0;">
+        Perché solo quando deleghi con metodo (e con i criteri giusti),
+        puoi scegliere cosa fare nel modo giusto e proteggere il valore del tuo immobile.
+      </p>
+
+      <div class="prep" aria-label="Preparazione call">
+        <h3>Come prepararti per una call davvero utile</h3>
+        <p style="margin:0;">
+          Non serve preparare documenti complessi. Serve creare le condizioni giuste per analizzare il tuo caso senza distrazioni.
+        </p>
+        <ul>
+          <li><b>Ritaglia 20–30 minuti reali</b>: evita di farla mentre guidi o mentre fai altro.</li>
+          <li><b>Ambiente tranquillo</b>: notifiche off, se puoi cuffie.</li>
+          <li><b>Tieni a portata</b>: zona immobile, tipologia, portale principale, e da quanto tempo è online.</li>
+          <li><b>Se hai accesso al portale</b>, aprilo prima: bastano pochi minuti per guardare i dati giusti.</li>
+          <li><b>Obiettivo semplice</b>: “voglio capire se ha senso delegare e cosa cambierebbe nei numeri e nella gestione”.</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        © <span id="y"></span> Federica Cellini — Tutti i diritti riservati ·
+        <a href="/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
