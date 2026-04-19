@@ -708,7 +708,7 @@ document.getElementById('fsub').addEventListener('click',function(){
   }).catch(function(){});// no-cors: ignoriamo la risposta, i dati arrivano comunque
 
   // ── GA4: traccia conversione form completato ──
-  gtag('event','form_submit',{
+  gtag('event','sessione_prenotata',{
     event_category: 'conversion',
     event_label:    'proprietario_pro',
     form_name:      'sessione_strategica_gratuita'
