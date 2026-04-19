@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proprietario Pro — Federica Cellini & Omar Pugliese</title>
+<meta name="description" content="Il percorso che trasforma il tuo immobile in un asset che rende davvero. A rischio zero."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & ROOT ─────────────────────────────── */
+:root{
+  --navy:#0a2540; --blue:#3a7ca5; --gold:#d4af37;
+  --gold-l:#e8ca6a; --gold-dim:rgba(212,175,55,.10);
+  --white:#fff; --light:#f5f5f5; --mid:#4a5568; --faint:#8a95a3;
+  --sh:0 4px 20px rgba(10,37,64,.10);
+  --sh-lg:0 14px 44px rgba(10,37,64,.18);
+  --r:4px; --rl:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;font-size:14px;line-height:1.65;
+     color:var(--navy);background:var(--white);overflow-x:hidden}
+ul{list-style:none}
+
+/* ── TYPE ─────────────────────────────────────── */
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}
+h1{font-size:clamp(1.55rem,5.5vw,3rem);font-weight:700}
+h2{font-size:clamp(1.2rem,3.5vw,2.1rem);font-weight:600}
+h3{font-size:clamp(.95rem,2.2vw,1.2rem);font-weight:600}
+p {font-size:clamp(.82rem,1.6vw,.95rem)}
+small{font-size:.75rem}
+.ey{display:block;font-size:.62rem;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold)}
+.rule{display:block;width:44px;height:2px;background:var(--gold);margin:12px 0 20px}
+.rule-c{margin:12px auto 20px}
+
+/* ── LAYOUT ───────────────────────────────────── */
+.w {width:93%;max-width:1060px;margin:0 auto}
+.wn{width:93%;max-width:720px; margin:0 auto}
+.sec{padding:56px 0}
+.bg-navy{background:var(--navy);color:var(--white)}
+.bg-light{background:var(--light)}
+
+/* ── BUTTONS ─────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;
+     font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;
+     letter-spacing:.07em;text-transform:uppercase;
+     padding:14px 26px;border-radius:var(--r);border:2px solid transparent;
+     cursor:pointer;transition:all .24s;background:none}
+.btn-ico{font-size:.95rem;transition:transform .2s}
+.btn:hover .btn-ico{transform:translateX(4px)}
+.btn-gold{background:var(--gold);color:var(--navy);border-color:var(--gold);
+          box-shadow:0 5px 18px rgba(212,175,55,.30)}
+.btn-gold:hover{background:var(--gold-l);border-color:var(--gold-l);
+                transform:translateY(-2px);box-shadow:0 9px 26px rgba(212,175,55,.40)}
+
+/* ── TOPBAR ─────────────────────────────────── */
+.topbar{background:var(--navy);padding:12px 0;position:sticky;top:0;z-index:200;
+        border-bottom:1px solid rgba(212,175,55,.15)}
+.topbar__inner{display:flex;align-items:center;justify-content:center}
+.topbar__logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+              color:var(--white);letter-spacing:.04em}
+.topbar__logo em{font-style:normal;color:var(--gold)}
+
+/* ── HERO ────────────────────────────────────── */
+.hero{background:var(--navy);padding:72px 0 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-15%;width:480px;height:480px;
+  background:radial-gradient(ellipse,rgba(58,124,165,.14) 0,transparent 68%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero__badge{display:inline-block;border:1px solid rgba(212,175,55,.36);
+  background:rgba(212,175,55,.07);color:var(--gold);font-size:.6rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;padding:5px 16px;
+  border-radius:40px;margin-bottom:20px}
+.hero h1{color:var(--white);max-width:720px;margin-bottom:8px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero__sub{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.95rem,2.2vw,1.28rem);color:rgba(255,255,255,.60);
+  margin-bottom:20px;max-width:580px}
+.hero__body{max-width:640px;color:rgba(255,255,255,.76);line-height:1.78;margin-bottom:16px}
+.hero__body p+p{margin-top:10px}
+.hero__body strong{color:var(--gold);font-weight:600}
+
+/* loss counter */
+.counter{display:flex;align-items:center;flex-wrap:wrap;gap:12px;
+  background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.20);
+  border-radius:var(--rl);padding:12px 18px;margin-bottom:26px;max-width:500px}
+.counter__pulse{width:7px;height:7px;min-width:7px;border-radius:50%;
+  background:var(--gold);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+.counter__lbl{font-size:.68rem;color:rgba(255,255,255,.48);line-height:1.35}
+.counter__lbl strong{display:block;color:rgba(255,255,255,.70);font-size:.72rem}
+.counter__n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;
+  color:var(--gold);line-height:1;font-variant-numeric:tabular-nums;min-width:90px}
+
+/* ── SCENARI ─────────────────────────────────── */
+.sc-intro{text-align:center;margin-bottom:36px}
+.sc-intro h2{max-width:620px;margin:0 auto}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.sc-card{background:var(--white);border-radius:var(--rl);padding:24px 20px;
+  border-top:3px solid var(--gold);box-shadow:var(--sh);
+  transition:transform .24s,box-shadow .24s}
+.sc-card:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+.sc-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;
+  color:rgba(212,175,55,.13);line-height:1;margin-bottom:8px}
+.sc-card h3{color:var(--navy);font-size:.94rem;margin-bottom:12px}
+.sc-card p{font-size:.84rem;color:var(--mid);line-height:1.72}
+.sc-card p+p{margin-top:9px}
+.sc-reveal{margin-top:16px;padding-top:14px;border-top:1px solid rgba(212,175,55,.18);
+  font-family:'Playfair Display',serif;font-size:.92rem;font-style:italic;color:var(--navy)}
+.sc-uni{margin-top:36px;padding:26px;background:var(--navy);border-radius:var(--rl);
+  text-align:center;position:relative;overflow:hidden}
+.sc-uni::before,.sc-uni::after{content:'';position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sc-uni::before{top:0}.sc-uni::after{bottom:0}
+.sc-uni p{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.9rem,1.8vw,1.2rem);color:var(--white);line-height:1.58;
+  max-width:660px;margin:0 auto}
+.sc-uni strong{color:var(--gold);font-style:normal}
+
+/* ── MERCATO ─────────────────────────────────── */
+.mkt-hd{margin-bottom:28px}
+.mkt-hd h2{max-width:740px}
+.mkt-list{display:grid;gap:12px;margin:20px 0 30px}
+.mkt-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;
+  background:var(--light);border-radius:var(--rl);border-left:3px solid var(--gold)}
+.mkt-dot{width:30px;height:30px;min-width:30px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.82rem;margin-top:1px}
+.mkt-item strong{display:block;font-size:.86rem;font-weight:600;color:var(--navy);margin-bottom:2px}
+.mkt-item p{font-size:.82rem;color:var(--mid);line-height:1.68}
+.paradox{background:var(--navy);border-radius:var(--rl);padding:28px;margin:28px 0;
+  position:relative;overflow:hidden}
+.paradox::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.paradox p{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.92rem,1.9vw,1.28rem);color:rgba(255,255,255,.90);line-height:1.52}
+.paradox strong{color:var(--gold);font-style:normal}
+.gap-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.gap-col{padding:20px 16px;border-radius:var(--rl);text-align:center}
+.gap-col--lo{background:rgba(58,124,165,.07);border:1px solid rgba(58,124,165,.16)}
+.gap-col--hi{background:var(--gold-dim);border:1px solid rgba(212,175,55,.26)}
+.gap-col__tag{font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:7px}
+.gap-col--lo .gap-col__tag{color:var(--blue)}
+.gap-col--hi .gap-col__tag{color:var(--gold)}
+.gap-col__n{font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,3.2vw,2rem);font-weight:800;line-height:1;margin-bottom:6px}
+.gap-col--lo .gap-col__n{color:var(--blue)}
+.gap-col--hi .gap-col__n{color:var(--gold)}
+.gap-col p{font-size:.76rem;color:var(--mid)}
+.gap-total{text-align:center;padding:24px 20px;background:var(--gold-dim);
+  border:1px solid rgba(212,175,55,.18);border-radius:var(--rl);margin:0 0 10px}
+.gap-total__n{font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,5vw,2.9rem);font-weight:900;color:var(--navy);line-height:1;margin-bottom:3px}
+.gap-total__n span{color:var(--gold)}
+.gap-total__sub{font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:12px;text-align:center}
+.gap-total p{font-size:.84rem;color:var(--mid);max-width:500px;margin:0 auto;line-height:1.72}
+.gap-total p strong{color:var(--navy)}
+.big-q{text-align:center;padding:10px 0 4px}
+.big-q p{font-size:.82rem;color:var(--mid);font-style:italic;margin-bottom:7px}
+.big-q blockquote{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.05rem,2.4vw,1.6rem);color:var(--navy);line-height:1.42}
+.big-q blockquote em{color:var(--blue);font-style:normal}
+
+/* ── CONFRONTO 3 STRADE ───────────────────────
+   STRATEGIA: 3 colonne sempre visibili su mobile
+   mediante font micro + padding minimo.
+   Il titolo Pro è più largo (42%) per enfasi.
+──────────────────────────────────────────────── */
+.opts-hd{text-align:center;margin-bottom:28px}
+.opts-hd h2{color:var(--white)}
+.opts-hd p{color:rgba(255,255,255,.55);max-width:520px;margin:8px auto 0;font-size:.84rem}
+
+/* wrapper che NON fa overflow orizzontale */
+.cmp-outer{width:100%;overflow:hidden;border-radius:var(--rl)}
+
+.cmp{width:100%;border-collapse:collapse;table-layout:fixed}
+
+/* intestazioni colonne */
+.cmp thead tr th{
+  padding:10px 5px;
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(.52rem,.95vw,.72rem);
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;vertical-align:middle;
+}
+/* larghezze: Pro più largo per dare enfasi */
+.cmp thead th:nth-child(1){width:29%}
+.cmp thead th:nth-child(2){width:29%}
+.cmp thead th:nth-child(3){width:42%}
+
+.th-a{background:rgba(255,255,255,.05);color:rgba(255,255,255,.52)}
+.th-b{background:rgba(255,255,255,.03);color:rgba(255,255,255,.44)}
+.th-c{background:rgba(212,175,55,.22);color:var(--gold);border-top:2px solid var(--gold)}
+
+/* celle dati */
+.cmp td{
+  padding:clamp(5px,1.2vw,11px) clamp(3px,.9vw,8px);
+  font-size:clamp(.6rem,1.1vw,.82rem);
+  line-height:1.38;text-align:left;vertical-align:top;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  word-break:break-word;hyphens:auto;
+}
+.cmp tr:last-child td{border-bottom:none}
+.col-a{background:rgba(255,255,255,.03);color:rgba(255,255,255,.54)}
+.col-b{background:rgba(255,255,255,.02);color:rgba(255,255,255,.46)}
+.col-c{background:rgba(212,175,55,.08);color:rgba(255,255,255,.88)}
+
+.ico-x {color:rgba(255,100,100,.80);margin-right:3px;flex-shrink:0}
+.ico-ok{color:var(--gold);margin-right:3px;flex-shrink:0}
+
+/* miti */
+.myths-ttl{font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,2vw,1.4rem);font-weight:600;color:var(--white);margin:36px 0 18px}
+.myths{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.myth{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--rl);padding:22px 20px}
+.myth__tag{font-size:.62rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,100,100,.78);margin-bottom:7px}
+.myth h3{color:var(--white);font-size:.9rem;margin-bottom:10px;line-height:1.38}
+.myth p{font-size:.82rem;color:rgba(255,255,255,.54);line-height:1.72}
+.myth p strong{color:rgba(255,255,255,.80)}
+.opts-close{margin-top:30px;padding:22px;background:rgba(212,175,55,.06);
+  border:1px solid rgba(212,175,55,.15);border-radius:var(--rl);text-align:center}
+.opts-close p{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.9rem,1.8vw,1.25rem);color:rgba(255,255,255,.82);line-height:1.56;
+  max-width:660px;margin:0 auto}
+.opts-close strong{color:var(--gold);font-style:normal}
+
+/* ── VISION ──────────────────────────────────── */
+.vis__time{font-size:.62rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:3px}
+.vis blockquote{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.1rem,2.3vw,1.75rem);color:var(--navy);line-height:1.38;margin-bottom:22px}
+.vis blockquote em{color:var(--blue)}
+.moments{display:grid;gap:11px;margin:22px 0}
+.moment{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;
+  background:var(--white);border-radius:var(--rl);box-shadow:var(--sh);
+  transition:transform .2s}
+.moment:hover{transform:translateX(4px)}
+.moment__dot{width:8px;height:8px;min-width:8px;background:var(--gold);
+  border-radius:50%;margin-top:5px}
+.moment p{font-size:.84rem;color:var(--mid);line-height:1.72}
+.moment p strong{color:var(--navy)}
+.vis-conf{margin-top:20px;padding:22px;background:var(--navy);
+  border-radius:var(--rl);text-align:center}
+.vis-conf p{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1rem,2vw,1.4rem);color:var(--white);line-height:1.48}
+.vis-conf strong{color:var(--gold);font-style:normal}
+.vis-body{margin-top:22px}
+.vis-body p{color:var(--mid);margin-bottom:10px;max-width:660px}
+.vis-body .close-q{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.94rem,1.9vw,1.25rem);color:var(--navy)}
+
+/* ── PRODOTTO ─────────────────────────────────── */
+.prod-hd{text-align:center;margin-bottom:40px}
+.prod-hd h2{color:var(--navy)}
+.prod-hd .tl{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.9rem,1.8vw,1.18rem);color:var(--blue);margin-top:5px}
+.prod-hd .intro{max-width:620px;margin:12px auto 0;color:var(--mid);font-size:.86rem}
+.pil-intro{text-align:center;margin-bottom:22px}
+.pil-intro h3{color:var(--navy);font-size:clamp(.92rem,1.8vw,1.15rem);margin-bottom:7px}
+.pil-intro p{color:var(--mid);max-width:620px;margin:0 auto;font-size:.86rem}
+.pil-list{display:grid;gap:16px;margin-bottom:28px}
+.pil{display:grid;grid-template-columns:50px 1fr;gap:16px;align-items:start;
+  padding:22px;border:1px solid rgba(10,37,64,.08);border-radius:var(--rl);
+  transition:box-shadow .22s,transform .22s}
+.pil:hover{box-shadow:var(--sh-lg);transform:translateY(-3px)}
+.pil__n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;
+  color:rgba(212,175,55,.16);line-height:1}
+.pil__tag{display:inline-block;background:var(--gold-dim);color:var(--navy);
+  font-size:.6rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 9px;border-radius:40px;margin-bottom:7px}
+.pil h3{color:var(--navy);font-size:.98rem;margin-bottom:8px}
+.pil p{font-size:.84rem;color:var(--mid);line-height:1.76}
+.pil-ft{text-align:center;padding:22px;background:var(--gold-dim);
+  border:1px solid rgba(212,175,55,.15);border-radius:var(--rl);margin-bottom:40px}
+.pil-ft p{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.9rem,1.8vw,1.2rem);color:var(--navy);line-height:1.54}
+.bio{background:var(--light);border-radius:var(--rl);border:1px solid rgba(212,175,55,.13);
+  padding:28px;margin-bottom:40px}
+.bio h3{color:var(--navy);font-size:1.1rem;margin-bottom:13px}
+.bio p{font-size:.84rem;color:var(--mid);line-height:1.76}
+.bio p+p{margin-top:9px}
+.testi-hd{margin-bottom:18px}
+.testi-hd h2{color:var(--navy)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;margin-bottom:40px}
+.testi{background:var(--light);border-radius:var(--rl);padding:22px 18px;
+  border-bottom:3px solid var(--gold);transition:transform .2s,box-shadow .2s}
+.testi:hover{transform:translateY(-4px);box-shadow:var(--sh-lg)}
+.testi__stars{color:var(--gold);font-size:.8rem;margin-bottom:10px}
+.testi__q{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.92rem;color:var(--mid);line-height:1.68;margin-bottom:16px}
+.testi__hl{background:rgba(212,175,55,.13);border-radius:3px;padding:1px 4px;
+  color:var(--navy);font-weight:600;font-style:normal}
+.testi__who{display:flex;align-items:center;gap:10px}
+.testi__av{width:36px;height:36px;border-radius:50%;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;
+  color:var(--gold);flex-shrink:0}
+.testi__name{font-size:.8rem;font-weight:700;color:var(--navy)}
+.testi__loc{font-size:.72rem;color:var(--faint)}
+.guar{background:var(--navy);border-radius:var(--rl);padding:36px 28px;
+  position:relative;overflow:hidden}
+.guar::before,.guar::after{content:'';position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.guar::before{top:0}.guar::after{bottom:0}
+.guar h2{color:var(--white);margin-bottom:4px}
+.guar__sub{font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.96rem;color:var(--gold);margin-bottom:10px}
+.guar__intro{font-size:.84rem;color:rgba(255,255,255,.56);
+  max-width:620px;margin-bottom:24px;line-height:1.70}
+.guar__intro strong{color:rgba(255,255,255,.84)}
+.g-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-bottom:20px}
+.g-item{display:flex;gap:12px;align-items:flex-start}
+.g-item__ico{width:36px;height:36px;min-width:36px;border:1.5px solid var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:.85rem}
+.g-item h4{font-family:'Poppins',sans-serif;font-size:.84rem;font-weight:600;
+  color:var(--white);margin-bottom:4px}
+.g-item p{font-size:.78rem;color:rgba(255,255,255,.50);line-height:1.65}
+.guar__warn{padding:16px 20px;background:rgba(255,255,255,.03);
+  border-radius:var(--r);border-left:3px solid var(--gold)}
+.guar__warn p{font-size:.84rem;color:rgba(255,255,255,.62);line-height:1.70}
+.guar__warn strong{color:var(--gold)}
+
+/* ── CTA FINALE ─────────────────────────────── */
+.final-hd{text-align:center;margin-bottom:30px}
+.final-hd h2{color:var(--navy)}
+.pers-grid{display:grid;grid-template-columns:1fr;gap:13px;margin-bottom:32px}
+.pers{background:var(--white);border-radius:var(--rl);padding:20px 22px;
+  border-left:4px solid var(--gold);box-shadow:var(--sh)}
+.pers__lbl{font-size:.62rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:7px}
+.pers h3{color:var(--navy);font-size:.9rem;margin-bottom:8px;line-height:1.36}
+.pers p{font-size:.82rem;color:var(--mid);line-height:1.70}
+.sess-box{background:var(--navy);border-radius:var(--rl);padding:32px 24px;
+  text-align:center;margin-bottom:22px;position:relative;overflow:hidden}
+.sess-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sess-box h3{color:var(--white);font-size:clamp(.96rem,2vw,1.3rem);margin-bottom:16px}
+.s-pts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:9px;margin:16px 0 24px;text-align:left}
+.s-pt{display:flex;gap:9px;align-items:flex-start;padding:10px 13px;
+  background:rgba(255,255,255,.04);border-radius:var(--r)}
+.s-pt__ok{color:var(--gold);font-size:.82rem;margin-top:1px;flex-shrink:0}
+.s-pt p{font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.54}
+.scarcity{font-size:.72rem;color:rgba(255,255,255,.34);margin-top:10px;font-style:italic}
+.cost-box{background:var(--white);border:1px solid rgba(212,175,55,.18);
+  border-radius:var(--rl);padding:30px 24px;text-align:center;margin-bottom:22px}
+.cost-box__lbl{font-size:.62rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.cost-box__n{font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,7vw,4.5rem);font-weight:900;color:var(--navy);line-height:1}
+.cost-box__n span{color:var(--gold)}
+.cost-box__sub{font-size:.72rem;color:var(--faint);margin:5px 0 14px}
+.cost-box p{font-size:.84rem;color:var(--mid);max-width:460px;margin:0 auto;line-height:1.74}
+.cost-box p+p{margin-top:10px}
+.cost-box .cq{margin-top:12px;font-style:italic;color:var(--navy);font-size:.88rem}
+.fcta{text-align:center}
+.fcta .sub{font-size:.76rem;color:var(--faint);margin-top:10px;
+  display:block;font-style:italic}
+
+/* ── FOOTER ─────────────────────────────────── */
+footer{background:var(--navy);padding:28px 0;text-align:center;
+  border-top:1px solid rgba(212,175,55,.14)}
+footer p{font-size:.74rem;color:rgba(255,255,255,.28)}
+footer p+p{margin-top:4px}
+footer strong{color:rgba(255,255,255,.48)}
+
+/* ── MODAL ───────────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(10,37,64,.88);
+  backdrop-filter:blur(8px);z-index:900;display:flex;align-items:center;
+  justify-content:center;padding:14px;opacity:0;visibility:hidden;
+  transition:opacity .28s,visibility .28s}
+.overlay.on{opacity:1;visibility:visible}
+.modal{background:var(--white);border-radius:var(--rl);width:100%;
+  max-width:520px;max-height:94vh;overflow-y:auto;position:relative;
+  transform:translateY(22px) scale(.97);
+  transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.overlay.on .modal{transform:none}
+.modal__head{background:var(--navy);padding:24px 28px 20px;position:relative}
+.modal__head::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.modal__ey{font-size:.6rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.modal__ttl{font-family:'Playfair Display',serif;
+  font-size:clamp(1.05rem,2.8vw,1.4rem);font-weight:700;color:var(--white);
+  line-height:1.26;margin-bottom:6px}
+.modal__sub{font-size:.78rem;color:rgba(255,255,255,.44)}
+.modal__x{position:absolute;top:13px;right:13px;background:rgba(255,255,255,.07);
+  border:none;color:rgba(255,255,255,.42);width:30px;height:30px;border-radius:50%;
+  cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s}
+.modal__x:hover{background:rgba(255,255,255,.15);color:var(--white)}
+.modal__body{padding:24px 28px 28px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:.74rem;font-weight:600;color:var(--navy);
+  margin-bottom:5px;letter-spacing:.04em}
+.fg label .req{color:var(--gold);margin-left:2px}
+.fg label .opt{color:var(--faint);font-weight:400;font-size:.68rem;margin-left:3px}
+.fg input{width:100%;padding:11px 13px;border:1.5px solid rgba(10,37,64,.13);
+  border-radius:var(--r);font-family:'Poppins',sans-serif;font-size:.84rem;
+  color:var(--navy);background:var(--white);
+  transition:border-color .2s,box-shadow .2s;outline:none}
+.fg input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,124,165,.10)}
+.fg input::placeholder{color:rgba(10,37,64,.26)}
+.fg input.err{border-color:#e05c5c}
+.fdiv{font-size:.64rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint);display:flex;align-items:center;gap:9px;margin:18px 0 14px}
+.fdiv::before,.fdiv::after{content:'';flex:1;height:1px;background:rgba(10,37,64,.09)}
+.fsub{width:100%;padding:14px;background:var(--gold);color:var(--navy);border:none;
+  border-radius:var(--r);font-family:'Poppins',sans-serif;font-size:.82rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s,transform .2s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(212,175,55,.28);margin-top:5px}
+.fsub:hover{background:var(--gold-l);transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(212,175,55,.38)}
+.fsub .btn-ico{transition:transform .2s}
+.fsub:hover .btn-ico{transform:translateX(4px)}
+.fnote{font-size:.7rem;color:var(--faint);text-align:center;margin-top:9px;line-height:1.52}
+.ty{display:none;text-align:center;padding:10px 0 6px}
+.ty__ico{width:58px;height:58px;border-radius:50%;background:var(--gold-dim);
+  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin:0 auto 16px}
+.ty h3{font-size:1.3rem;color:var(--navy);margin-bottom:11px}
+.ty p{font-size:.86rem;color:var(--mid);line-height:1.75;max-width:380px;margin:0 auto}
+.ty p strong{color:var(--navy)}
+.ty__btn{margin-top:20px;padding:10px 26px;background:var(--navy);color:var(--white);
+  border:none;border-radius:var(--r);font-family:'Poppins',sans-serif;
+  font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
+.ty__btn:hover{background:var(--blue)}
+
+/* ── ANIMAZIONI ─────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0}
+.anim.in{animation:fadeUp .55s cubic-bezier(.4,0,.2,1) forwards}
+.d1{animation-delay:.06s}.d2{animation-delay:.14s}
+.d3{animation-delay:.22s}.d4{animation-delay:.30s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* ── RESPONSIVE ADDITIONS ────────────────────── */
+@media(min-width:640px){
+  .sec{padding:72px 0}
+  .pers-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){
+  .hero{padding:60px 0 52px}
+  .sec{padding:48px 0}
+  .gap-cols{grid-template-columns:1fr}
+  .guar,.sess-box,.cost-box,.bio{padding:22px 16px}
+  .modal__head,.modal__body{padding-left:18px;padding-right:18px}
+  .pil{grid-template-columns:1fr;gap:7px}
+  .pil__n{font-size:1.9rem}
+  .counter{flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ═══════════════════════════════════ -->
+<header class="topbar">
+  <div class="w topbar__inner">
+    <div class="topbar__logo">Proprietario <em>Pro</em></div>
+  </div>
+</header>
+
+<!-- ══ FASE 1 — HERO ════════════════════════════ -->
+<section class="hero">
+  <div class="w">
+    <div class="hero__badge anim d1">Solo per proprietari di immobili</div>
+    <h1 class="anim d2">Mentre leggi queste righe,<br/>il tuo immobile<br/>sta <em>perdendo soldi.</em></h1>
+    <p class="hero__sub anim d3">E la parte peggiore è che nessuno te lo sta dicendo.</p>
+    <div class="hero__body anim d3">
+      <p>Che tu lo gestisca da solo, che tu abbia appena comprato casa o che tu abbia firmato con un'agenzia "per stare tranquillo", c'è una probabilità molto alta che ogni mese tu stia lasciando sul tavolo tra <strong>i 600 e i 1.400 euro</strong>. Senza accorgertene. Senza che sia colpa tua.</p>
+      <p>In 3 minuti di lettura capirai esattamente perché sta succedendo, quanto ti sta costando davvero, e cosa fanno i proprietari che invece, <strong>a parità di immobile, guadagnano il doppio.</strong></p>
+    </div>
+    <div class="counter anim d3">
+      <div class="counter__pulse"></div>
+      <div class="counter__lbl"><strong>Rendita persa da quando hai aperto questa pagina</strong>Calcolata sul gap medio di €26 al giorno</div>
+      <div class="counter__n" id="counter">€0,00</div>
+    </div>
+    <div class="anim d4">
+      <button class="btn btn-gold open-modal"><span class="btn-ico">→</span>Prenota la tua sessione strategica gratuita</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 2 — SCENARI ══════════════════════════ -->
+<section class="sec bg-light">
+  <div class="w">
+    <div class="sc-intro anim">
+      <span class="ey">Fermati un attimo</span>
+      <span class="rule rule-c"></span>
+      <h2>Probabilmente sei in una di queste tre situazioni.<br/><em style="font-style:italic;color:var(--blue)">E probabilmente, dentro di te, lo sai già.</em></h2>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-card anim d1">
+        <div class="sc-n">01</div>
+        <h3>"Io già lo faccio."</h3>
+        <p>Hai l'immobile su Airbnb e Booking da un paio d'anni. Hai imparato a smanettare con il dynamic pricing, hai una ditta di pulizie di fiducia, rispondi velocemente agli ospiti, forse sei anche Superhost. Quando vedi un contenuto come questo, la prima voce dentro di te dice: "Ok, interessante, ma io sono già oltre."</p>
+        <p>Poi però, ogni tanto, ti capita di controllare il calendario di un collega della stessa zona. E di notare che ha prezzi più alti dei tuoi. E che è pieno lo stesso.</p>
+        <div class="sc-reveal">In quel momento, per qualche secondo, la voce che ti rassicura tace. E ne arriva un'altra, più scomoda: <strong>"Ma quindi… io quanto sto lasciando sul tavolo?"</strong></div>
+      </div>
+      <div class="sc-card anim d2">
+        <div class="sc-n">02</div>
+        <h3>"Ho la casa, ho la voglia, ma non decolla."</h3>
+        <p>Hai un immobile, comprato da poco, ereditato, o finalmente ristrutturato. L'hai messo online tu, guardando video su YouTube e leggendo qualche guida. Il calendario è mezzo vuoto. Le prenotazioni sono casuali.</p>
+        <p>Ti dici: "Forse è la mia zona. Forse è stagione bassa. Forse devo abbassare il prezzo." Ma dentro di te sai che non torna: altri, nella tua stessa strada, sono pieni.</p>
+        <div class="sc-reveal">La verità che fa più male è questa: non è l'immobile il problema. È che nessuno ti ha ancora mostrato il metodo. <strong>E ogni mese che passa senza metodo è un mese che non tornerai mai più a incassare.</strong></div>
+      </div>
+      <div class="sc-card anim d3">
+        <div class="sc-n">03</div>
+        <h3>"Almeno con l'agenzia sto tranquillo… o no?"</h3>
+        <p>Hai firmato con un'agenzia o con un property manager. Prendono il 20%, a volte il 25%. Ogni mese vedi arrivare un bonifico più basso di quello che speravi, e ogni tanto ti arriva una segnalazione di un danno o di un ospite un po' particolare.</p>
+        <p>Tu però ti ripeti: "Almeno io non ci penso."</p>
+        <div class="sc-reveal">Ma è davvero così? Sai che prezzo è stato applicato ieri sera al tuo appartamento? Sai chi sta dormendo adesso nel tuo letto? Sai se il tuo immobile è stato svenduto per riempire il calendario dell'agenzia a fine mese? <strong>La verità è che "non pensarci" non è serenità, ma è anestesia.</strong></div>
+      </div>
+    </div>
+    <div class="sc-uni anim">
+      <p>Tre situazioni diverse. Un unico problema invisibile: <strong>stai lavorando per qualcun altro.</strong> Una piattaforma, un'agenzia, o un metodo improvvisato, quando il tuo immobile potrebbe lavorare per te.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 3 — MERCATO ══════════════════════════ -->
+<section class="sec">
+  <div class="w">
+    <div class="mkt-hd anim">
+      <span class="ey">Cosa è davvero cambiato</span>
+      <span class="rule"></span>
+      <h2>Gli affitti brevi non sono più quelli del 2019. E chi li gestisce come nel 2019 <em style="font-style:italic;color:var(--blue)">lo sta pagando caro.</em></h2>
+    </div>
+    <p class="anim" style="color:var(--mid);margin-bottom:4px">Negli ultimi anni sono successe tre cose, tutte insieme, che hanno ribaltato le regole del gioco:</p>
+    <ul class="mkt-list anim">
+      <li class="mkt-item">
+        <div class="mkt-dot">📊</div>
+        <div><strong>La concorrenza è esplosa.</strong><p>Solo in Italia sono attivi oltre 600.000 annunci di affitto breve. Se il tuo annuncio non è ottimizzato, non esiste. Se non è posizionato, scompare.</p></div>
+      </li>
+      <li class="mkt-item">
+        <div class="mkt-dot">📋</div>
+        <div><strong>La burocrazia si è moltiplicata.</strong><p>CIN nazionale, cedolare secca, comunicazioni Alloggiati, regolamenti comunali, limiti di notti per zona. Chi gestisce "a sensazione" rischia sanzioni che cancellano mesi di rendita.</p></div>
+      </li>
+      <li class="mkt-item">
+        <div class="mkt-dot">⚙️</div>
+        <div><strong>Le piattaforme hanno cambiato algoritmo.</strong><p>Airbnb e Booking non premiano più chi è online, premiano chi usa segnali di qualità e pricing intelligente. Gli altri li fanno cadere a fondo pagina.</p></div>
+      </li>
+    </ul>
+    <div class="paradox anim">
+      <p>Il risultato è un paradosso quasi comico: mai come oggi gli affitti brevi rendono così tanto e <strong>mai come oggi la maggior parte dei proprietari sta guadagnando così poco rispetto al proprio potenziale.</strong></p>
+    </div>
+    <h3 class="anim" style="color:var(--navy);margin-bottom:14px">Il gap invisibile che nessuno ti ha mai calcolato</h3>
+    <p class="anim" style="color:var(--mid);margin-bottom:16px">Prendi un bilocale medio in una città come Roma, Bologna o Firenze. Il potenziale realistico, oggi, è tra i 2.200 e i 2.800 euro al mese di rendita netta. La stragrande maggioranza dei proprietari ne fa tra 1.300 e 1.800. E pensa che sia il massimo.</p>
+    <div class="gap-cols anim">
+      <div class="gap-col gap-col--lo">
+        <div class="gap-col__tag">Rendita attuale media</div>
+        <div class="gap-col__n">€1.300–1.800</div>
+        <p>al mese — quello che fa la maggior parte dei proprietari, convinti sia il massimo</p>
+      </div>
+      <div class="gap-col gap-col--hi">
+        <div class="gap-col__tag">Potenziale realistico</div>
+        <div class="gap-col__n">€2.200–2.800</div>
+        <p>al mese — con il metodo corretto, stesso immobile, stessa zona</p>
+      </div>
+    </div>
+    <p class="anim" style="color:var(--mid);margin-bottom:16px">La differenza, chiamata "gap di guadagno", oscilla tra i 600 e i 1.200 euro al mese. Per immobile. Ogni mese che passa.</p>
+    <div class="gap-total anim">
+      <div class="gap-total__n">€7.200 – <span>14.400</span></div>
+      <div class="gap-total__sub">persi ogni anno</div>
+      <p>In 12 mesi, significa tra i 7.200 e i 14.400 euro che semplicemente non arriveranno mai sul tuo conto corrente. Non perché il mercato è saturo. Non perché la tua zona è sbagliata. Ma perché <strong>il metodo con cui stai gestendo non è più allineato a come funziona questo mercato oggi.</strong></p>
+    </div>
+    <div class="big-q anim">
+      <p>E qui arriva la domanda che, se sei onesto/a con te stesso/a, stai già iniziando a farti:</p>
+      <blockquote>"Qual è, esattamente, il <em>MIO</em> gap? E quanto mi sta costando, ogni singolo mese, non sapere la risposta?"</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 4 — 3 STRADE ════════════════════════
+     TABELLA: 3 colonne fisse, sempre visibili,
+     nessun overflow orizzontale su nessun device.
+════════════════════════════════════════════════ -->
+<section class="sec bg-navy">
+  <div class="w">
+    <div class="opts-hd anim">
+      <span class="ey" style="color:var(--gold)">Le uniche 3 strade possibili</span>
+      <span class="rule rule-c"></span>
+      <h2>Di fronte a un immobile, oggi, hai tre sole opzioni.<br/>Le altre sono solo varianti di queste.</h2>
+      <p>Vediamole nel dettaglio:</p>
+    </div>
+
+    <div class="cmp-outer anim">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th class="th-a">Fai-da-te</th>
+            <th class="th-b">Agenzia / PM</th>
+            <th class="th-c">✦ Proprietario Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-a"><span class="ico-x">✗</span>Rendita casuale, sotto il potenziale di zona</td>
+            <td class="col-b"><span class="ico-x">✗</span>−20/25% ogni mese, per sempre</td>
+            <td class="col-c"><span class="ico-ok">✓</span>100% della rendita, pricing ottimizzato ogni settimana</td>
+          </tr>
+          <tr>
+            <td class="col-a"><span class="ico-x">✗</span>Controllo senza metodo: ogni errore lo paghi tu</td>
+            <td class="col-b"><span class="ico-x">✗</span>Zero controllo: non sai chi entra né quanto paga</td>
+            <td class="col-c"><span class="ico-ok">✓</span>Controllo totale con automazioni: scegli tu, ma eviti di gestire manualmente</td>
+          </tr>
+          <tr>
+            <td class="col-a"><span class="ico-x">✗</span>Mangia serate e weekend: messaggi, pulizie, imprevisti</td>
+            <td class="col-b"><span class="ico-x">✗</span>Apparentemente zero, finché non arriva il problema</td>
+            <td class="col-c"><span class="ico-ok">✓</span>2–3 ore a settimana a regime. Il sistema lavora, tu supervisioni</td>
+          </tr>
+          <tr>
+            <td class="col-a"><span class="ico-x">✗</span>CIN, cedolare, Alloggiati: tutto sulle tue spalle senza guida</td>
+            <td class="col-b"><span class="ico-x">✗</span>Se sbaglia l'agenzia, risponde comunque il tuo codice fiscale</td>
+            <td class="col-c"><span class="ico-ok">✓</span>SOP, modelli e aggiornamenti normativi già pronti. Zero zona grigia</td>
+          </tr>
+          <tr>
+            <td class="col-a"><span class="ico-x">✗</span>Secondo immobile = doppio stress</td>
+            <td class="col-b"><span class="ico-x">✗</span>Doppio immobile, doppia commissione: il guadagno resta compresso</td>
+            <td class="col-c"><span class="ico-ok">✓</span>Metodo replicabile: il secondo immobile è più facile del primo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="myths-ttl anim">Adesso smontiamo i due miti che ti stanno bloccando.</h3>
+    <div class="myths anim">
+      <div class="myth">
+        <div class="myth__tag">Mito 1</div>
+        <h3>"Gestire da solo è stressante."</h3>
+        <p>Vero, se lo fai senza metodo. Falso, se hai un sistema. La gestione stressante non dipende dall'autonomia — dipende dall'improvvisazione. Con le SOP giuste, le automazioni e i fornitori organizzati, <strong>2 o 3 ore a settimana bastano.</strong> Chi ti dice il contrario, spesso, è chi vive vendendoti la delega.</p>
+      </div>
+      <div class="myth">
+        <div class="myth__tag">Mito 2</div>
+        <h3>"Con l'agenzia almeno sono tranquillo."</h3>
+        <p>La tranquillità dell'agenzia è una tranquillità anestetizzata: non sai cosa succede, quindi non ti preoccupi. Ma il 20% che paghi ogni mese è solo la punta dell'iceberg. Sotto, c'è lo svendere per riempire (perché loro guadagnano sul volume, tu sul prezzo), i danni che "capitano", le recensioni che non recuperi più. <strong>Tranquillità vera è un'altra cosa:</strong> è sapere che il sistema gira, che i numeri sono trasparenti, che la casa è tua davvero.</p>
+      </div>
+    </div>
+    <div class="opts-close anim">
+      <p>La terza strada non è "fare da solo" contro "delegare." È <strong>imparare un metodo che lavora per te</strong>, dandoti il 100% della rendita e il 90% del tempo libero che oggi credi di dover scambiare per averla.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 5 — VISION ══════════════════════════ -->
+<section class="sec bg-light">
+  <div class="wn">
+    <div class="vis anim">
+      <span class="ey">Immagina per un momento</span>
+      <span class="rule"></span>
+      <div class="vis__time">Ore 7:42 — mattino qualunque</div>
+      <blockquote>Sono le 7:42 di un mattino qualunque.<br/>Il tuo immobile sta lavorando. <em>Tu no.</em></blockquote>
+    </div>
+    <div class="moments anim">
+      <div class="moment"><div class="moment__dot"></div><p>Ti svegli. Prendi il caffè. Apri il telefono non per stress, solo per abitudine. C'è una notifica: <strong>"Nuova prenotazione, 4 notti, 980 euro."</strong> L'algoritmo del tuo sistema di pricing ha alzato la tariffa ieri notte, in automatico, perché ha visto che c'è una fiera in città. Tu non hai fatto niente.</p></div>
+      <div class="moment"><div class="moment__dot"></div><p>Apri Gmail. <strong>Nessun messaggio urgente dagli ospiti:</strong> il check-in di stasera è già stato confermato in automatico, la SOP di benvenuto è partita tre giorni fa, la ditta di pulizie ha già il suo appuntamento in calendario.</p></div>
+      <div class="moment"><div class="moment__dot"></div><p>Guardi il calendario del mese: <strong>pieno all'82%.</strong> A inizio anno era al 41%. La differenza, in euro, è sul conto: reale, tracciabile e netta.</p></div>
+      <div class="moment"><div class="moment__dot"></div><p>E poi pensi a una cosa che mesi fa non avresti detto ad alta voce: <strong>"Ho imparato a farlo. Da solo. Senza agenzia. Senza stress. E guadagno il doppio."</strong></p></div>
+    </div>
+    <div class="vis-conf anim">
+      <p>Fantasia? No, perché è quello che accade quando smetti di gestire a sensazione e inizi a gestire con un sistema.</p>
+    </div>
+    <div class="vis-body anim">
+      <p>Non è questione di diventare esperti di tecnologia. Non è questione di rinunciare alle tue serate. Non è questione di fare un secondo lavoro.</p>
+      <p>È questione di avere, finalmente, tre cose che oggi non hai: <strong>un metodo chiaro, qualcuno che te lo faccia apprendere davvero, e qualcuno che ci sia quando hai un dubbio alle 9 di sera.</strong></p>
+      <p class="close-q">Il momento in cui capisci che il tuo immobile può rendere così, senza consumarti, non è il momento in cui firmi ma quello in cui ti permetti di immaginarlo. E tu lo stai già facendo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 6 — PRODOTTO ════════════════════════ -->
+<section class="sec">
+  <div class="w">
+    <div class="prod-hd anim">
+      <span class="ey">Ti presentiamo</span>
+      <span class="rule rule-c"></span>
+      <h2>Proprietario Pro.</h2>
+      <p class="tl">Il percorso che trasforma il tuo immobile in un asset che rende davvero. A rischio zero.</p>
+      <p class="intro">Ti stiamo parlando del sistema che io e Omar Pugliese abbiamo costruito in anni di gestione reale, testato su centinaia di immobili e che oggi mettiamo nelle tue mani, passo dopo passo, fino al raggiungimento del traguardo.</p>
+    </div>
+    <div class="pil-intro anim">
+      <h3>I tre pilastri su cui si regge Proprietario Pro</h3>
+      <p>Abbiamo costruito il percorso attorno a una convinzione precisa: per funzionare davvero, un metodo deve essere facile da capire, facile da applicare, e supportato da una persona/professionista vera quando inciampi. Ecco perché Proprietario Pro si fonda su tre pilastri, non uno di più, non uno di meno.</p>
+    </div>
+    <div class="pil-list anim">
+      <div class="pil">
+        <div class="pil__n">1</div>
+        <div><span class="pil__tag">Metodo</span><h3>Dispense Digitali a prova di bambino.</h3><p>Ogni aspetto della gestione, dal pricing alla burocrazia, dalla creazione dell'annuncio alla gestione degli ospiti difficili è trasformato in dispense digitali scritte con un solo obiettivo: che tu le legga una volta e sappia esattamente cosa fare. Niente tecnicismi fini a se stessi. Niente teoria da corso universitario. Solo checklist, procedure e schemi operativi che funzionano perché nascono dalla pratica, non dai manuali.</p></div>
+      </div>
+      <div class="pil">
+        <div class="pil__n">2</div>
+        <div><span class="pil__tag">Flessibilità</span><h3>Training On Demand, quando e come vuoi tu.</h3><p>Hai un lavoro. Hai una famiglia. Hai una vita. Per questo il percorso è interamente on demand: accedi quando vuoi, dalla mattina presto o dopo cena, dal divano o in pausa pranzo. Ogni modulo è strutturato in pillole brevi, concrete, riutilizzabili nel tempo. Non devi seguire lezioni in diretta. Non devi tenere il passo di nessun altro. Il tuo ritmo è quello giusto.</p></div>
+      </div>
+      <div class="pil">
+        <div class="pil__n">3</div>
+        <div><span class="pil__tag">Il fattore decisivo</span><h3>Supporto giornaliero con me + sessioni individuali esclusive.</h3><p>Questo è il pilastro che fa la differenza tra un corso qualunque e un percorso che funziona davvero. Ogni giorno puoi scrivere a Federica e ricevere risposte reali sul tuo caso specifico: il tuo annuncio, il tuo prezzo, il tuo ospite scomodo, il tuo dubbio fiscale. In più, ti aspettano sessioni individuali esclusive in cui lavoriamo fianco a fianco sui tuoi numeri non in astratto, ma sul tuo immobile, nella tua zona, con la tua situazione fiscale. È qui che gli strumenti diventano risultati.</p></div>
+      </div>
+    </div>
+    <div class="pil-ft anim">
+      <p>Dispense chiare. Training che seguono i tuoi tempi. Una persona/professionista vera che c'è. <strong>Tre pilastri che si tengono insieme: toglierne uno significa non funzionare.</strong></p>
+    </div>
+    <div class="bio anim">
+      <span class="ey" style="margin-bottom:10px">Un breve cenno su di me</span>
+      <h3>Federica Cellini</h3>
+      <p>Se ancora non mi conosci, mi presento: sono Federica Cellini, la voce e la mano del percorso. Ho costruito da zero la propria operatività di gestione affitti brevi, e sono passata attraverso ogni tipo di errore che oggi puoi evitare. Proprio per questo con la partecipazione di Omar (socio e braccio destro) ho sviluppato nel tempo un metodo pratico che funziona nella vita vera, non solo sulla carta. Sono io in persona ad affiancarti ogni giorno, rispondere ai tuoi messaggi, e che ti guida nelle sessioni individuali.</p>
+      <p>Insieme ad Omar, in questi anni, abbiamo testato e raffinato "Proprietario Pro" su decine di situazioni reali. Ogni "pagina" del percorso è stata scritta, riscritta e corretta sul campo.</p>
+    </div>
+    <div class="testi-hd anim">
+      <span class="ey">Come è andata a chi era esattamente dove sei tu adesso</span>
+      <span class="rule"></span>
+      <h2>I risultati, in prima persona.</h2>
+    </div>
+    <div class="testi-grid anim">
+      <div class="testi">
+        <div class="testi__stars">★★★★★</div>
+        <div class="testi__q">"Pensavo di sapere. Dopo due anni su Airbnb, ero convinto di aver capito come funzionava. Nella prima call mi hanno mostrato il benchmark della mia zona: il mio bilocale doveva rendere 2.400€ al mese, io ne facevo solo 1.650. Non ero arrivato: <span class="testi__hl">ero fermo</span>. Oggi, a due settimane dall'avvio, sono a 2.280 € di media. Quasi 600 € in più al mese. Per me, vuol dire due rate del mutuo."</div>
+        <div class="testi__who"><div class="testi__av">M</div><div><div class="testi__name">Marco</div><div class="testi__loc">Proprietario — Roma</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi__stars">★★★★★</div>
+        <div class="testi__q">"Avevo la casa nuova e paura di sbagliare. Non sapevo da dove iniziare, avevo paura della burocrazia, avevo paura di svalutare l'immobile. In 45 giorni il mio calendario è andato dall'essere praticamente vuoto a <span class="testi__hl">una occupazione stabile oltre il 75%</span>. Quello che mi ha cambiato è stato non sentirmi mai solo: ogni volta che avevo un dubbio, c'era una risposta entro la giornata."</div>
+        <div class="testi__who"><div class="testi__av">L</div><div><div class="testi__name">Luca</div><div class="testi__loc">Neo-proprietario — Bologna</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi__stars">★★★★★</div>
+        <div class="testi__q">"Pagavo il 22% a un'agenzia, da quattro anni. Pensavo fosse il prezzo della tranquillità. Quando ho fatto i conti con Omar e Federica, quanto avevo pagato di commissioni in 48 mesi, mi è venuto da ridere, e poi da piangere. Oggi gestisco in autonomia con <span class="testi__hl">2 ore la settimana</span>. La casa rende il 40% in più. E, cosa che non mi aspettavo, ho più tranquillità adesso di prima: perché finalmente so cosa succede."</div>
+        <div class="testi__who"><div class="testi__av">G</div><div><div class="testi__name">Giulia</div><div class="testi__loc">Proprietaria — Firenze</div></div></div>
+      </div>
+    </div>
+    <div class="guar anim">
+      <h2>La nostra promessa</h2>
+      <p class="guar__sub">Perché lo chiamiamo sistema "rischio zero"</p>
+      <p class="guar__intro">Perché sappiamo che, se sei arrivato fino a questa riga, l'ultima cosa di cui hai bisogno è l'ennesima promessa vuota. Quindi non promettiamo: <strong>ci prendiamo il rischio al posto tuo.</strong></p>
+      <div class="g-items">
+        <div class="g-item"><div class="g-item__ico">📐</div><div><h4>Rischio zero sul metodo.</h4><p>Il mercato evolve, la tecnologia con lui. E noi con loro! Il metodo condiviso non solo già è funzionante ed utilizzato da noi in primis ogni singolo giorno, ma viene costantemente aggiornato per evitare che tu possa ritrovarti con un "GPS senza Wifi".</p></div></div>
+        <div class="g-item"><div class="g-item__ico">⚖️</div><div><h4>Rischio zero sulla burocrazia.</h4><p>Ogni procedura fiscale e normativa è già pronta, aggiornata, verificata. Non stai sperimentando sulla tua pelle: stai applicando protocolli già testati su altri.</p></div></div>
+        <div class="g-item"><div class="g-item__ico">🤝</div><div><h4>Rischio zero sulla solitudine.</h4><p>Non ti lasciamo mai solo davanti a un ospite complicato, a una notifica strana di Airbnb, a un dubbio sulla cedolare. Scrivi e la risposta arriva.</p></div></div>
+      </div>
+      <div class="guar__warn">
+        <p>Quando qualcuno si prende il rischio al posto tuo, significa una cosa sola: sa che il sistema funziona. Altrimenti non lo farebbe. Anche vero che senza metterci del tuo, te lo dico senza peli sulla lingua: <strong>i risultati non arriveranno mai!</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FASE 7 — CTA FINALE ══════════════════════ -->
+<section class="sec bg-light">
+  <div class="w">
+    <div class="final-hd anim">
+      <span class="ey">Cosa fare adesso?</span>
+      <span class="rule rule-c"></span>
+      <h2>Prima di decidere, leggi queste ultime tre righe.</h2>
+    </div>
+    <div class="pers-grid anim">
+      <div class="pers"><div class="pers__lbl">Se già gestisci</div><h3>La sessione gratuita non serve a insegnarti cose che già sai.</h3><p>Serve a mostrarti, numeri alla mano, il tuo gap reale rispetto al potenziale di zona. Nessuno ti giudica. Ti diamo solo il dato, per poi dirti cosa è necessario fare. Chi prende la decisione finale, sei tu.</p></div>
+      <div class="pers"><div class="pers__lbl">Se hai appena iniziato</div><h3>La sessione è il momento in cui qualcuno guarda il tuo caso specifico.</h3><p>La tua zona, il tuo immobile, la tua situazione. Usciamo dalla chiamata con una direzione chiara, che puoi scegliere di seguire o meno.</p></div>
+      <div class="pers"><div class="pers__lbl">Se hai l'agenzia</div><h3>Non ti chiediamo di rompere nulla adesso.</h3><p>Ti chiediamo solo 30 minuti per capire, con calma, quanto stai pagando davvero e cosa potresti costruire in parallelo, in modo che, quando il contratto scadrà, tu non sia impreparato. Se poi deciderai di restare con l'agenzia, lo farai in modo consapevole. È comunque un guadagno.</p></div>
+    </div>
+    <div class="sess-box anim">
+      <span class="ey" style="color:var(--gold)">Che cosa succede, esattamente, nella sessione gratuita</span>
+      <h3 style="margin-top:10px">30 minuti. La tua situazione reale. Nessuna promessa vaga.</h3>
+      <div class="s-pts">
+        <div class="s-pt"><div class="s-pt__ok">✓</div><p>Analizziamo insieme il tuo immobile: zona, taglio, stato, posizionamento attuale.</p></div>
+        <div class="s-pt"><div class="s-pt__ok">✓</div><p>Calcoliamo il benchmark reale della tua zona, quanto dovrebbe rendere e quanto sta rendendo davvero.</p></div>
+        <div class="s-pt"><div class="s-pt__ok">✓</div><p>Identifichiamo i blocchi principali che oggi ti stanno costando più soldi.</p></div>
+        <div class="s-pt"><div class="s-pt__ok">✓</div><p>Ti diciamo, con chiarezza, se il percorso "Proprietario Pro" fa per te oppure no. Se non fa per te, lo diciamo. Abbiamo zero interessi a seguire chi non ne ha bisogno.</p></div>
+      </div>
+      <button class="btn btn-gold open-modal"><span class="btn-ico">→</span>Prenota ora la tua sessione strategica gratuita</button>
+      <p class="scarcity">I posti disponibili ogni settimana sono limitati, seguiamo personalmente ogni incontro.</p>
+    </div>
+    <div class="cost-box anim">
+      <div class="cost-box__lbl">Un'ultima cosa — C'è una sola cifra di cui dovresti preoccuparti, adesso.</div>
+      <div class="cost-box__n">€<span>26</span></div>
+      <div class="cost-box__sub">al giorno — il costo reale di non sapere</div>
+      <p>Non è né la quota per aderire al percorso, né il tempo che pensi di non avere e né la paura di cambiare metodo. L'unica cifra che conta, in questo momento, è quanto ti sta costando ogni singolo giorno che rimandi.</p>
+      <p>Se il gap medio di un immobile gestito senza metodo è di circa 800 euro al mese, cifra prudente, significa 26 euro al giorno. Ogni giorno che decidi "ne riparlo tra qualche settimana" è un caffè, una cena, una spesa che non stai facendo perché il tuo immobile li sta perdendo al posto tuo.</p>
+      <p class="cq">La sessione è gratuita. La tua situazione, invece, ha un costo che oggi ancora non vedi. Scoprirlo ti costa 30 minuti.</p>
+    </div>
+    <div class="fcta anim">
+      <button class="btn btn-gold open-modal"><span class="btn-ico">→</span>Sì, voglio capire quanto sto lasciando sul tavolo</button>
+      <span class="sub">Prenota subito. È l'unico clic che, probabilmente, cambierà la rendita del tuo immobile nei prossimi mesi.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="w">
+    <p><strong>Federica Cellini &amp; Omar Pugliese</strong></p>
+    <p>Proprietario Pro — Il tuo immobile torna a essere tuo.</p>
+    <p style="margin-top:10px">Documento riservato — Tutti i diritti riservati © 2024</p>
+  </div>
+</footer>
+
+<!-- ══ MODAL FORM ════════════════════════════════ -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mttl">
+  <div class="modal">
+    <div class="modal__head">
+      <button class="modal__x" id="mx" aria-label="Chiudi">✕</button>
+      <div class="modal__ey">Sessione Strategica Gratuita</div>
+      <div class="modal__ttl" id="mttl">Prenota la tua consulenza<br/>con Federica e Omar</div>
+      <div class="modal__sub">Compila i dati — ti ricontatteremo entro 24 ore per fissare la tua sessione personale.</div>
+    </div>
+    <div class="modal__body">
+      <div id="form-area">
+        <div class="fg"><label for="fn">Nome e Cognome <span class="req">*</span></label><input type="text" id="fn" placeholder="Es. Marco Rossi" autocomplete="name"/></div>
+        <div class="fg"><label for="fe">Indirizzo Email <span class="req">*</span></label><input type="email" id="fe" placeholder="tua@email.com" autocomplete="email"/></div>
+        <div class="fg"><label for="ft">Numero di Telefono <span class="req">*</span></label><input type="tel" id="ft" placeholder="+39 333 000 0000" autocomplete="tel"/></div>
+        <div class="fdiv">I tuoi annunci (opzionale)</div>
+        <div class="fg"><label for="fl1">Link Annuncio 1 <span class="opt">(se presente)</span></label><input type="url" id="fl1" placeholder="https://www.airbnb.it/rooms/..."/></div>
+        <div class="fg"><label for="fl2">Link Annuncio 2 <span class="opt">(se presente)</span></label><input type="url" id="fl2" placeholder="https://www.booking.com/hotel/..."/></div>
+        <button class="fsub" id="fsub"><span class="btn-ico">→</span>Prenota la mia sessione gratuita</button>
+        <p class="fnote">I tuoi dati sono al sicuro e non verranno condivisi con terzi.<br/>Vengono utilizzati esclusivamente per prepararci al meglio alla tua sessione.</p>
+      </div>
+      <div class="ty" id="ty">
+        <div class="ty__ico">✓</div>
+        <h3>Perfetto, ci siamo!</h3>
+        <p>Grazie per averci lasciato i tuoi dati.<br/><br/>Federica o Omar ti contatteranno personalmente entro le prossime <strong>24 ore</strong> per fissare insieme la tua sessione strategica gratuita e parlare nel dettaglio del tuo immobile, della tua situazione e del tuo potenziale reale.<br/><br/><em>Preparati: potresti avere qualche sorpresa sui numeri.</em></p>
+        <button class="ty__btn" id="tyc">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* COUNTER */
+(function(){var r=26/86400,e=document.getElementById('counter'),t=null;
+function f(ts){if(!t)t=ts;var l=((ts-t)/1000)*r;
+e.textContent='\u20AC'+l.toFixed(2).replace('.',',');requestAnimationFrame(f);}
+requestAnimationFrame(f);})();
+
+/* MODAL */
+var ov=document.getElementById('overlay'),mx=document.getElementById('mx'),tyc=document.getElementById('tyc');
+function open_m(){ov.classList.add('on');document.body.style.overflow='hidden'}
+function close_m(){ov.classList.remove('on');document.body.style.overflow=''}
+function reset_f(){document.getElementById('form-area').style.display='block';
+document.getElementById('ty').style.display='none';
+['fn','fe','ft','fl1','fl2'].forEach(function(i){var el=document.getElementById(i);
+if(el){el.value='';el.classList.remove('err');}});}
+document.querySelectorAll('.open-modal').forEach(function(b){b.addEventListener('click',open_m)});
+mx.addEventListener('click',function(){close_m();setTimeout(reset_f,340)});
+tyc.addEventListener('click',function(){close_m();setTimeout(reset_f,340)});
+ov.addEventListener('click',function(e){if(e.target===ov){close_m();setTimeout(reset_f,340)}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){close_m();setTimeout(reset_f,340)}});
+
+/* SUBMIT */
+document.getElementById('fsub').addEventListener('click',function(){
+var n=document.getElementById('fn').value.trim(),
+    e=document.getElementById('fe').value.trim(),
+    t=document.getElementById('ft').value.trim(),ok=true;
+['fn','fe','ft'].forEach(function(i){document.getElementById(i).classList.remove('err')});
+if(!n){document.getElementById('fn').classList.add('err');ok=false}
+if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){document.getElementById('fe').classList.add('err');ok=false}
+if(!t){document.getElementById('ft').classList.add('err');ok=false}
+if(!ok){var f=ov.querySelector('.err');if(f){f.style.animation='shake .36s ease';
+setTimeout(function(){f.style.animation=''},400)}return}
+document.getElementById('form-area').style.display='none';
+document.getElementById('ty').style.display='block';
+});
+
+/* SCROLL ANIM */
+var els=document.querySelectorAll('.anim'),io=new IntersectionObserver(function(entries){
+entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.08});
+els.forEach(function(el){io.observe(el)});
+window.addEventListener('load',function(){
+document.querySelectorAll('.hero .anim').forEach(function(el){el.classList.add('in')})});
+</script>
+</body>
+</html>
