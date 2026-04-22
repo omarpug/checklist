@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proprietario Pro — Federica Cellini</title>
 <meta name="description" content="Il percorso che trasforma il tuo immobile in un asset che rende davvero. A rischio zero.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NMFQTFXNY1"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-NMFQTFXNY1');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -289,13 +296,53 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding
   .fed-bio{padding:1.75rem 1.25rem}
   #scenari .intro,#scenari h2,#testi h2,.testi-sub{text-align:left}
 }
+
+/* ════════════════════════
+   MODAL & FORM
+════════════════════════ */
+.overlay{position:fixed;inset:0;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:12px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+.overlay.on{opacity:1;visibility:visible}
+.modal{background:var(--white);border-radius:14px;width:100%;max-width:520px;max-height:95vh;overflow-y:auto;position:relative;transform:translateY(24px) scale(.97);transition:transform .32s cubic-bezier(.4,0,.2,1);}
+.overlay.on .modal{transform:none}
+.modal-head{background:var(--navy);padding:24px 26px 20px;position:relative;}
+.modal-head::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);opacity:.7;}
+.modal-ey{font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.modal-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.8vw,1.45rem);color:var(--white);line-height:1.26;margin-bottom:6px;}
+.modal-sub{font-size:.78rem;color:rgba(255,255,255,.42);}
+.modal-x{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.4);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+.modal-x:hover{background:rgba(255,255,255,.15);color:var(--white)}
+.modal-body{padding:22px 26px 28px; background:var(--white); border-radius: 0 0 14px 14px; color:var(--navy);}
+.fg{margin-bottom:15px; text-align: left;}
+.fg label{display:block;font-size:.76rem;font-weight:700;color:var(--navy);margin-bottom:5px;letter-spacing:.04em;}
+.fg label .req{color:var(--gold);margin-left:2px}
+.fg label .opt{color:rgba(10,22,40,.6);font-weight:500;font-size:.7rem;margin-left:3px}
+.fg input{width:100%;padding:11px 13px;border:1.5px solid rgba(10,22,40,.12);border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;color:var(--navy);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;}
+.fg input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,151,42,.15)}
+.fg input::placeholder{color:rgba(10,22,40,.24)}
+.fg input.err{border-color:#e05c5c}
+.fdiv{font-size:.64rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(10,22,40,.6);display:flex;align-items:center;gap:9px;margin:16px 0 13px;}
+.fdiv::before,.fdiv::after{content:'';flex:1;height:1px;background:rgba(10,22,40,.08)}
+.fsub{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);color:var(--navy);border:none;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.84rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(196,151,42,.28);margin-top:6px;position:relative;overflow:hidden;}
+.fsub::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);transform:skewX(-20deg);transition:left .5s;}
+.fsub:hover::before{left:150%}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,151,42,.4)}
+.fsub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.fnote{font-size:.7rem;color:rgba(10,22,40,.6);text-align:center;margin-top:10px;line-height:1.52}
+.ty{display:none;text-align:center;padding:10px 0 6px}
+.ty-ico{width:60px;height:60px;border-radius:50%;background:rgba(196,151,42,.08);border:2px solid rgba(196,151,42,.4);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 16px;color: var(--navy);}
+.ty h3{font-size:1.3rem;color:var(--navy);margin-bottom:12px;font-weight: 800;}
+.ty p{font-size:.88rem;color:rgba(10,22,40,.7);line-height:1.76;max-width:380px;margin:0 auto}
+.ty p strong{color:var(--navy)}
+.ty-btn{margin-top:20px;padding:10px 28px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.ty-btn:hover{background:var(--navy-light)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 </style>
 </head>
 <body>
 
 <!-- STICKY MOBILE -->
 <div class="sticky">
-  <a href="#prenota" class="btn">→ Prenota la Sessione Gratuita</a>
+  <button class="btn open-modal" data-loc="sticky">→ Prenota la Sessione Gratuita</button>
 </div>
 
 <!-- ══ HERO ══ -->
@@ -307,7 +354,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding
       <p class="h-sub">E la parte peggiore è che nessuno te lo sta dicendo. C'è una probabilità molto alta che ogni mese tu stia lasciando sul tavolo tra i <strong>600 e i 1.400 euro</strong> senza accorgertene.</p>
       <p class="h-promise"><span>In 3 minuti di lettura</span> capirai esattamente perché sta succedendo, quanto ti sta costando davvero, e cosa fanno i proprietari che invece, a parità di immobile, guadagnano il doppio.</p>
       <div class="h-cta">
-        <a href="#prenota" class="btn" id="prenota">→ Prenota la tua sessione strategica gratuita</a>
+        <button class="btn open-modal" data-loc="hero">→ Prenota la tua sessione strategica gratuita</button>
       </div>
     </div>
     <div class="hero-right">
@@ -9521,7 +9568,7 @@ DwOtdXV4mH8nr0sABiXIHSurq6tA/9k=" alt="Federica Cellini" class="fed-photo">
       </div>
     </div>
     <div class="testi-cta rev">
-      <a href="#prenota" class="btn">→ Prenota ora la tua sessione strategica gratuita</a>
+      <button class="btn open-modal" data-loc="testimonianze">→ Prenota ora la tua sessione strategica gratuita</button>
       <p class="scarcity">I posti disponibili ogni settimana sono limitati, seguiamo personalmente ogni incontro.</p>
     </div>
   </div>
@@ -9573,7 +9620,7 @@ DwOtdXV4mH8nr0sABiXIHSurq6tA/9k=" alt="Federica Cellini" class="fed-photo">
     <p class="chi-body rev" style="margin-top:.5rem">Se il gap medio di un immobile gestito senza metodo è di circa 800 euro al mese, cifra prudente, significa 26 euro al giorno. Ogni giorno che decidi "ne riparlo tra qualche settimana" è un caffè, una cena, una spesa che non stai facendo perché il tuo immobile li sta perdendo al posto tuo.</p>
     <p class="chi-promise rev"><strong>La sessione è gratuita. La tua situazione, invece, ha un costo che oggi ancora non vedi.</strong> Scoprirlo ti costa 30 minuti.</p>
     <div class="chi-cta-w rev">
-      <a href="#prenota" class="btn">→ Sì, voglio capire quanto sto lasciando sul tavolo</a>
+      <button class="btn open-modal" data-loc="finale">→ Sì, voglio capire quanto sto lasciando sul tavolo</button>
       <p class="chi-scarcity">I posti disponibili ogni settimana sono limitati, seguiamo personalmente ogni incontro.</p>
     </div>
     <div class="chi-sign rev">
@@ -9583,9 +9630,36 @@ DwOtdXV4mH8nr0sABiXIHSurq6tA/9k=" alt="Federica Cellini" class="fed-photo">
   </div>
 </section>
 
-<footer>
-  <p>© 2025 Federica Cellini · Proprietario Pro · Tutti i diritti riservati</p>
-</footer>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mttl">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-x" id="mx" aria-label="Chiudi">✕</button>
+      <div class="modal-ey">Sessione Strategica Gratuita</div>
+      <div class="modal-ttl" id="mttl">Prenota la tua consulenza</div>
+      <div class="modal-sub">Lascia i tuoi dati — ti contatteremo entro 24 ore per fissare la tua sessione.</div>
+    </div>
+    <div class="modal-body">
+      <div id="form-area">
+        <div class="fg"><label for="fn">Nome e Cognome <span class="req">*</span></label><input type="text" id="fn" placeholder="Es. Marco Rossi" autocomplete="name"/></div>
+        <div class="fg"><label for="fe">Indirizzo Email <span class="req">*</span></label><input type="email" id="fe" placeholder="tua@email.com" autocomplete="email"/></div>
+        <div class="fg"><label for="ft">Numero di Telefono <span class="req">*</span></label><input type="tel" id="ft" placeholder="+39 333 000 0000" autocomplete="tel"/></div>
+        <div class="fdiv">I tuoi annunci (opzionale)</div>
+        <div class="fg"><label for="fl1">Link Annuncio 1 <span class="opt">(se presente)</span></label><input type="url" id="fl1" placeholder="https://www.airbnb.it/rooms/..."/></div>
+        <div class="fg"><label for="fl2">Link Annuncio 2 <span class="opt">(se presente)</span></label><input type="url" id="fl2" placeholder="https://www.booking.com/hotel/..."/></div>
+        <button class="fsub" id="fsub">
+          → Prenota la mia sessione gratuita
+        </button>
+        <p class="fnote">I tuoi dati sono al sicuro e non verranno condivisi con terzi.<br/>Vengono utilizzati esclusivamente per prepararci al meglio alla tua sessione.</p>
+      </div>
+      <div class="ty" id="ty">
+        <div class="ty-ico">✓</div>
+        <h3>Perfetto, ci siamo!</h3>
+        <p>Grazie per averci lasciato i tuoi dati.<br/><br/>Ti contatteremo personalmente entro le prossime <strong>24 ore</strong> per fissare insieme la tua sessione strategica gratuita e parlare nel dettaglio del tuo immobile, della tua situazione e del tuo potenziale reale.<br/><br/><em>Preparati: potresti avere qualche sorpresa sui numeri.</em></p>
+        <button class="ty-btn" id="tyc">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── REVEAL on scroll ──
@@ -9612,4 +9686,83 @@ window.addEventListener('scroll', () => {
     mat.style.backgroundPositionY = ((p - .5) * 50) + 'px';
   }
 }, { passive: true });
+// ── MODAL, GOOGLE SHEETS & TRACKING ──
+var WH='https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec';
+var ov=document.getElementById('overlay'),mx=document.getElementById('mx'),tyc=document.getElementById('tyc');
+
+function openM(loc){
+  if(typeof gtag === 'function') {
+    gtag('event','cta_click',{event_category:'engagement',event_label:loc||'unknown',button_location:loc||'unknown'});
+  }
+  ov.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+function closeM(){
+  ov.classList.remove('on');
+  document.body.style.overflow='';
+}
+
+function resetF(){
+  document.getElementById('form-area').style.display='block';
+  document.getElementById('ty').style.display='none';
+  ['fn','fe','ft','fl1','fl2'].forEach(function(i){
+    var e=document.getElementById(i);
+    if(e){e.value='';e.classList.remove('err');}
+  });
+  var b=document.getElementById('fsub');
+  b.disabled=false;
+  b.innerHTML='→ Prenota la mia sessione gratuita';
+}
+
+document.querySelectorAll('.open-modal').forEach(function(b){
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    openM(b.getAttribute('data-loc')||'generic');
+  });
+});
+
+mx.addEventListener('click',function(){closeM();setTimeout(resetF,340);});
+tyc.addEventListener('click',function(){closeM();setTimeout(resetF,340);});
+ov.addEventListener('click',function(e){if(e.target===ov){closeM();setTimeout(resetF,340);}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeM();setTimeout(resetF,340);}});
+
+document.getElementById('fsub').addEventListener('click',function(){
+  var n=document.getElementById('fn').value.trim(),
+      e=document.getElementById('fe').value.trim(),
+      t=document.getElementById('ft').value.trim(),
+      l1=document.getElementById('fl1').value.trim(),
+      l2=document.getElementById('fl2').value.trim(),
+      ok=true;
+
+  ['fn','fe','ft'].forEach(function(i){document.getElementById(i).classList.remove('err');});
+  
+  if(!n){document.getElementById('fn').classList.add('err');ok=false;}
+  if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){document.getElementById('fe').classList.add('err');ok=false;}
+  if(!t){document.getElementById('ft').classList.add('err');ok=false;}
+  
+  if(!ok){
+    var f=ov.querySelector('.err');
+    if(f){f.style.animation='shake .36s ease';setTimeout(function(){f.style.animation='';},400);}
+    return;
+  }
+  
+  var btn=document.getElementById('fsub');
+  btn.disabled=true;
+  btn.textContent='Invio in corso…';
+  
+  fetch(WH,{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({source:'proprietario_pro',nome:n,email:e,telefono:t,link1:l1,link2:l2})
+  }).catch(function(){});
+  
+  if(typeof gtag === 'function') {
+    gtag('event','sessione_prenotata',{event_category:'conversion',event_label:'proprietario_pro',form_name:'sessione_strategica_gratuita'});
+  }
+  
+  document.getElementById('form-area').style.display='none';
+  document.getElementById('ty').style.display='block';
+});
 </script>
