@@ -9687,7 +9687,9 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 // ── MODAL, GOOGLE SHEETS & TRACKING ──
-var WH='https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec';
+const WH = 'https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec';
+const LANDING_NAME = 'proprietario_pro';
+const FORM_NAME = 'sessione_strategica_gratuita';
 
 const params = new URLSearchParams(window.location.search);
 const utm_source = params.get('utm_source') || localStorage.getItem('utm_source') || '';
@@ -9697,91 +9699,161 @@ const utm_campaign = params.get('utm_campaign') || localStorage.getItem('utm_cam
 if (utm_source) localStorage.setItem('utm_source', utm_source);
 if (utm_medium) localStorage.setItem('utm_medium', utm_medium);
 if (utm_campaign) localStorage.setItem('utm_campaign', utm_campaign);
-var ov=document.getElementById('overlay'),mx=document.getElementById('mx'),tyc=document.getElementById('tyc');
 
-function openM(loc){
-  if(typeof gtag === 'function') {
-    gtag('event','cta_click',{event_category:'engagement',event_label:loc||'unknown',button_location:loc||'unknown'});
-  }
-  ov.classList.add('on');
-  document.body.style.overflow='hidden';
+const ov = document.getElementById('overlay');
+const mx = document.getElementById('mx');
+const tyc = document.getElementById('tyc');
+
+function trackEvent(eventName, eventParams) {
+  if (typeof gtag !== 'function') return;
+  gtag('event', eventName, eventParams || {});
 }
 
-function closeM(){
-  ov.classList.remove('on');
-  document.body.style.overflow='';
-}
-
-function resetF(){
-  document.getElementById('form-area').style.display='block';
-  document.getElementById('ty').style.display='none';
-  ['fn','fe','ft','fl1','fl2'].forEach(function(i){
-    var e=document.getElementById(i);
-    if(e){e.value='';e.classList.remove('err');}
-  });
-  var b=document.getElementById('fsub');
-  b.disabled=false;
-  b.innerHTML='→ Prenota la mia sessione gratuita';
-}
-
-document.querySelectorAll('.open-modal').forEach(function(b){
-  b.addEventListener('click',function(e){
-    e.preventDefault();
-    openM(b.getAttribute('data-loc')||'generic');
+window.addEventListener('load', function () {
+  trackEvent('landing_open', {
+    landing_name: LANDING_NAME,
+    utm_source: utm_source,
+    utm_medium: utm_medium,
+    utm_campaign: utm_campaign
   });
 });
 
-mx.addEventListener('click',function(){closeM();setTimeout(resetF,340);});
-tyc.addEventListener('click',function(){closeM();setTimeout(resetF,340);});
-ov.addEventListener('click',function(e){if(e.target===ov){closeM();setTimeout(resetF,340);}});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeM();setTimeout(resetF,340);}});
+function openM(buttonName) {
+  trackEvent('cta_click', {
+    landing_name: LANDING_NAME,
+    button_name: buttonName || 'unknown',
+    utm_source: utm_source,
+    utm_medium: utm_medium,
+    utm_campaign: utm_campaign
+  });
 
-document.getElementById('fsub').addEventListener('click',function(){
-  var n=document.getElementById('fn').value.trim(),
-      e=document.getElementById('fe').value.trim(),
-      t=document.getElementById('ft').value.trim(),
-      l1=document.getElementById('fl1').value.trim(),
-      l2=document.getElementById('fl2').value.trim(),
-      ok=true;
+  ov.classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
 
-  ['fn','fe','ft'].forEach(function(i){document.getElementById(i).classList.remove('err');});
-  
-  if(!n){document.getElementById('fn').classList.add('err');ok=false;}
-  if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){document.getElementById('fe').classList.add('err');ok=false;}
-  if(!t){document.getElementById('ft').classList.add('err');ok=false;}
-  
-  if(!ok){
-    var f=ov.querySelector('.err');
-    if(f){f.style.animation='shake .36s ease';setTimeout(function(){f.style.animation='';},400);}
+function closeM() {
+  ov.classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function resetF() {
+  document.getElementById('form-area').style.display = 'block';
+  document.getElementById('ty').style.display = 'none';
+
+  ['fn','fe','ft','fl1','fl2'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.value = '';
+      el.classList.remove('err');
+    }
+  });
+
+  const btn = document.getElementById('fsub');
+  btn.disabled = false;
+  btn.innerHTML = '→ Prenota la mia sessione gratuita';
+}
+
+document.querySelectorAll('.open-modal').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const buttonName = btn.getAttribute('data-loc') || 'unknown';
+    openM(buttonName);
+  });
+});
+
+mx.addEventListener('click', function() {
+  closeM();
+  setTimeout(resetF, 340);
+});
+
+tyc.addEventListener('click', function() {
+  closeM();
+  setTimeout(resetF, 340);
+});
+
+ov.addEventListener('click', function(e) {
+  if (e.target === ov) {
+    closeM();
+    setTimeout(resetF, 340);
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeM();
+    setTimeout(resetF, 340);
+  }
+});
+
+document.getElementById('fsub').addEventListener('click', function() {
+  const n = document.getElementById('fn').value.trim();
+  const e = document.getElementById('fe').value.trim();
+  const t = document.getElementById('ft').value.trim();
+  const l1 = document.getElementById('fl1').value.trim();
+  const l2 = document.getElementById('fl2').value.trim();
+
+  let ok = true;
+
+  ['fn','fe','ft'].forEach(function(id) {
+    document.getElementById(id).classList.remove('err');
+  });
+
+  if (!n) {
+    document.getElementById('fn').classList.add('err');
+    ok = false;
+  }
+
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+    document.getElementById('fe').classList.add('err');
+    ok = false;
+  }
+
+  if (!t) {
+    document.getElementById('ft').classList.add('err');
+    ok = false;
+  }
+
+  if (!ok) {
+    const f = ov.querySelector('.err');
+    if (f) {
+      f.style.animation = 'shake .36s ease';
+      setTimeout(function() {
+        f.style.animation = '';
+      }, 400);
+    }
     return;
   }
-  
-  var btn=document.getElementById('fsub');
-  btn.disabled=true;
-  btn.textContent='Invio in corso…';
-  
-  fetch(WH,{
-  method:'POST',
-  mode:'no-cors',
-  headers:{'Content-Type':'application/json'},
-  body:JSON.stringify({
-    source:'proprietario_pro',
-    nome:n,
-    email:e,
-    telefono:t,
-    link1:l1,
-    link2:l2,
-    utm_source:utm_source,
-    utm_medium:utm_medium,
-    utm_campaign:utm_campaign
-  })
-}).catch(function(){});
-  
-  if(typeof gtag === 'function') {
-    gtag('event','sessione_prenotata',{event_category:'conversion',event_label:'proprietario_pro',form_name:'sessione_strategica_gratuita'});
-  }
-  
-  document.getElementById('form-area').style.display='none';
-  document.getElementById('ty').style.display='block';
+
+  const btn = document.getElementById('fsub');
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
+
+  fetch(WH, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: LANDING_NAME,
+      nome: n,
+      email: e,
+      telefono: t,
+      link1: l1,
+      link2: l2,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_campaign: utm_campaign
+    })
+  }).catch(function(){});
+
+  trackEvent('form_submit', {
+    landing_name: LANDING_NAME,
+    form_name: FORM_NAME,
+    utm_source: utm_source,
+    utm_medium: utm_medium,
+    utm_campaign: utm_campaign
+  });
+
+  document.getElementById('form-area').style.display = 'none';
+  document.getElementById('ty').style.display = 'block';
 });
 </script>
