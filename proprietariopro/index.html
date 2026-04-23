@@ -9688,6 +9688,15 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 // ── MODAL, GOOGLE SHEETS & TRACKING ──
 var WH='https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec';
+
+const params = new URLSearchParams(window.location.search);
+const utm_source = params.get('utm_source') || localStorage.getItem('utm_source') || '';
+const utm_medium = params.get('utm_medium') || localStorage.getItem('utm_medium') || '';
+const utm_campaign = params.get('utm_campaign') || localStorage.getItem('utm_campaign') || '';
+
+if (utm_source) localStorage.setItem('utm_source', utm_source);
+if (utm_medium) localStorage.setItem('utm_medium', utm_medium);
+if (utm_campaign) localStorage.setItem('utm_campaign', utm_campaign);
 var ov=document.getElementById('overlay'),mx=document.getElementById('mx'),tyc=document.getElementById('tyc');
 
 function openM(loc){
@@ -9752,11 +9761,21 @@ document.getElementById('fsub').addEventListener('click',function(){
   btn.textContent='Invio in corso…';
   
   fetch(WH,{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({source:'proprietario_pro',nome:n,email:e,telefono:t,link1:l1,link2:l2})
-  }).catch(function(){});
+  method:'POST',
+  mode:'no-cors',
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({
+    source:'proprietario_pro',
+    nome:n,
+    email:e,
+    telefono:t,
+    link1:l1,
+    link2:l2,
+    utm_source:utm_source,
+    utm_medium:utm_medium,
+    utm_campaign:utm_campaign
+  })
+}).catch(function(){});
   
   if(typeof gtag === 'function') {
     gtag('event','sessione_prenotata',{event_category:'conversion',event_label:'proprietario_pro',form_name:'sessione_strategica_gratuita'});
