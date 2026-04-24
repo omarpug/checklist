@@ -9708,7 +9708,67 @@ function trackEvent(eventName, eventParams) {
   if (typeof gtag !== 'function') return;
   gtag('event', eventName, eventParams || {});
 }
+const scrollTracked = {
+  25: false,
+  50: false,
+  75: false,
+  90: false
+};
 
+function getScrollPercent() {
+  const scrollTop = window.scrollY || window.pageYOffset;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+  if (docHeight <= 0) return 0;
+
+  return (scrollTop / docHeight) * 100;
+}
+
+function trackScrollDepth() {
+  const scrollPercent = getScrollPercent();
+
+  if (scrollPercent >= 25 && !scrollTracked[25]) {
+    scrollTracked[25] = true;
+    trackEvent('landing_scroll_25', {
+      landing_name: LANDING_NAME,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_campaign: utm_campaign
+    });
+  }
+
+  if (scrollPercent >= 50 && !scrollTracked[50]) {
+    scrollTracked[50] = true;
+    trackEvent('landing_scroll_50', {
+      landing_name: LANDING_NAME,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_campaign: utm_campaign
+    });
+  }
+
+  if (scrollPercent >= 75 && !scrollTracked[75]) {
+    scrollTracked[75] = true;
+    trackEvent('landing_scroll_75', {
+      landing_name: LANDING_NAME,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_campaign: utm_campaign
+    });
+  }
+
+  if (scrollPercent >= 90 && !scrollTracked[90]) {
+    scrollTracked[90] = true;
+    trackEvent('landing_scroll_90', {
+      landing_name: LANDING_NAME,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_campaign: utm_campaign
+    });
+  }
+}
+
+window.addEventListener('scroll', trackScrollDepth, { passive: true });
 window.addEventListener('load', function () {
   trackEvent('landing_open', {
     landing_name: LANDING_NAME,
