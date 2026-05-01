@@ -9679,26 +9679,31 @@ heroObs.observe(document.getElementById('hero'));
 
 // ── Parallax on 7:42 watermark ──
 const mat = document.getElementById('mattina');
-window.addEventListener('scroll', () => {
-  const r = mat.getBoundingClientRect();
-  if (r.top < window.innerHeight && r.bottom > 0) {
-    const p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
-    mat.style.backgroundPositionY = ((p - .5) * 50) + 'px';
-  }
-}, { passive: true });
+
+if (mat) {
+  window.addEventListener('scroll', () => {
+    const r = mat.getBoundingClientRect();
+
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      const p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+      mat.style.backgroundPositionY = ((p - .5) * 50) + 'px';
+    }
+  }, { passive: true });
+}
 // ── MODAL, GOOGLE SHEETS & TRACKING ──
 const WH = 'https://script.google.com/macros/s/AKfycbysELmr4ZOvglHJfEplkkO0E8mW1oDfZUbhkQ2mzHo0vJp4f0npo50SNz8NLGwL-SwZNA/exec';
 const LANDING_NAME = 'proprietario_pro';
 const FORM_NAME = 'sessione_strategica_gratuita';
 
 const params = new URLSearchParams(window.location.search);
-const utm_source = params.get('utm_source') || localStorage.getItem('utm_source') || '';
-const utm_medium = params.get('utm_medium') || localStorage.getItem('utm_medium') || '';
-const utm_campaign = params.get('utm_campaign') || localStorage.getItem('utm_campaign') || '';
 
-if (utm_source) localStorage.setItem('utm_source', utm_source);
-if (utm_medium) localStorage.setItem('utm_medium', utm_medium);
-if (utm_campaign) localStorage.setItem('utm_campaign', utm_campaign);
+const utm_source = params.get('utm_source') || sessionStorage.getItem('utm_source') || '';
+const utm_medium = params.get('utm_medium') || sessionStorage.getItem('utm_medium') || '';
+const utm_campaign = params.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || '';
+
+if (params.get('utm_source')) sessionStorage.setItem('utm_source', utm_source);
+if (params.get('utm_medium')) sessionStorage.setItem('utm_medium', utm_medium);
+if (params.get('utm_campaign')) sessionStorage.setItem('utm_campaign', utm_campaign);
 
 const ov = document.getElementById('overlay');
 const mx = document.getElementById('mx');
@@ -9912,6 +9917,14 @@ document.getElementById('fsub').addEventListener('click', function() {
     utm_medium: utm_medium,
     utm_campaign: utm_campaign
   });
+
+  trackEvent('generate_lead', {
+  landing_name: LANDING_NAME,
+  form_name: FORM_NAME,
+  utm_source: utm_source,
+  utm_medium: utm_medium,
+  utm_campaign: utm_campaign
+});
 
   document.getElementById('form-area').style.display = 'none';
   document.getElementById('ty').style.display = 'block';
