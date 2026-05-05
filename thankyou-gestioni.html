@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federica Property Manager — Ci vediamo presto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0E1A;
+    --bg2: #0F1525;
+    --bg3: #141B2E;
+    --crema: #FFFFFF;
+    --crema-muted: #8A9BBC;
+    --terra: #B8974A;
+    --terra-light: #D4AF5C;
+    --oliva: #1A2744;
+    --oro: #C9A84C;
+    --oro-light: #E3C068;
+    --border: rgba(201,168,76,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--crema);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(201,168,76,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 0.5px solid var(--oro);
+    color: var(--oro-light);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--oro);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--crema-muted);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    color: var(--crema);
+    max-width: 780px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--terra-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--crema-muted);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-sub strong {
+    color: var(--crema);
+    font-weight: 500;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--crema-muted);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: bounce 2.5s ease infinite;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--crema-muted), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── STEPS ─── */
+  .section {
+    padding: 5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--crema);
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  .steps {
+    display: grid;
+    gap: 1px;
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--border);
+  }
+
+  .step {
+    background: var(--bg2);
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    transition: background 0.3s;
+  }
+
+  .step:hover { background: var(--bg3); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--terra);
+    line-height: 1;
+    padding-top: 0.25rem;
+  }
+
+  .step-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--crema);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+  }
+
+  .step-desc {
+    font-size: 0.9rem;
+    color: var(--crema-muted);
+    line-height: 1.7;
+  }
+
+  .step-timing {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 11px;
+    color: var(--oro);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ─── NUMERI ─── */
+  .numeri-section {
+    padding: 5rem 1.5rem;
+    background: var(--bg2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .numeri-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .numeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+  }
+
+  .numero {
+    background: var(--bg2);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .numero-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--crema);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .numero-val span {
+    color: var(--terra-light);
+  }
+
+  .numero-label {
+    font-size: 0.85rem;
+    color: var(--crema-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SCARCITY ─── */
+  .scarcity {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+  }
+
+  .scarcity-box {
+    border: 0.5px solid var(--terra);
+    border-radius: 16px;
+    padding: 3rem 3.5rem;
+    background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    .scarcity-box { grid-template-columns: 1fr; padding: 2rem; }
+  }
+
+  .scarcity-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terra-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .scarcity-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--crema);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .scarcity-desc {
+    font-size: 0.9rem;
+    color: var(--crema-muted);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .slots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+  }
+
+  .slots-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--terra-light);
+    line-height: 1;
+  }
+
+  .slots-label {
+    font-size: 11px;
+    color: var(--crema-muted);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--crema-muted);
+    opacity: 0.6;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 600px) {
+    .step { grid-template-columns: 2rem 1fr; padding: 1.5rem; gap: 1rem; }
+    .step-num { font-size: 2rem; }
+    .numero-val { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge fade-in" style="transition-delay:0.1s">
+    <span class="badge-dot"></span>
+    Federica Property Manager · Roma
+  </div>
+  <p class="hero-eyebrow fade-in" style="transition-delay:0.2s">La tua richiesta è arrivata</p>
+  <h1 class="hero-title fade-in" style="transition-delay:0.3s">
+    Hai fatto la scelta <em>giusta.</em>
+  </h1>
+  <p class="hero-sub fade-in" style="transition-delay:0.45s">
+    Ogni mese lavoriamo con un numero <strong>selezionato</strong> di proprietari romani che vogliono smettere di lasciare soldi sul tavolo. Sei tra quelli che hanno alzato la mano.
+  </p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scorri
+  </div>
+</section>
+
+<!-- COSA SUCCEDE ORA -->
+<div class="section fade-in">
+  <p class="section-label">Prossimi passi</p>
+  <h2 class="section-title">Cosa succede adesso, esattamente</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <p class="step-title">Riceviamo la tua richiesta</p>
+        <p class="step-desc">Il tuo profilo è già nel nostro sistema. Non dovrai rispiegare nulla da capo.</p>
+        <span class="step-timing">Già fatto</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <p class="step-title">Ti contattiamo per una call conoscitiva</p>
+        <p class="step-desc">Una persona del nostro team ti chiama per capire il tuo immobile, la tua situazione attuale e se siamo la soluzione giusta per te. Niente pressioni.</p>
+        <span class="step-timing">Entro 24–48 ore</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <p class="step-title">Ricevi la stima personalizzata</p>
+        <p class="step-desc">Se il tuo immobile è adatto, prepariamo una proiezione reale basata su dati di zona. Non un numero inventato — numeri veri, dal tuo mercato.</p>
+        <span class="step-timing">Nella stessa call o entro 48 ore</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUMERI -->
+<div class="numeri-section">
+  <div class="numeri-inner fade-in">
+    <p class="section-label" style="text-align:center; margin-bottom:2rem;">Federica Property Manager in numeri</p>
+    <div class="numeri-grid">
+      <div class="numero">
+        <div class="numero-val">+<span>30</span>%</div>
+        <div class="numero-label">Revenue media in più rispetto alla gestione precedente</div>
+      </div>
+      <div class="numero">
+        <div class="numero-val"><span>0</span></div>
+        <div class="numero-label">Telefonate operative che ricevono i nostri proprietari</div>
+      </div>
+      <div class="numero">
+        <div class="numero-val"><span>60</span>gg</div>
+        <div class="numero-label">Per vedere i primi risultati concreti sul conto</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCARCITY -->
+<div class="scarcity fade-in">
+  <div class="scarcity-box">
+    <div>
+      <p class="scarcity-eyebrow">Importante</p>
+      <h3 class="scarcity-title">Non gestiamo tutti gli immobili che ci chiedono.</h3>
+      <p class="scarcity-desc">
+        Lavoriamo con una flotta limitata perché ogni proprietario merita attenzione reale, non una gestione a catalogo. Se il tuo immobile non è adatto, te lo diciamo subito — è una delle cose che ci distingue.
+      </p>
+    </div>
+    <div class="slots">
+      <div class="slots-val">3</div>
+      <div class="slots-label">posti disponibili<br>questo mese</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Federica Property Manager · Roma · P.IVA XXXXXXXXXXX
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.hero .fade-in').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), parseInt(el.style.transitionDelay || '0') * 1000 + 100);
+  });
+</script>
+</body>
+</html>
