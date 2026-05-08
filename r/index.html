@@ -31,20 +31,34 @@
       const fallback = document.getElementById("fallback");
       fallback.href = to;
 
+      function addCacheBuster(url) {
+        return url + (url.indexOf("?") > -1 ? "&" : "?") + "_ts=" + Date.now();
+      }
+
       function fireLog() {
         if (!log) return;
 
         try {
-          fetch(log, {
+          fetch(addCacheBuster(log), {
             method: "GET",
             mode: "no-cors",
-            keepalive: true
+            keepalive: true,
+            cache: "no-store"
           }).catch(function () {});
         } catch (e) {}
 
         try {
           const img = new Image();
-          img.src = log + (log.indexOf("?") > -1 ? "&" : "?") + "_ts=" + Date.now();
+          img.src = addCacheBuster(log);
+        } catch (e) {}
+
+        try {
+          const iframe = document.createElement("iframe");
+          iframe.src = addCacheBuster(log);
+          iframe.style.display = "none";
+          iframe.width = "1";
+          iframe.height = "1";
+          document.body.appendChild(iframe);
         } catch (e) {}
       }
 
@@ -52,7 +66,7 @@
 
       setTimeout(function () {
         window.location.replace(to);
-      }, 700);
+      }, 900);
     })();
   </script>
 
