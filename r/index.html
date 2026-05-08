@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reindirizzamento...</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; text-align:center; padding:40px; color:#0a2540;">
+
+  <p>Reindirizzamento in corso...</p>
+
+  <p>
+    <a id="fallback" href="#" style="color:#0a2540; font-weight:bold;">
+      Clicca qui se non vieni reindirizzato
+    </a>
+  </p>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+
+      const to = params.get("to");
+      const log = params.get("log");
+
+      if (!to) {
+        document.body.innerHTML = "<p>Link non valido: destinazione mancante.</p>";
+        return;
+      }
+
+      const fallback = document.getElementById("fallback");
+      fallback.href = to;
+
+      if (log) {
+        try {
+          fetch(log, {
+            method: "GET",
+            mode: "no-cors",
+            keepalive: true
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
+      setTimeout(function () {
+        window.location.replace(to);
+      }, 150);
+    })();
+  </script>
+
+</body>
+</html>
