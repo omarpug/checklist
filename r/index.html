@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Redirect...</title>
-  <meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Reindirizzamento...</title>
 </head>
-<body>
+
+<body style="font-family: Arial, sans-serif; text-align:center; padding:40px; color:#0a2540;">
+
   <p>Ti stiamo reindirizzando...</p>
+
+  <p>
+    <a id="fallback" href="#" style="color:#0a2540; font-weight:bold;">
+      Clicca qui se non vieni reindirizzato
+    </a>
+  </p>
 
   <script>
     (function () {
@@ -14,25 +23,60 @@
       const finalUrl = params.get("to");
       const logUrl = params.get("log");
 
+      function addCacheBuster(url) {
+        if (!url) return "";
+        return url + (url.indexOf("?") > -1 ? "&" : "?") + "_ts=" + Date.now();
+      }
+
+      function fireLog() {
+        if (!logUrl) return;
+
+        const trackedUrl = addCacheBuster(logUrl);
+
+        try {
+          fetch(trackedUrl, {
+            method: "GET",
+            mode: "no-cors",
+            keepalive: true,
+            cache: "no-store"
+          }).catch(function () {});
+        } catch (e) {}
+
+        try {
+          const img = new Image();
+          img.src = trackedUrl;
+        } catch (e) {}
+
+        try {
+          const iframe = document.createElement("iframe");
+          iframe.src = trackedUrl;
+          iframe.style.display = "none";
+          iframe.width = "1";
+          iframe.height = "1";
+          document.body.appendChild(iframe);
+        } catch (e) {}
+      }
+
       function goToFinalUrl() {
         if (finalUrl) {
-          window.location.href = finalUrl;
+          window.location.replace(finalUrl);
         } else {
-          document.body.innerHTML = "<p>Link non valido.</p>";
+          document.body.innerHTML = "<p>Link non valido: destinazione mancante.</p>";
         }
       }
 
-      if (logUrl) {
-        try {
-          const img = new Image();
-          img.src = logUrl + "&_t=" + Date.now();
-        } catch (e) {}
-
-        setTimeout(goToFinalUrl, 500);
-      } else {
-        goToFinalUrl();
+      if (!finalUrl) {
+        document.body.innerHTML = "<p>Link non valido: destinazione mancante.</p>";
+        return;
       }
+
+      document.getElementById("fallback").href = finalUrl;
+
+      fireLog();
+
+      setTimeout(goToFinalUrl, 900);
     })();
   </script>
+
 </body>
 </html>
